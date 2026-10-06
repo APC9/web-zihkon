@@ -671,7 +671,7 @@
 
     // === Conexión con n8n ===
     // Pruebas: usa /webhook-test/ (con "Listen for test event" activo). Producción: /webhook/ con el workflow activado.
-    const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook-test/zihkon-auditoria';
+    const N8N_WEBHOOK_URL = 'https://n8n.zihkon.cloud/webhook/zihkon-auditoria';
 
     document.getElementById('lead-form').addEventListener('submit', async (event) => {
       event.preventDefault();
