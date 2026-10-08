@@ -1,0 +1,25 @@
+/* TEMA: Navidad. Rojo, verde abeto y dorado. */
+:root {
+  --color-primario: #b91c1c;
+  --color-primario-oscuro: #14532d;
+  --color-acento: #f6c64a;
+  --color-detalle: #16a34a;
+  --color-fondo: #fbf7f1;
+  --color-fondo-alterno: #eef4ec;
+  --color-superficie: #fffdf9;
+  --color-fondo-icono: #fbe4e1;
+  --color-borde: #e9ded3;
+  --color-boton: #b91c1c;
+  --color-boton-hover: #991b1b;
+  --color-boton-activo: #7f1d1d;
+  --color-boton-texto: #fffdf9;
+  --color-boton-destacado-hover: #f9d36f;
+  --color-boton-destacado-activo: #e6b12c;
+
+  --tema-anuncio: "🎄 ¡Felices fiestas! ✨";
+  --tema-anuncio-fondo: #b91c1c;
+  --tema-anuncio-texto: #fffdf9;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #f6c64a33 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #16a34a1f 0, transparent 50%);
+  --tema-decoracion: "❄️ 🎄 🎁";
+  --tema-decoracion-cta: "⭐ ❄️";
+}

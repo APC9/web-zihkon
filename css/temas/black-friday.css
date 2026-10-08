@@ -1,0 +1,25 @@
+/* TEMA: Black Friday. Negro, amarillo y rojo oferta. */
+:root {
+  --color-primario: #18181b;
+  --color-primario-oscuro: #09090b;
+  --color-acento: #facc15;
+  --color-detalle: #ef4444;
+  --color-fondo: #f4f4f5;
+  --color-fondo-alterno: #e4e4e7;
+  --color-superficie: #fafafa;
+  --color-fondo-icono: #e4e4e7;
+  --color-borde: #d4d4d8;
+  --color-boton: #dc2626;
+  --color-boton-hover: #b91c1c;
+  --color-boton-activo: #991b1b;
+  --color-boton-texto: #fafafa;
+  --color-boton-destacado-hover: #fde047;
+  --color-boton-destacado-activo: #eab308;
+
+  --tema-anuncio: "🖤 BLACK FRIDAY · Ofertas especiales 🔥";
+  --tema-anuncio-fondo: #09090b;
+  --tema-anuncio-texto: #facc15;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #facc1533 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #ef44441a 0, transparent 50%);
+  --tema-decoracion: "🛍️ 🔥 💸";
+  --tema-decoracion-cta: "🏷️ ⚡";
+}

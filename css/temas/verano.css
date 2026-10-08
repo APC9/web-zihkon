@@ -1,0 +1,25 @@
+/* TEMA: Verano. Azul mar, amarillo sol y naranja. */
+:root {
+  --color-primario: #0369a1;
+  --color-primario-oscuro: #0c4a6e;
+  --color-acento: #fde047;
+  --color-detalle: #f97316;
+  --color-fondo: #f5fbfe;
+  --color-fondo-alterno: #e3f3fb;
+  --color-superficie: #fffefa;
+  --color-fondo-icono: #dff1fa;
+  --color-borde: #d5e8f1;
+  --color-boton: #c2410c;
+  --color-boton-hover: #9a3412;
+  --color-boton-activo: #7c2d12;
+  --color-boton-texto: #fffefa;
+  --color-boton-destacado-hover: #fde972;
+  --color-boton-destacado-activo: #facc15;
+
+  --tema-anuncio: "☀️ ¡Feliz verano! 🌊";
+  --tema-anuncio-fondo: #0c4a6e;
+  --tema-anuncio-texto: #fde047;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fde04740 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #0ea5e922 0, transparent 50%);
+  --tema-decoracion: "☀️ 🌴 🌊";
+  --tema-decoracion-cta: "🏖️ 🍉";
+}

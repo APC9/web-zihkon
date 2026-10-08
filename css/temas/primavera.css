@@ -1,0 +1,25 @@
+/* TEMA: Primavera. Verde hoja y rosa flor. */
+:root {
+  --color-primario: #15803d;
+  --color-primario-oscuro: #14532d;
+  --color-acento: #fbcfe8;
+  --color-detalle: #ec4899;
+  --color-fondo: #f7fcf5;
+  --color-fondo-alterno: #ecf8e8;
+  --color-superficie: #fffffb;
+  --color-fondo-icono: #dcfce7;
+  --color-borde: #d8ecd3;
+  --color-boton: #be185d;
+  --color-boton-hover: #9d174d;
+  --color-boton-activo: #831843;
+  --color-boton-texto: #fffffb;
+  --color-boton-destacado-hover: #fde0ef;
+  --color-boton-destacado-activo: #f9a8d4;
+
+  --tema-anuncio: "🌸 ¡Llegó la primavera! 🌼";
+  --tema-anuncio-fondo: #14532d;
+  --tema-anuncio-texto: #fbcfe8;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fbcfe840 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #86efac33 0, transparent 50%);
+  --tema-decoracion: "🌸 🦋 🌼";
+  --tema-decoracion-cta: "🌷 🐝";
+}

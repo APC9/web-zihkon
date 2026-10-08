@@ -1,0 +1,25 @@
+/* TEMA: Día de la Madre. Rosa, fucsia y flores. */
+:root {
+  --color-primario: #a21caf;
+  --color-primario-oscuro: #4a044e;
+  --color-acento: #f5d0fe;
+  --color-detalle: #db2777;
+  --color-fondo: #fdf6fb;
+  --color-fondo-alterno: #fae8f5;
+  --color-superficie: #fffbfe;
+  --color-fondo-icono: #f8e1f4;
+  --color-borde: #efd6ea;
+  --color-boton: #be185d;
+  --color-boton-hover: #9d174d;
+  --color-boton-activo: #831843;
+  --color-boton-texto: #fffbfe;
+  --color-boton-destacado-hover: #f9e0ff;
+  --color-boton-destacado-activo: #ebb5fa;
+
+  --tema-anuncio: "💐 ¡Feliz Día de la Madre! 💖";
+  --tema-anuncio-fondo: #4a044e;
+  --tema-anuncio-texto: #f5d0fe;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #f0abfc33 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #db27771a 0, transparent 50%);
+  --tema-decoracion: "💐 🌷 💖";
+  --tema-decoracion-cta: "🎁 🌸";
+}
