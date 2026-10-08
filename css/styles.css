@@ -45,9 +45,9 @@
   --color-aviso-fondo: #faf0d9;
 
   /* --- Botones --- */
-  --color-boton: #0f4d3d;
-  --color-boton-hover: #0a2e23;
-  --color-boton-activo: #071f1a;
+  --color-boton: #800020; /* Vinotinto */
+  --color-boton-hover: #660018; /* Vinotinto oscuro para hover */
+  --color-boton-activo: #4d0010; /* Vinotinto más oscuro para activo */
   --color-boton-texto: #fbfcf8;
   --color-boton-secundario-borde: var(--color-borde-fuerte); /* botón claro (.button--light) */
   --color-boton-destacado: var(--color-acento);              /* botón lima (.button--lime) */
@@ -235,4 +235,5 @@ section { scroll-margin-top: calc(var(--alto-cabecera) + var(--espacio-3)); }
     .whatsapp-float span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
     .cookie-banner { right: 12px; bottom: 90px; left: 12px; max-width: none; align-items: stretch; flex-direction: column; gap: var(--espacio-3); padding: var(--espacio-4); }
 }
+
 
