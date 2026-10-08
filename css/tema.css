@@ -5,11 +5,24 @@
 
    1) TEMA PREDEFINIDO: cambia el nombre del archivo en la
       línea @import de abajo. Temas disponibles (css/temas/):
-        original.css      colores originales de la web
-        halloween.css     naranja y morado, calabazas y murciélagos
-        navidad.css       rojo, verde y dorado, árboles y regalos
-        san-valentin.css  rosas y rojos, corazones
-        verano.css        azul mar y amarillo sol, palmeras
+        original.css         colores originales de la web
+      Estaciones:
+        primavera.css        verde hoja y rosa, flores
+        verano.css           azul mar y amarillo sol, palmeras
+        otono.css            naranja y marrón, hojas
+        invierno.css         azul hielo, copos y muñecos de nieve
+      Fiestas y días comerciales:
+        reyes.css            Reyes Magos (enero): morado y dorado
+        rebajas.css          rebajas (enero / julio): rojo y amarillo
+        san-valentin.css     San Valentín (febrero): rosas y rojos
+        dia-del-padre.css    Día del Padre (marzo): azul marino y dorado
+        pascua.css           Pascua / Semana Santa: lila y verde pastel
+        dia-de-la-madre.css  Día de la Madre (mayo): rosa y fucsia
+        vuelta-al-cole.css   vuelta al cole (septiembre): azul y amarillo
+        halloween.css        Halloween (octubre): naranja y morado
+        black-friday.css     Black Friday (noviembre): negro y amarillo
+        navidad.css          Navidad: rojo, verde y dorado
+        nochevieja.css       Nochevieja / Año Nuevo: negro y dorado
 
    2) COLORES PERSONALIZADOS: escribe variables dentro de :root
       (más abajo). Mandan sobre las del tema. Nombres de las

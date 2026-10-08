@@ -1,0 +1,25 @@
+/* TEMA: Rebajas. Rojo y amarillo de descuentos. */
+:root {
+  --color-primario: #dc2626;
+  --color-primario-oscuro: #7f1d1d;
+  --color-acento: #fde047;
+  --color-detalle: #f97316;
+  --color-fondo: #fffaf5;
+  --color-fondo-alterno: #fff1e6;
+  --color-superficie: #fffefc;
+  --color-fondo-icono: #ffe4d6;
+  --color-borde: #f5dccb;
+  --color-boton: #dc2626;
+  --color-boton-hover: #b91c1c;
+  --color-boton-activo: #991b1b;
+  --color-boton-texto: #fffefc;
+  --color-boton-destacado-hover: #fde972;
+  --color-boton-destacado-activo: #facc15;
+
+  --tema-anuncio: "🏷️ ¡REBAJAS! Aprovecha los descuentos 🛍️";
+  --tema-anuncio-fondo: #dc2626;
+  --tema-anuncio-texto: #fffefc;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fde04740 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #f973161f 0, transparent 50%);
+  --tema-decoracion: "🏷️ 🛍️ 💥";
+  --tema-decoracion-cta: "💸 🏷️";
+}

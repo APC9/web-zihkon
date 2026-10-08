@@ -1,0 +1,25 @@
+/* TEMA: Reyes Magos. Morado real y dorado. */
+:root {
+  --color-primario: #7e22ce;
+  --color-primario-oscuro: #3b0764;
+  --color-acento: #fbbf24;
+  --color-detalle: #ca8a04;
+  --color-fondo: #fdfaf3;
+  --color-fondo-alterno: #f7f0de;
+  --color-superficie: #fffdf8;
+  --color-fondo-icono: #f3e8ff;
+  --color-borde: #eadfc7;
+  --color-boton: #7e22ce;
+  --color-boton-hover: #6b21a8;
+  --color-boton-activo: #581c87;
+  --color-boton-texto: #fffdf8;
+  --color-boton-destacado-hover: #fcd34d;
+  --color-boton-destacado-activo: #f59e0b;
+
+  --tema-anuncio: "👑 ¡Felices Reyes! 🎁";
+  --tema-anuncio-fondo: #3b0764;
+  --tema-anuncio-texto: #fbbf24;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fbbf2433 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #7e22ce1a 0, transparent 50%);
+  --tema-decoracion: "👑 🐪 ⭐";
+  --tema-decoracion-cta: "🎁 ✨";
+}
