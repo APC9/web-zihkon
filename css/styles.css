@@ -1,0 +1,237 @@
+/* =========================================================
+   ZIHKON · ESTILOS GLOBALES
+   Sistema de diseño (variables) + componentes comunes:
+   botones, cabecera, pie, WhatsApp flotante, aviso de cookies.
+   Los estilos propios de cada sección están en css/secciones.css.
+   ========================================================= */
+
+/* =========================================================
+   VARIABLES GLOBALES (colores, tipografía, espaciado, radios, sombras)
+   Cambia aquí un valor y se aplica en toda la web.
+   ========================================================= */
+:root {
+  color-scheme: light;
+
+  /* --- Colores de marca --- */
+  --color-primario: #176b53;        /* verde principal: enlaces, iconos, acentos */
+  --color-primario-oscuro: #103e32; /* verde oscuro: fondos oscuros, hover */
+  --color-acento: #c8ed91;          /* verde lima: destacados */
+  --color-detalle: #e1785c;         /* coral: puntos y detalles decorativos */
+
+  /* --- Texto --- */
+  --color-texto: #18231f;
+  --color-texto-suave: #5f6b65;     /* texto secundario (contraste AA en todos los fondos claros) */
+  --color-texto-invertido: #fbfcf8;        /* texto sobre fondos verdes */
+  --color-texto-invertido-suave: #c9d8cf;  /* texto secundario sobre fondos verdes */
+
+  /* --- Fondos y superficies --- */
+  --color-fondo: #f5f6f1;           /* fondo general de la página */
+  --color-fondo-alterno: #ebf0e7;   /* bandas alternas (auditoría, por qué elegirnos) */
+  --color-superficie: #fdfdfb;      /* tarjetas, formulario, franjas y pie */
+  --color-fondo-icono: #e6efe3;     /* fondo de iconos pequeños y etiquetas */
+
+  /* --- Bordes --- */
+  --color-borde: #dfe4dc;           /* separadores y bordes de tarjetas */
+  --color-borde-fuerte: #c6cfc4;    /* bordes que deben verse más (botón secundario) */
+  --color-borde-campo: #869089;     /* borde de campos del formulario (contraste 3:1) */
+  --color-foco: var(--color-primario); /* anillo de foco con teclado */
+
+  /* --- Estados (mensajes del formulario) --- */
+  --color-exito: #176b53;
+  --color-exito-fondo: #e4f1e7;
+  --color-error: #a8402a;
+  --color-error-fondo: #fbebe6;
+  --color-aviso: #7f5600;
+  --color-aviso-fondo: #faf0d9;
+
+  /* --- Botones --- */
+  --color-boton: var(--color-primario);
+  --color-boton-hover: var(--color-primario-oscuro);
+  --color-boton-activo: #0b3027;
+  --color-boton-texto: #fbfcf8;
+  --color-boton-secundario-borde: var(--color-borde-fuerte); /* botón claro (.button--light) */
+  --color-boton-destacado: var(--color-acento);              /* botón lima (.button--lime) */
+  --color-boton-destacado-hover: #d9f6ae;
+  --color-boton-destacado-activo: #b9df7c;
+  --color-boton-destacado-texto: var(--color-primario-oscuro);
+
+  /* --- Botón flotante de WhatsApp --- */
+  --color-whatsapp: #138251;
+  --color-whatsapp-hover: #107749;
+
+  /* --- Tipografías (cargadas desde Google Fonts en el <head> de index.html) --- */
+  --fuente-titulos: "Manrope", "Avenir Next", sans-serif;
+  --fuente-principal: "DM Sans", "Segoe UI", sans-serif;
+
+  /* --- Escala tipográfica --- */
+  --texto-xs: 0.8125rem;   /* 13px: etiquetas, notas */
+  --texto-sm: 0.9375rem;   /* 15px: textos de tarjetas, navegación, botones */
+  --texto-base: 1rem;      /* 16px: texto general, formularios */
+  --texto-md: 1.125rem;    /* 18px: entradillas, preguntas frecuentes */
+  --texto-lg: 1.375rem;    /* 22px: títulos de tarjeta destacados */
+  --texto-xl: 1.75rem;     /* 28px: títulos de bloque destacados */
+  --titulo-seccion: clamp(2rem, 1.4rem + 2.1vw, 3.125rem);  /* 32px → 50px */
+  --titulo-hero: clamp(2.75rem, 1.6rem + 4.3vw, 4.625rem);  /* 44px → 74px */
+  --interlineado-titulo: 1.08;
+  --interlineado-texto: 1.6;
+  --tracking-titulo: -0.022em;
+
+  /* --- Espaciado (escala de 4px) --- */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 12px;
+  --espacio-4: 16px;
+  --espacio-5: 24px;
+  --espacio-6: 32px;
+  --espacio-7: 48px;
+  --espacio-8: 64px;
+  --espacio-9: 96px;
+  --espacio-seccion: clamp(4.5rem, 2.8rem + 4.6vw, 7rem); /* 72px → 112px entre secciones */
+
+  /* --- Radios --- */
+  --radio-boton: 8px;
+  --radio-campo: 8px;
+  --radio-etiqueta: 6px;
+  --radio-tarjeta: 14px;
+
+  /* --- Sombras (suaves, teñidas de verde) --- */
+  --sombra-sm: 0 1px 2px #18362a0d, 0 2px 6px #18362a0a;
+  --sombra-md: 0 10px 28px -10px #18362a33;
+  --sombra-lg: 0 28px 56px -20px #18362a3d;
+
+  /* --- Movimiento --- */
+  --transicion: 180ms cubic-bezier(.22, 1, .36, 1);
+
+  /* --- Medidas --- */
+  --ancho-maximo: 1180px;
+  --alto-cabecera: 76px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--alto-cabecera) + var(--espacio-4)); }
+body { margin: 0; background: var(--color-fondo); color: var(--color-texto); font: var(--texto-base)/var(--interlineado-texto) var(--fuente-principal); font-kerning: normal; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+:where(a, button, input, select, textarea):focus-visible { outline: 2px solid var(--color-foco); outline-offset: 3px; }
+:where(.loss, .final-cta) :focus-visible { outline-color: var(--color-acento); }
+.skip-link { position: absolute; z-index: 30; top: var(--espacio-2); left: var(--espacio-2); padding: var(--espacio-3) var(--espacio-4); border-radius: var(--radio-boton); background: var(--color-primario-oscuro); color: var(--color-boton-texto); font-size: var(--texto-sm); font-weight: 700; transform: translateY(-150%); transition: transform var(--transicion); }
+.skip-link:focus-visible { transform: translateY(0); outline-color: var(--color-acento); }
+
+/* ---------- Utilidades y títulos de sección ---------- */
+.wrap { width: min(var(--ancho-maximo), calc(100% - var(--espacio-7))); margin-inline: auto; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--color-primario); font-size: var(--texto-sm); font-weight: 700; letter-spacing: .005em; }
+.eyebrow::before { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--color-detalle); content: ""; }
+.section-title { max-width: 720px; margin: var(--espacio-4) 0; font: 700 var(--titulo-seccion)/var(--interlineado-titulo) var(--fuente-titulos); letter-spacing: var(--tracking-titulo); }
+.section-lede { max-width: 60ch; margin: 0; color: var(--color-texto-suave); font-size: var(--texto-md); line-height: 1.6; }
+
+/* ---------- Botones (.button, .button--light, .button--lime) ----------
+   Estados: hover, focus (anillo global), active, disabled. */
+.button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 10px; padding: 0 var(--espacio-5); border: 1px solid transparent; border-radius: var(--radio-boton); background: var(--color-boton); color: var(--color-boton-texto); font-size: var(--texto-sm); font-weight: 700; line-height: 1.2; letter-spacing: .005em; cursor: pointer; transition: background-color var(--transicion), border-color var(--transicion), color var(--transicion), box-shadow var(--transicion), transform var(--transicion); }
+.button:hover { background: var(--color-boton-hover); box-shadow: 0 8px 18px -8px #103e3299; transform: translateY(-1px); }
+.button:active { background: var(--color-boton-activo); box-shadow: none; transform: translateY(0); }
+.button:disabled { opacity: .6; cursor: progress; box-shadow: none; transform: none; }
+.button svg { width: 18px; height: 18px; flex: 0 0 auto; }
+.button--light { border-color: var(--color-boton-secundario-borde); background: var(--color-superficie); color: var(--color-texto); }
+.button--light:hover { border-color: var(--color-primario); background: var(--color-superficie); color: var(--color-primario-oscuro); box-shadow: none; }
+.button--light:active { background: var(--color-fondo-icono); }
+.button--lime { background: var(--color-boton-destacado); color: var(--color-boton-destacado-texto); }
+.button--lime:hover { background: var(--color-boton-destacado-hover); box-shadow: 0 10px 22px -10px #0b302799; }
+.button--lime:active { background: var(--color-boton-destacado-activo); }
+
+/* ---------- Cabecera y navegación ---------- */
+.topbar { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid var(--color-borde); background: var(--color-fondo); }
+.nav { display: flex; min-height: var(--alto-cabecera); align-items: center; justify-content: space-between; gap: var(--espacio-5); }
+.brand { display: inline-flex; align-items: center; gap: 10px; font: 800 var(--texto-lg) var(--fuente-titulos); letter-spacing: -.01em; }
+.brand img { width: auto; height: 50px; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: var(--espacio-6); color: var(--color-texto-suave); font-size: var(--texto-sm); font-weight: 600; }
+.nav-links a { position: relative; padding-block: 10px; transition: color var(--transicion); }
+.nav-links a::after { position: absolute; right: 0; bottom: 0; left: 0; height: 2px; border-radius: 2px; background: var(--color-primario); content: ""; opacity: 0; transform: scaleX(.4); transition: opacity var(--transicion), transform var(--transicion); }
+.nav-links a:hover { color: var(--color-texto); }
+.nav-links a[aria-current="true"] { color: var(--color-primario); }
+.nav-links a[aria-current="true"]::after { opacity: 1; transform: scaleX(1); }
+.nav .button { min-height: 44px; padding-inline: 18px; font-size: 0.875rem; }
+.menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid var(--color-borde-fuerte); border-radius: var(--radio-boton); background: var(--color-superficie); color: var(--color-texto); cursor: pointer; transition: border-color var(--transicion); }
+.menu-toggle:hover { border-color: var(--color-primario); }
+.menu-toggle svg { width: 20px; height: 20px; }
+
+/* ---------- Secciones (comportamiento común) ---------- */
+section { scroll-margin-top: calc(var(--alto-cabecera) + var(--espacio-3)); }
+
+/* ---------- Pie de página ---------- */
+.footer { padding: var(--espacio-7) 0 var(--espacio-6); border-top: 1px solid var(--color-borde); background: var(--color-superficie); }
+.footer-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--espacio-4) var(--espacio-6); }
+.footer .brand { min-height: 44px; font-size: var(--texto-md); }
+.footer .brand img { width: auto; height: 28px; }
+.footer p, .footer-links, .social-label { margin: 0; color: var(--color-texto-suave); font-size: var(--texto-sm); }
+.footer-inner > p { grid-column: 1 / -1; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: end; gap: var(--espacio-2) var(--espacio-5); font-weight: 600; }
+.footer-links a, .footer-legal a { transition: color var(--transicion); }
+.footer-links a:hover { color: var(--color-primario); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-5); margin-top: var(--espacio-5); padding-top: var(--espacio-5); border-top: 1px solid var(--color-borde); }
+.footer-legal { display: flex; flex-wrap: wrap; gap: var(--espacio-2) var(--espacio-5); }
+.footer-legal a { color: var(--color-texto-suave); font-size: var(--texto-xs); }
+.footer-legal a:hover { color: var(--color-primario); text-decoration: underline; text-underline-offset: 3px; }
+.footer-copy { margin: var(--espacio-5) 0 0; padding-top: var(--espacio-4); border-top: 1px solid var(--color-borde); color: var(--color-texto-suave); font-size: var(--texto-xs); }
+.social-area { display: flex; align-items: center; gap: var(--espacio-3); }
+.social-label { font-size: var(--texto-xs); }
+.social-buttons { display: flex; gap: var(--espacio-2); }
+.social-button { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--color-borde); border-radius: 50%; background: var(--color-superficie); color: #68756d; opacity: .68; cursor: not-allowed; }
+.social-button svg { width: 17px; height: 17px; }
+.social-button:disabled { opacity: .68; }
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.whatsapp-float { position: fixed; z-index: 25; right: 22px; bottom: 60px; display: inline-flex; min-width: 54px; height: 54px; align-items: center; justify-content: center; gap: 9px; padding: 0 20px; border: 0; border-radius: 999px; background: var(--color-whatsapp); box-shadow: var(--sombra-md); color: var(--color-boton-texto); font-size: var(--texto-sm); font-weight: 700; transition: transform var(--transicion), background-color var(--transicion); }
+.whatsapp-float:hover { transform: translateY(-2px); background: var(--color-whatsapp-hover); }
+.whatsapp-float:active { transform: translateY(0); }
+.whatsapp-float svg { width: 22px; height: 22px; }
+
+/* ---------- Aviso de cookies ---------- */
+.cookie-banner { position: fixed; z-index: 24; bottom: 22px; left: 22px; display: flex; max-width: min(500px, calc(100vw - 44px)); align-items: center; gap: var(--espacio-5); padding: var(--espacio-4) var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); box-shadow: var(--sombra-lg); }
+.cookie-banner[hidden] { display: none; }
+.cookie-banner strong { display: block; font: 700 var(--texto-base) var(--fuente-titulos); }
+.cookie-banner p { margin: var(--espacio-1) 0 0; color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.5; }
+.cookie-banner p a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner .button { min-height: 44px; flex: 0 0 auto; padding-inline: 18px; font-size: 0.875rem; }
+
+/* ---------- Animaciones ---------- */
+.reveal { animation: rise .7s cubic-bezier(.22, 1, .36, 1) both; }
+.reveal-delay { animation-delay: .12s; }
+@keyframes rise { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* ---------- Responsive (componentes globales) ---------- */
+/* Pantallas táctiles (móvil y tablet): enlaces del pie con área táctil de 44px */
+@media (pointer: coarse) {
+    .footer-links a, .footer-legal a { display: inline-block; padding-block: 12px; }
+    .footer-links, .footer-legal { row-gap: 0; }
+}
+@media (max-width: 900px) {
+    .nav-links { gap: var(--espacio-5); }
+    .nav-links a:nth-child(2), .nav-links a:nth-child(4) { display: none; }
+}
+@media (max-width: 680px) {
+    :root { --alto-cabecera: 64px; }
+    .wrap { width: min(var(--ancho-maximo), calc(100% - 40px)); }
+    .brand img { height: 40px; }
+    .menu-toggle { display: inline-flex; }
+    .nav > .button { display: none; }
+    .nav-links { position: absolute; top: calc(var(--alto-cabecera) - 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: var(--espacio-2) 20px var(--espacio-4); border-bottom: 1px solid var(--color-borde); background: var(--color-fondo); box-shadow: var(--sombra-md); color: var(--color-texto); font-size: var(--texto-base); }
+    .nav-links.is-open { display: flex; flex-direction: column; }
+    .nav-links a, .nav-links a:nth-child(2), .nav-links a:nth-child(4) { display: block; padding: 14px 0; border-bottom: 1px solid var(--color-borde); }
+    .nav-links a::after { display: none; }
+    .nav-links a:last-child { border: 0; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-links { justify-content: flex-start; }
+    .footer-bottom { align-items: flex-start; flex-direction: column; }
+    .social-area { align-items: flex-start; flex-direction: column; }
+    .footer-links, .footer-legal { row-gap: 0; }
+    .footer-links a, .footer-legal a { padding-block: 12px; }
+    .whatsapp-float { right: 14px; bottom: 24px; width: 54px; min-width: 54px; padding: 0; }
+    .whatsapp-float span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+    .cookie-banner { right: 12px; bottom: 90px; left: 12px; max-width: none; align-items: stretch; flex-direction: column; gap: var(--espacio-3); padding: var(--espacio-4); }
+}

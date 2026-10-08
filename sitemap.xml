@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solo URLs indexables. Las páginas legales llevan "noindex" y por eso no aparecen aquí.
+     Si añades una página nueva indexable, añade su <url> y actualiza <lastmod> (AAAA-MM-DD). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zihkon.com/</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+</urlset>

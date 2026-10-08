@@ -1,0 +1,43 @@
+/* =========================================================
+   ZIHKON · ESTILOS DE LAS PÁGINAS LEGALES
+   privacidad.html, cookies.html, seguridad.html, aviso-legal.html
+   Mismos valores que el sistema de css/styles.css (colores, fuentes,
+   radios) para que todas las páginas compartan aspecto.
+   ========================================================= */
+:root {
+  --legal-color-primario: #176b53; /* = --color-primario de css/styles.css */
+  --legal-color-primario-oscuro: #103e32;
+  --legal-color-texto: #18231f;
+  --legal-color-texto-suave: #5f6b65;
+  --legal-color-fondo: #f5f6f1;    /* = --color-fondo */
+  --legal-color-superficie: #fdfdfb;
+  --legal-color-borde: #dfe4dc;
+  --legal-color-cabecera-tabla: #ebf0e7;
+  --legal-fuente: "DM Sans", "Segoe UI", sans-serif;
+  --legal-fuente-titulos: "Manrope", "Avenir Next", sans-serif;
+}
+
+body{max-width:860px;margin:0 auto;padding:var(--legal-pad,48px) 24px 96px;color:var(--legal-color-texto);background:var(--legal-color-fondo);font:1.0625rem/1.7 var(--legal-fuente);-webkit-font-smoothing:antialiased}
+h1,h2,h3{color:var(--legal-color-texto);font-family:var(--legal-fuente-titulos);letter-spacing:-.015em;text-wrap:balance}
+h1{margin:32px 0 24px;font-size:clamp(2rem,1.5rem + 2vw,2.75rem);font-weight:800;line-height:1.1}
+h2{margin:48px 0 12px;padding-top:24px;border-top:1px solid var(--legal-color-borde);color:var(--legal-color-primario);font-size:1.5rem;font-weight:700;line-height:1.25}
+h3{margin:28px 0 8px;font-size:1.125rem;font-weight:700;line-height:1.3}
+p,li{max-width:70ch}
+p{margin:0 0 16px;text-wrap:pretty}
+ul{padding-left:1.25em}
+li{margin:8px 0}
+a{color:var(--legal-color-primario);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--legal-color-primario-oscuro);text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--legal-color-primario);outline-offset:3px;border-radius:2px}
+
+/* Enlace "Volver al inicio" */
+.volver{display:inline-flex;min-height:44px;align-items:center;padding:0 16px;border:1px solid #c6cfc4;border-radius:8px;background:var(--legal-color-superficie);color:var(--legal-color-texto);font-size:.9375rem;font-weight:600;text-decoration:none;transition:border-color .18s,color .18s}
+.volver:hover{border-color:var(--legal-color-primario);color:var(--legal-color-primario-oscuro)}
+
+/* Tablas (usadas en cookies.html) */
+table{width:100%;margin:20px 0;overflow:hidden;border:1px solid var(--legal-color-borde);border-radius:14px;border-collapse:separate;border-spacing:0;background:var(--legal-color-superficie);font-size:.9375rem;line-height:1.55}
+th,td{padding:12px 14px;border-bottom:1px solid var(--legal-color-borde);text-align:left;vertical-align:top}
+th:not(:last-child),td:not(:last-child){border-right:1px solid var(--legal-color-borde)}
+tbody tr:last-child td{border-bottom:0}
+th{background:var(--legal-color-cabecera-tabla);font-weight:700}
+@media(max-width:650px){body{--legal-pad:20px;padding-inline:20px;font-size:1rem}h2{margin-top:36px}table{font-size:.8125rem}th,td{padding:8px}td{overflow-wrap:anywhere}}
