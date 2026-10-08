@@ -1,0 +1,43 @@
+/* =========================================================
+   ZIHKON · TEMA ACTIVO DE LA WEB
+   Es el ÚNICO archivo que hay que tocar para cambiar el tema
+   o los colores generales de la web.
+
+   1) TEMA PREDEFINIDO: cambia el nombre del archivo en la
+      línea @import de abajo. Temas disponibles (css/temas/):
+        original.css      colores originales de la web
+        halloween.css     naranja y morado, calabazas y murciélagos
+        navidad.css       rojo, verde y dorado, árboles y regalos
+        san-valentin.css  rosas y rojos, corazones
+        verano.css        azul mar y amarillo sol, palmeras
+
+   2) COLORES PERSONALIZADOS: escribe variables dentro de :root
+      (más abajo). Mandan sobre las del tema. Nombres de las
+      variables: ver css/styles.css.
+
+   3) FRANJA DE ANUNCIO bajo el menú: --tema-anuncio.
+      Cambiar el texto:  --tema-anuncio: "🎉 Nuevo horario de verano";
+      Quitar la franja:  --tema-anuncio: none;
+   ========================================================= */
+@import url("temas/original.css");
+
+:root {
+  /* Colores personalizados (opcional). Ejemplos:
+     --color-boton: #1d4ed8;
+     --color-boton-hover: #1e40af;
+     --color-boton-activo: #1e3a8a;
+  */
+}
+
+/* ---------- Decoración del tema ----------
+   No hace falta editar esto: se controla con las variables
+   --tema-* que define cada tema. Sin variables no se ve nada. */
+.topbar::after { display: block; padding: 7px var(--espacio-4); background: var(--tema-anuncio-fondo, var(--color-primario-oscuro)); color: var(--tema-anuncio-texto, var(--color-texto-invertido)); content: var(--tema-anuncio, none); font-size: var(--texto-sm); font-weight: 700; line-height: 1.3; letter-spacing: .01em; text-align: center; }
+.hero { background: var(--tema-fondo-hero, transparent); }
+.hero::after { position: absolute; z-index: 1; top: var(--espacio-5); left: 50%; content: var(--tema-decoracion, none); font-size: clamp(2rem, 1.3rem + 2.4vw, 3.5rem); letter-spacing: .35em; pointer-events: none; transform: translateX(-50%); animation: tema-flotar 6s ease-in-out infinite; }
+.final-cta::before { position: absolute; top: var(--espacio-5); right: 6%; content: var(--tema-decoracion-cta, none); font-size: clamp(1.75rem, 1.2rem + 2vw, 3rem); letter-spacing: .3em; pointer-events: none; animation: tema-flotar 7s ease-in-out infinite reverse; }
+@keyframes tema-flotar { 0%, 100% { translate: 0 0; rotate: -3deg; } 50% { translate: 0 -10px; rotate: 3deg; } }
+@media (max-width: 760px) {
+  .hero::after { top: var(--espacio-2); font-size: 1.75rem; opacity: .7; }
+  .final-cta::before { top: var(--espacio-3); font-size: 1.5rem; opacity: .8; }
+}

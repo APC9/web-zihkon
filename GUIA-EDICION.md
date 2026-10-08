@@ -10,6 +10,8 @@ Lo que hay en el repositorio es exactamente lo que se publica.
 | `index.html` | Todos los textos de la página principal, enlaces, teléfono/WhatsApp, imágenes, datos SEO |
 | `css/styles.css` | **Variables** (colores, tipografías, botones) y componentes comunes: botones, cabecera, pie, WhatsApp flotante, aviso de cookies |
 | `css/secciones.css` | Estilos propios de cada sección de `index.html` (marcados con `SECCIÓN: ...`) |
+| `css/tema.css` | **Tema activo**: tema de temporada, colores personalizados y franja de anuncio. Mandan sobre `styles.css` |
+| `css/temas/` | Temas predefinidos: `original`, `halloween`, `navidad`, `san-valentin`, `verano` |
 | `js/main.js` | Comportamiento: menú móvil, preguntas frecuentes, cookies, envío del formulario y sus mensajes |
 | `privacidad.html`, `cookies.html`, `seguridad.html`, `aviso-legal.html` | Textos legales |
 | `css/legal.css` | Estilos de las páginas legales |
@@ -38,6 +40,16 @@ Cada sección empieza con `<!-- SECCIÓN: Nombre -->` y termina con `<!-- FIN SE
 
 Para **ocultar una sección**, añade el atributo `hidden` a su etiqueta de apertura, por ejemplo
 `<section class="examples" id="ejemplos" hidden>`. Si el menú enlaza a ella, quita también ese enlace.
+
+## Temas y colores de la web
+
+Los cambios de tema y de colores generales se hacen **solo en `css/tema.css`** (no en `styles.css`):
+
+- **Poner un tema de temporada**: cambia el archivo de la línea `@import url("temas/original.css");` por `halloween.css`, `navidad.css`, `san-valentin.css` o `verano.css`. Cambia colores, botones, fondos, añade una franja de anuncio bajo el menú y decoración (emojis) en el inicio y en la llamada final.
+- **Volver a la web normal**: `@import url("temas/original.css");`.
+- **Colores personalizados** ("pon la web en azul", "botones verdes"): añade las variables dentro del bloque `:root` de `css/tema.css` (por ejemplo `--color-boton`, `--color-boton-hover`, `--color-boton-activo`, `--color-primario`, `--color-primario-oscuro`, `--color-acento`, `--color-fondo`). Mandan sobre el tema.
+- **Franja de anuncio**: `--tema-anuncio: "texto";` en el `:root` de `css/tema.css`. Para quitarla: `--tema-anuncio: none;`.
+- **Decoración**: `--tema-decoracion` (inicio) y `--tema-decoracion-cta` (llamada final), texto con emojis o `none`.
 
 ## Dónde está cada dato
 
@@ -87,7 +99,10 @@ Para cambiar una imagen, sustituye la ruta en el `src` correspondiente de `index
 
 | Petición | Archivo(s) |
 |---|---|
-| "Cambia el color de los botones" | `css/styles.css` → `--color-boton` (y `--color-boton-hover`) |
+| "Pon la web de Halloween / Navidad / San Valentín / verano" | `css/tema.css` → línea `@import` |
+| "Quita el tema" / "deja la web como siempre" | `css/tema.css` → `@import url("temas/original.css");` y vaciar `:root` |
+| "Cambia los colores de la web" | `css/tema.css` → variables en `:root` |
+| "Cambia el color de los botones" | `css/tema.css` → `--color-boton`, `--color-boton-hover`, `--color-boton-activo` |
 | "Cambia el color principal de la marca" | `css/styles.css` → `--color-primario`; opcional `css/legal.css` |
 | "Cambia el título principal" | `index.html` → `<h1>` de `#inicio` (opcional: `<title>` y `og:title`) |
 | "Cambia el WhatsApp" | `index.html` → botón flotante (`href` y `aria-label`) |
