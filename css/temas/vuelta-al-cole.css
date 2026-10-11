@@ -1,0 +1,25 @@
+/* TEMA: Vuelta al cole. Azul, amarillo lápiz y rojo manzana. */
+:root {
+  --color-primario: #2563eb;
+  --color-primario-oscuro: #1e3a8a;
+  --color-acento: #fde047;
+  --color-detalle: #ef4444;
+  --color-fondo: #f8fafc;
+  --color-fondo-alterno: #eef2ff;
+  --color-superficie: #ffffff;
+  --color-fondo-icono: #e0e7ff;
+  --color-borde: #dbe1f0;
+  --color-boton: #c2410c;
+  --color-boton-hover: #9a3412;
+  --color-boton-activo: #7c2d12;
+  --color-boton-texto: #ffffff;
+  --color-boton-destacado-hover: #fde972;
+  --color-boton-destacado-activo: #facc15;
+
+  --tema-anuncio: "🎒 ¡Vuelta al cole! ✏️";
+  --tema-anuncio-fondo: #1e3a8a;
+  --tema-anuncio-texto: #fde047;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fde04733 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #2563eb1a 0, transparent 50%);
+  --tema-decoracion: "🎒 ✏️ 📚";
+  --tema-decoracion-cta: "🍎 📐";
+}

@@ -1,0 +1,25 @@
+/* TEMA: Invierno. Azul hielo y blanco nieve. */
+:root {
+  --color-primario: #0e7490;
+  --color-primario-oscuro: #083344;
+  --color-acento: #bae6fd;
+  --color-detalle: #38bdf8;
+  --color-fondo: #f5fafd;
+  --color-fondo-alterno: #e6f3f9;
+  --color-superficie: #fdfeff;
+  --color-fondo-icono: #e0f2fe;
+  --color-borde: #d3e7f0;
+  --color-boton: #0e7490;
+  --color-boton-hover: #155e75;
+  --color-boton-activo: #164e63;
+  --color-boton-texto: #fdfeff;
+  --color-boton-destacado-hover: #d4efff;
+  --color-boton-destacado-activo: #7dd3fc;
+
+  --tema-anuncio: "❄️ ¡Feliz invierno! ☃️";
+  --tema-anuncio-fondo: #083344;
+  --tema-anuncio-texto: #bae6fd;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #bae6fd59 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #38bdf81f 0, transparent 50%);
+  --tema-decoracion: "❄️ ☃️ ❄️";
+  --tema-decoracion-cta: "🧣 ☕";
+}

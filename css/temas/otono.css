@@ -1,0 +1,25 @@
+/* TEMA: Otoño. Naranja, teja y marrón. */
+:root {
+  --color-primario: #9a3412;
+  --color-primario-oscuro: #431407;
+  --color-acento: #fdba74;
+  --color-detalle: #b45309;
+  --color-fondo: #fbf6ef;
+  --color-fondo-alterno: #f4e8d8;
+  --color-superficie: #fffbf5;
+  --color-fondo-icono: #f8e3cc;
+  --color-borde: #e9d8c2;
+  --color-boton: #b45309;
+  --color-boton-hover: #92400e;
+  --color-boton-activo: #78350f;
+  --color-boton-texto: #fffbf5;
+  --color-boton-destacado-hover: #fed7aa;
+  --color-boton-destacado-activo: #fb923c;
+
+  --tema-anuncio: "🍂 ¡Bienvenido, otoño! 🍁";
+  --tema-anuncio-fondo: #431407;
+  --tema-anuncio-texto: #fdba74;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fdba7440 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #b453091a 0, transparent 50%);
+  --tema-decoracion: "🍁 🍂 🍄";
+  --tema-decoracion-cta: "☕ 🍂";
+}

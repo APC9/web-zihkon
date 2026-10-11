@@ -1,0 +1,25 @@
+/* TEMA: Nochevieja / Año Nuevo. Negro, dorado y champán. */
+:root {
+  --color-primario: #a16207;
+  --color-primario-oscuro: #1c1917;
+  --color-acento: #fcd34d;
+  --color-detalle: #eab308;
+  --color-fondo: #faf8f3;
+  --color-fondo-alterno: #f1ece0;
+  --color-superficie: #fffdf8;
+  --color-fondo-icono: #f5ecd5;
+  --color-borde: #e7dfcc;
+  --color-boton: #1c1917;
+  --color-boton-hover: #292524;
+  --color-boton-activo: #0c0a09;
+  --color-boton-texto: #fffdf8;
+  --color-boton-destacado-hover: #fde68a;
+  --color-boton-destacado-activo: #f59e0b;
+
+  --tema-anuncio: "🥂 ¡Feliz Año Nuevo! ✨";
+  --tema-anuncio-fondo: #1c1917;
+  --tema-anuncio-texto: #fcd34d;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #fcd34d40 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #a162071a 0, transparent 50%);
+  --tema-decoracion: "🎆 🥂 ✨";
+  --tema-decoracion-cta: "🎉 🕛";
+}

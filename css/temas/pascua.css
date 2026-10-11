@@ -1,0 +1,25 @@
+/* TEMA: Pascua / Semana Santa. Lila y verde pastel. */
+:root {
+  --color-primario: #6d28d9;
+  --color-primario-oscuro: #2e1065;
+  --color-acento: #bbf7d0;
+  --color-detalle: #f59e0b;
+  --color-fondo: #fbfaff;
+  --color-fondo-alterno: #f0fdf4;
+  --color-superficie: #fffefb;
+  --color-fondo-icono: #ede9fe;
+  --color-borde: #e4def5;
+  --color-boton: #6d28d9;
+  --color-boton-hover: #5b21b6;
+  --color-boton-activo: #4c1d95;
+  --color-boton-texto: #fffefb;
+  --color-boton-destacado-hover: #d1fadf;
+  --color-boton-destacado-activo: #86efac;
+
+  --tema-anuncio: "🐣 ¡Feliz Pascua! 🌷";
+  --tema-anuncio-fondo: #6d28d9;
+  --tema-anuncio-texto: #fffefb;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #c4b5fd40 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #bbf7d040 0, transparent 50%);
+  --tema-decoracion: "🐣 🥚 🌷";
+  --tema-decoracion-cta: "🐰 🌼";
+}

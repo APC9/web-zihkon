@@ -1,0 +1,25 @@
+/* TEMA: Día del Padre. Azul marino y dorado. */
+:root {
+  --color-primario: #1d4ed8;
+  --color-primario-oscuro: #172554;
+  --color-acento: #f2c879;
+  --color-detalle: #b45309;
+  --color-fondo: #f6f7fb;
+  --color-fondo-alterno: #e8edf7;
+  --color-superficie: #fdfdff;
+  --color-fondo-icono: #e0e7f5;
+  --color-borde: #d9dfec;
+  --color-boton: #1e3a8a;
+  --color-boton-hover: #172554;
+  --color-boton-activo: #0f1a3d;
+  --color-boton-texto: #fdfdff;
+  --color-boton-destacado-hover: #f6d797;
+  --color-boton-destacado-activo: #e3b45c;
+
+  --tema-anuncio: "👔 ¡Feliz Día del Padre! 💙";
+  --tema-anuncio-fondo: #172554;
+  --tema-anuncio-texto: #f2c879;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #93c5fd33 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #f2c8792e 0, transparent 50%);
+  --tema-decoracion: "👔 🏆 💙";
+  --tema-decoracion-cta: "🎁 ☕";
+}

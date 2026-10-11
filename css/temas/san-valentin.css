@@ -1,0 +1,25 @@
+/* TEMA: San Valentín. Rosa y rojo. */
+:root {
+  --color-primario: #be185d;
+  --color-primario-oscuro: #5b0b2e;
+  --color-acento: #fbcfe0;
+  --color-detalle: #e11d48;
+  --color-fondo: #fff6f8;
+  --color-fondo-alterno: #ffe6ee;
+  --color-superficie: #fffbfc;
+  --color-fondo-icono: #fde2ec;
+  --color-borde: #f4d6df;
+  --color-boton: #e11d48;
+  --color-boton-hover: #be123c;
+  --color-boton-activo: #9f1239;
+  --color-boton-texto: #fffbfc;
+  --color-boton-destacado-hover: #fde0eb;
+  --color-boton-destacado-activo: #f8b4cd;
+
+  --tema-anuncio: "❤️ Feliz San Valentín 💕";
+  --tema-anuncio-fondo: #be185d;
+  --tema-anuncio-texto: #fffbfc;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #f472b633 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #e11d481a 0, transparent 50%);
+  --tema-decoracion: "💕 ❤️ 💘";
+  --tema-decoracion-cta: "💖 💌";
+}

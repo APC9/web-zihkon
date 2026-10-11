@@ -1,0 +1,25 @@
+/* TEMA: Halloween. Naranja calabaza y morado noche. */
+:root {
+  --color-primario: #b8460b;
+  --color-primario-oscuro: #2e1043;
+  --color-acento: #ffa62b;
+  --color-detalle: #7c3aed;
+  --color-fondo: #fbf3e8;
+  --color-fondo-alterno: #f5e4cf;
+  --color-superficie: #fffaf3;
+  --color-fondo-icono: #fbe2c4;
+  --color-borde: #ead7c0;
+  --color-boton: #6b21a8;
+  --color-boton-hover: #581c87;
+  --color-boton-activo: #3b0764;
+  --color-boton-texto: #fffaf3;
+  --color-boton-destacado-hover: #ffb955;
+  --color-boton-destacado-activo: #f08f0c;
+
+  --tema-anuncio: "🎃 ¡Feliz Halloween! 🦇";
+  --tema-anuncio-fondo: #2e1043;
+  --tema-anuncio-texto: #ffa62b;
+  --tema-fondo-hero: radial-gradient(ellipse at 85% 0%, #ffa62b33 0, transparent 55%), radial-gradient(ellipse at 0% 100%, #7c3aed22 0, transparent 50%);
+  --tema-decoracion: "🦇 🎃 👻";
+  --tema-decoracion-cta: "🎃 🕸️";
+}
