@@ -199,6 +199,10 @@
 .field--full { grid-column: 1 / -1; }
 .field label { color: var(--color-texto); font-size: 0.875rem; font-weight: 600; }
 .field-hint { margin: 0; color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.5; }
+.field-help { color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.5; }
+.field-help summary { width: fit-content; color: var(--color-primario); font-weight: 600; cursor: pointer; }
+.field-help ol { margin: var(--espacio-2) 0 0; padding-left: 1.25em; display: grid; gap: 4px; }
+.field-help a { color: var(--color-primario); }
 .field input, .field select, .field textarea { width: 100%; min-height: 48px; padding: 11px 14px; border: 1px solid var(--color-borde-campo); border-radius: var(--radio-campo); outline: 0; background: #fff; color: var(--color-texto); font-size: var(--texto-base); transition: border-color var(--transicion), box-shadow var(--transicion); }
 .field input::placeholder, .field textarea::placeholder { color: #68746d; }
 .field select { cursor: pointer; }

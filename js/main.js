@@ -87,7 +87,7 @@ const N8N_WEBHOOK_URL = 'https://n8n.zihkon.cloud/webhook/zihkon-auditoria';
 const FORM_MESSAGES = {
   sending: 'Enviando tu solicitud…',
   success: '¡Solicitud recibida! Revisaremos tu negocio y te contactaremos pronto.',
-  error: 'No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a hola@zihkon.com.'
+  error: 'No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a zihkon@gmail.com.'
 };
 
 document.getElementById('lead-form').addEventListener('submit', async (event) => {
@@ -104,11 +104,8 @@ document.getElementById('lead-form').addEventListener('submit', async (event) =>
     nombre_negocio: val('business'),
     email: val('email'),
     telefono: val('phone'),
-    tipo_negocio: val('sector'),
     direccion: [val('address'), val('city')].filter(Boolean).join(', '),
     objetivo: val('message'),
-    // Extras para fases futuras (el flujo actual los ignora)
-    web: val('website'),
     url_google_maps: val('maps'),
     consentimiento: details.get('consent') === 'on',
     origen: 'web-zihkon'
