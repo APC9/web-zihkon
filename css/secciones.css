@@ -113,6 +113,32 @@
 .service-detail p { margin: var(--espacio-3) 0 0; color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.55; }
 .service-detail p strong { display: block; margin-bottom: 2px; color: var(--color-texto); font-size: var(--texto-xs); font-weight: 700; }
 
+/* ---------- SECCIÓN: Productos (#productos) ---------- */
+.products { padding: var(--espacio-seccion) 0; border-top: 1px solid var(--color-borde); background: var(--color-superficie); }
+.products-head { display: flex; align-items: end; justify-content: space-between; gap: var(--espacio-6) var(--espacio-7); margin-bottom: var(--espacio-7); }
+.products-head .section-title { max-width: 560px; margin-bottom: 0; }
+.products-head .section-lede { max-width: 380px; margin-bottom: var(--espacio-1); font-size: var(--texto-base); }
+.product-list { display: grid; gap: var(--espacio-9); }
+.product { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); align-items: center; gap: var(--espacio-8); }
+.product:nth-child(even) .product-media { order: 2; }
+.product-media { justify-self: center; width: 100%; max-width: 340px; padding: 10px; border-radius: 34px; background: var(--color-texto); box-shadow: var(--sombra-lg); }
+.product-media video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 25px; background: var(--color-primario-oscuro); object-fit: cover; }
+.product-copy { max-width: 560px; }
+.product-copy h3 { margin: var(--espacio-4) 0 var(--espacio-4); font: 700 var(--texto-xl)/1.15 var(--fuente-titulos); letter-spacing: var(--tracking-titulo); }
+.product-intro { margin: 0 0 var(--espacio-5); color: var(--color-texto-suave); font-size: var(--texto-md); line-height: var(--interlineado-texto); }
+.product-intro strong { color: var(--color-texto); }
+.product-steps { display: grid; gap: var(--espacio-4); margin: 0 0 var(--espacio-5); padding: 0; list-style: none; counter-reset: paso; }
+.product-steps li { position: relative; display: grid; gap: 2px; padding-left: 44px; counter-increment: paso; }
+.product-steps li::before { content: counter(paso); position: absolute; top: 0; left: 0; display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: var(--color-fondo-icono); color: var(--color-primario); font: 700 var(--texto-sm)/1 var(--fuente-titulos); }
+.product-steps strong { font: 700 var(--texto-base)/1.4 var(--fuente-titulos); }
+.product-steps span { color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.55; }
+.product-extra { margin-bottom: var(--espacio-5); padding: var(--espacio-4) 20px; border-radius: var(--radio-tarjeta); background: var(--color-fondo-alterno); }
+.product-extra h4 { margin: 0 0 var(--espacio-2); font: 700 var(--texto-sm)/1.3 var(--fuente-titulos); }
+.product-extra p { margin: 0; color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.7; }
+.product-extra strong { color: var(--color-texto); }
+.product-safe { display: flex; gap: var(--espacio-3); margin: 0 0 var(--espacio-6); color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.55; }
+.product-safe svg { flex: none; width: 22px; height: 22px; color: var(--color-primario); }
+
 /* ---------- SECCIÓN: Auditoría gratuita (#auditoria) ---------- */
 .audit { padding: var(--espacio-seccion) 0; background: var(--color-fondo-alterno); }
 .audit-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: var(--espacio-8); }
@@ -265,6 +291,13 @@
     .solution-feature { min-height: 0; padding: 28px 24px; }
     .solution-feature h3 { margin-top: var(--espacio-5); font-size: var(--texto-lg); }
     .service-mini { min-height: 0; padding: var(--espacio-5) 20px; }
+    .products-head { display: block; margin-bottom: var(--espacio-6); }
+    .products-head .section-lede { margin-top: var(--espacio-4); }
+    .product-list { gap: var(--espacio-8); }
+    .product { grid-template-columns: 1fr; gap: var(--espacio-6); }
+    .product:nth-child(even) .product-media { order: 0; }
+    .product-media { max-width: 280px; }
+    .product-copy h3 { font-size: var(--texto-lg); }
     .audit-grid { grid-template-columns: 1fr; gap: var(--espacio-7); }
     .audit-report { width: min(100%, 450px); padding: var(--espacio-5); }
     .examples-head .disclaimer { margin-top: var(--espacio-4); }
