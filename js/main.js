@@ -79,6 +79,55 @@ document.querySelectorAll('.faq-question').forEach((button) => {
   });
 });
 
+// ---------- Demostración del hero: botón "Ver otra vez" ----------
+// La animación es solo CSS (css/secciones.css). Aquí solo se reinicia.
+const demo = document.getElementById('demo');
+if (demo) {
+  const stage = demo.querySelector('.demo-stage');
+  const replay = demo.querySelector('.demo-replay');
+  const showReplay = () => { replay.hidden = false; };
+  setTimeout(showReplay, 5000);
+  replay.addEventListener('click', () => {
+    stage.classList.add('demo--reset');
+    void stage.offsetWidth; // fuerza al navegador a empezar la animación de cero
+    stage.classList.remove('demo--reset');
+  });
+}
+
+// ---------- Productos en pestañas (Tu web / Tus redes / Tus reseñas) ----------
+// Sin JavaScript se ven los tres productos seguidos.
+const tabList = document.querySelector('.product-tabs');
+if (tabList) {
+  const tabs = [...tabList.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
+  const selectTab = (index, moveFocus) => {
+    tabs.forEach((tab, i) => {
+      const isActive = i === index;
+      tab.setAttribute('aria-selected', String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      panels[i].hidden = !isActive;
+      if (!isActive) panels[i].querySelectorAll('video').forEach((video) => video.pause());
+    });
+    panels[index].classList.remove('is-entering');
+    void panels[index].offsetWidth;
+    panels[index].classList.add('is-entering');
+    if (moveFocus) tabs[index].focus();
+  };
+  tabs.forEach((tab, i) => {
+    panels[i].setAttribute('aria-labelledby', tab.id);
+    panels[i].tabIndex = 0;
+    tab.addEventListener('click', () => selectTab(i, false));
+    tab.addEventListener('keydown', (event) => {
+      const keys = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 };
+      if (!(event.key in keys)) return;
+      event.preventDefault();
+      selectTab((keys[event.key] + tabs.length) % tabs.length, true);
+    });
+  });
+  tabList.hidden = false;
+  tabs.forEach((tab, i) => { panels[i].hidden = i !== 0; });
+}
+
 // ---------- Formulario de contacto → n8n ----------
 // Pruebas: usa /webhook-test/ (con "Listen for test event" activo). Producción: /webhook/ con el workflow activado.
 const N8N_WEBHOOK_URL = 'https://n8n.zihkon.cloud/webhook/zihkon-auditoria';

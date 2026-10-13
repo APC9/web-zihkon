@@ -23,19 +23,15 @@ Cada sección empieza con `<!-- SECCIÓN: Nombre -->` y termina con `<!-- FIN SE
 
 | id | Sección | Contenido principal |
 |---|---|---|
-| `#cabecera` | Cabecera | Logo, menú, botón "Solicitar auditoría" |
-| `#inicio` | Hero | Título principal (`<h1>`), subtítulo, botones |
-| `#puntos-fuertes` | Franja bajo el hero | 3 puntos fuertes |
-| `#problema` | El problema | 6 tarjetas de problemas |
-| `#coste` | El coste de no aparecer | Texto y gráfico ilustrativo |
-| `#solucion` | Qué hacemos | Bloque destacado + 4 servicios resumidos |
-| `#servicios` | (dentro de `#solucion`) | 9 servicios detallados |
-| `#auditoria` | Auditoría gratuita | Lista de lo que se revisa + informe de muestra |
-| `#ejemplos` | Ejemplos | Restaurante, clínica, comercio |
-| `#por-que` | Por qué elegirnos | 6 valores |
+| `#cabecera` | Cabecera | Logo, menú, botón "Pide tu auditoría" |
+| `#inicio` | Hero | Título (`<h1>`), subtítulo, botones y demostración animada (un WhatsApp cambia el horario de una web de ejemplo) |
+| `#problema` | El problema | 6 situaciones |
+| `#productos` | Cómo funciona | 3 pestañas: Tu web (vídeo), Tus redes y Tus reseñas (conversaciones de ejemplo) |
+| `#precios` | Precios | Oferta de lanzamiento, 3 planes, condiciones y tabla de servicios sueltos |
+| `#contacto` / `#auditoria` | Auditoría y formulario | Qué se revisa, alternativa por WhatsApp y formulario |
+| `#quien` | Quién está detrás | Foto, nombre, texto y botón de WhatsApp |
 | `#preguntas` | Preguntas frecuentes | 6 preguntas (también repetidas en el `<head>`, ver abajo) |
-| `#llamada-final` | Llamada a la acción final | Título + botón |
-| `#contacto` | Contacto | Texto y formulario |
+| `#llamada-final` | Llamada a la acción final | Título + botones |
 | `#pie` | Pie de página | Enlaces, legales, redes sociales, copyright |
 
 Para **ocultar una sección**, añade el atributo `hidden` a su etiqueta de apertura, por ejemplo
@@ -66,17 +62,17 @@ Los cambios de tema y de colores generales se hacen **solo en `css/tema.css`** (
   - Bordes: `--color-borde`, `--color-borde-fuerte`, `--color-borde-campo` (campos del formulario).
   - Mensajes del formulario: `--color-exito`, `--color-error` (y sus `-fondo`).
   - Anillo de foco al navegar con teclado: `--color-foco`.
-- **Tipografías**: `--fuente-titulos` y `--fuente-principal` en `css/styles.css`. Se cargan desde Google Fonts en el `<link>` del `<head>` de `index.html` y de las páginas legales; si se cambia de fuente hay que cambiar ambos.
+- **Tipografías**: `--fuente-titulos` (Young Serif, solo tiene un grosor: no usar negrita) y `--fuente-principal` (Atkinson Hyperlegible Next) en `css/styles.css`. Se cargan desde Google Fonts en el `<link>` del `<head>` de `index.html` y de las páginas legales; si se cambia de fuente hay que cambiar ambos.
 - **Tamaños de letra**: `--texto-xs` … `--texto-xl`, `--titulo-seccion` (títulos de sección) y `--titulo-hero` (título principal) en `css/styles.css`.
 - **Espaciado**: `--espacio-1` … `--espacio-9` (4px → 96px) y `--espacio-seccion` (separación vertical entre secciones).
 - **Esquinas y sombras**: `--radio-boton`, `--radio-campo`, `--radio-tarjeta`, `--radio-etiqueta`; `--sombra-sm`, `--sombra-md`, `--sombra-lg`.
 - **Textos, títulos, botones**: directamente en `index.html`, dentro de su sección.
-- **WhatsApp / teléfono**: botón flotante al final de `index.html` (`href="https://wa.me/34604183676"` y su `aria-label`). El teléfono también aparece en `privacidad.html` y `aviso-legal.html`.
+- **WhatsApp / teléfono**: enlaces `https://wa.me/34604183676?text=...` en el hero, en `#contacto`, en `#quien` y en el botón flotante del final de `index.html` (y su `aria-label`). El teléfono también aparece en `privacidad.html` y `aviso-legal.html`.
 - **Email**: `zihkon@gmail.com` en las páginas legales; `hola@zihkon.com` en el mensaje de error del formulario (`FORM_MESSAGES` en `js/main.js`).
 - **Mensajes del formulario** (enviando, éxito, error): `FORM_MESSAGES` en `js/main.js`.
 - **Zona / ciudades**: textos de `index.html` (hero, sección `#por-que`, pie) y datos SEO del `<head>`.
 - **Redes sociales**: pie de `index.html`. Ahora son botones desactivados (sin enlace).
-- **Precios**: la web no muestra precios (ver primera pregunta frecuente).
+- **Precios**: sección `#precios` de `index.html` (planes, tabla de servicios sueltos y oferta de lanzamiento). Si cambian, revisa también la primera pregunta frecuente y su copia en el `<head>`.
 - **Año del copyright**: se actualiza solo (`js/main.js`).
 - **Datos SEO**: `<head>` de `index.html` → `<title>`, `meta description`, Open Graph/Twitter y tres bloques `application/ld+json` (negocio `ProfessionalService`, `WebSite` y `FAQPage`).
   - Si cambias una pregunta frecuente, cámbiala en la sección `#preguntas` **y** en el bloque `FAQPage`, con el mismo texto exacto.
