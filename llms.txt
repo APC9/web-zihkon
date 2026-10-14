@@ -1,0 +1,41 @@
+# Zihkon
+
+> Zihkon es un servicio de SEO local y automatización para negocios locales de toda España, con base en Estepona (Málaga). Gestiona la web, las reseñas de Google y las redes sociales de bares, restaurantes, cafeterías y otros negocios a través de WhatsApp: el dueño escribe lo que necesita, confirma con SÍ y el cambio se publica. Fundado por Alberto Peña. Desde 79 € al mes, sin permanencia. Auditoría inicial gratuita.
+
+## Datos del negocio
+
+- Nombre: Zihkon (ZIHKON®)
+- Base: Estepona (Málaga), España. Trabaja con negocios de toda España por WhatsApp.
+- Fundador: Alberto Peña
+- Teléfono y WhatsApp: +34 604 18 36 76
+- Correo: zihkon@gmail.com
+- Web: https://zihkon.com/
+- Perfil de Empresa en Google: https://www.google.com/search?kgmid=/g/11yg0b8kcs
+
+## Servicios
+
+- [Web por WhatsApp](https://zihkon.com/servicios/web-por-whatsapp/): el dueño cambia horarios, precios, textos, colores, temas de temporada, la carta (comando CARTA) o la sugerencia del día escribiendo WEB por WhatsApp. Cada cambio se confirma con SÍ y se revisa automáticamente antes de publicarse.
+- [Respuesta automática de reseñas de Google](https://zihkon.com/servicios/respuesta-resenas-google/): una IA responde cada reseña con el tono del negocio y avisa por WhatsApp cuando una reseña necesita la opinión del dueño.
+- [Publicación en redes desde WhatsApp](https://zihkon.com/servicios/publicar-redes-whatsapp/): con el comando PUBLICAR se envían de 1 a 8 fotos o un vídeo y al confirmar con SÍ se publica en Instagram, Facebook, TikTok y el Perfil de Empresa de Google.
+
+## Precios (sin IVA, sin permanencia)
+
+- Presencia Local: 79 €/mes + 190 € de alta. Auditoría, respuesta automática de reseñas y publicación semanal en Google.
+- Web + Reseñas en piloto automático: 120 €/mes + 590 € de alta. Auditoría, web gestionada por WhatsApp y respuesta automática de reseñas.
+- 360°: 249 €/mes + 790 € de alta. Todo lo anterior más publicación en Instagram, Facebook, TikTok y Google.
+- Servicios sueltos: respuesta de reseñas 69 €/mes (190 € de alta); web por WhatsApp 69 €/mes (490 € de alta); publicación multicanal 169 €/mes (250 € de alta).
+- 15 % de descuento con pago anual.
+
+## Por sector
+
+- [Restaurantes](https://zihkon.com/sectores/restaurantes/)
+- [Bares](https://zihkon.com/sectores/bares/)
+- [Cafeterías](https://zihkon.com/sectores/cafeterias/)
+
+## Guías
+
+- [Respuestas a reseñas de Google: ejemplos y plantillas](https://zihkon.com/plantillas/respuestas-resenas/)
+
+## Zona
+
+- [SEO local en Estepona y Marbella](https://zihkon.com/estepona-marbella/)

@@ -114,3 +114,17 @@ Para cambiar una imagen, sustituye la ruta en el `src` correspondiente de `index
 `package.json`, `netlify.toml`, `_redirects`, `_headers`, `CNAME`, `*.config.js`, `tsconfig.json`, `.env*`, `.github/`, `netlify/functions/`.
 No añadas claves, tokens ni contraseñas. La URL del webhook de `js/main.js` es pública por diseño.
 `docx_document.xml` es un documento de origen de los textos legales; no forma parte de la web.
+
+## Páginas interiores (servicios, sectores, plantillas, Estepona y Marbella)
+
+Se generan con un script a partir de `generador/paginas/*.html`. **No edites a mano** las carpetas
+`servicios/`, `sectores/`, `plantillas/` ni `estepona-marbella/`, ni `sitemap.xml`: se sobrescriben.
+
+1. Edita (o duplica) el archivo de `generador/paginas/`. Arriba lleva un bloque de datos: URL, título,
+   descripción, H1, preguntas frecuentes, plan recomendado, páginas relacionadas…
+2. Ejecuta `python generador/generar.py` desde la carpeta de la web.
+3. Sube los cambios. El script rehace las páginas y `sitemap.xml`.
+
+Regla de calidad: cada página nueva necesita contenido propio (ejemplos, problemas y reseñas de ese sector).
+No crees páginas que solo cambien el nombre de una ciudad o un sector.
+Si cambian los precios o los vídeos de `index.html`, cámbialos también en `PLANES` y `VIDEOS` de `generador/generar.py`.

@@ -183,6 +183,8 @@
 .about .section-title { margin-bottom: var(--espacio-1); }
 .about-role { margin: 0 0 var(--espacio-5); color: var(--color-texto-suave); font-weight: 700; }
 .about-text { max-width: 56ch; margin: 0 0 var(--espacio-6); font-size: var(--texto-md); line-height: 1.6; }
+.about-google { margin: calc(-1 * var(--espacio-4)) 0 var(--espacio-6); font-weight: 700; }
+.about-google a { color: inherit; text-underline-offset: 3px; }
 
 /* ---------- SECCIÓN: Preguntas frecuentes (#preguntas) ---------- */
 .faq { padding: var(--espacio-seccion) 0; }
@@ -251,3 +253,16 @@
   .contact-form { grid-template-columns: 1fr; }
   .field--full, .form-status, .form-note { grid-column: auto; }
 }
+
+/* Enlace a la página propia de cada producto (bajo el botón) */
+.product-more { margin: var(--espacio-4) 0 0; font-size: var(--texto-sm); }
+.product-more a, .product-extra h4 a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- SECCIÓN: Testimonio (#opiniones) ---------- */
+.testimonio { padding: var(--espacio-8) 0; }
+.testimonio-card { max-width: 760px; margin: 0 auto; padding: var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); box-shadow: var(--sombra-sm); text-align: center; }
+.testimonio-estrellas { margin: 0 0 var(--espacio-3); color: #e8a400; font-size: var(--texto-lg); letter-spacing: .15em; }
+.testimonio-card blockquote { margin: 0; }
+.testimonio-card blockquote p { margin: 0; font: var(--texto-md)/1.5 var(--fuente-titulos); text-wrap: pretty; }
+.testimonio-card figcaption { margin-top: var(--espacio-4); color: var(--color-texto-suave); font-size: var(--texto-sm); }
+.testimonio-card figcaption a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 3px; }

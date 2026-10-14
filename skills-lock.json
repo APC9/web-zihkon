@@ -19,11 +19,23 @@
       "skillPath": "impeccable/SKILL.md",
       "computedHash": "73003fa8b63091b2663b42f2ad07603f346e212e369856551315006b2d9b4fcd"
     },
+    "programmatic-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/programmatic-seo/SKILL.md",
+      "computedHash": "55f7d5ab827c57ab916890ddd1aee1521f3aa447d66f75d9e8606236663d9180"
+    },
     "seo-audit": {
       "source": "coreyhaines31/marketingskills",
       "sourceType": "github",
       "skillPath": "skills/seo-audit/SKILL.md",
       "computedHash": "e02096e577ac50d7f63c36506decbda09a8d6c906da653ac43360cd327e9ef23"
+    },
+    "seo-geo": {
+      "source": "resciencelab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-geo/SKILL.md",
+      "computedHash": "1d38520f453282af8712874c360e3e34a379827f737fb536bd45055e2d60d964"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",

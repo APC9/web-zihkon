@@ -1,0 +1,89 @@
+/* =========================================================
+   ZIHKON · ESTILOS DE LAS PÁGINAS INTERIORES
+   (servicios, sectores, plantillas, Estepona y Marbella)
+   Reutilizan styles.css y secciones.css; aquí solo lo propio.
+   Usan las mismas variables, así que los temas también les afectan.
+   ========================================================= */
+
+/* ---------- Cabecera de página: migas + título ---------- */
+.pagina-hero { padding: clamp(2rem, 1.2rem + 3vw, 4rem) 0 clamp(3rem, 2rem + 3vw, 5rem); background: var(--tema-fondo-hero, transparent); }
+.pagina-hero h1 { max-width: 20ch; margin: 0 0 var(--espacio-5); font-size: clamp(2.25rem, 1.5rem + 2.8vw, 3.75rem); line-height: 1.05; letter-spacing: -0.02em; }
+.pagina-lede { max-width: 40em; margin: 0; color: var(--color-texto-suave); font-size: var(--texto-md); line-height: 1.55; }
+.migas ol { display: flex; flex-wrap: wrap; gap: var(--espacio-1) var(--espacio-2); margin: 0 0 var(--espacio-6); padding: 0; list-style: none; color: var(--color-texto-suave); font-size: var(--texto-sm); }
+.migas li + li::before { margin-right: var(--espacio-2); content: "›"; }
+.migas a { text-decoration: underline; text-underline-offset: 3px; }
+.migas a:hover { color: var(--color-primario); }
+
+/* ---------- Bloques de contenido ---------- */
+.bloque { padding: var(--espacio-seccion) 0; }
+.bloque--alterno { background: var(--color-fondo-alterno); }
+.bloque--blanco { border-block: 1px solid var(--color-borde); background: var(--color-superficie); }
+.bloque-doble { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); align-items: start; gap: var(--espacio-8); }
+
+/* Texto largo: títulos, párrafos y listas con medida cómoda */
+.prosa { max-width: 68ch; }
+.prosa h2 { margin: 0 0 var(--espacio-4); font-size: var(--titulo-seccion); line-height: var(--interlineado-titulo); }
+.prosa h3 { margin: var(--espacio-7) 0 var(--espacio-3); font-size: var(--texto-lg); line-height: 1.2; }
+.prosa p, .prosa li { color: var(--color-texto-suave); }
+.prosa p { margin: 0 0 var(--espacio-4); }
+.prosa strong { color: var(--color-texto); }
+.prosa ul, .prosa ol { display: grid; gap: var(--espacio-2); margin: 0 0 var(--espacio-5); padding-left: 1.3em; }
+.prosa a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Listas de puntos en rejilla (problemas típicos, ventajas) */
+.puntos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--espacio-6); margin: var(--espacio-7) 0 0; padding: 0; list-style: none; }
+.puntos li::before { display: block; width: 32px; height: 4px; margin-bottom: var(--espacio-4); border-radius: 2px; background: var(--color-detalle); content: ""; }
+.puntos h3 { margin: 0 0 var(--espacio-2); font-size: 1.3rem; line-height: 1.2; }
+.puntos p { margin: 0; color: var(--color-texto-suave); line-height: 1.55; }
+
+/* ---------- Conversaciones de ejemplo (reutiliza .msg de secciones.css) ---------- */
+.chats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--espacio-5); margin: var(--espacio-7) 0 0; }
+.chat { margin: 0; overflow: hidden; border-radius: var(--radio-tarjeta); background: var(--color-chat-fondo); box-shadow: var(--sombra-sm); }
+.chat figcaption { padding: var(--espacio-3) var(--espacio-4); background: var(--color-primario-oscuro); color: var(--color-texto-invertido); font-size: var(--texto-sm); font-weight: 700; }
+.chat-msgs { display: flex; flex-direction: column; gap: var(--espacio-2); padding: var(--espacio-4); }
+.chat .msg { max-width: 90%; font-size: var(--texto-sm); line-height: 1.45; }
+.nota { margin: var(--espacio-4) 0 0; color: var(--color-texto-suave); font-size: var(--texto-xs); }
+
+/* ---------- Reseñas y respuestas de ejemplo ---------- */
+.resenas { display: grid; gap: var(--espacio-6); margin: var(--espacio-6) 0 0; padding: 0; list-style: none; }
+.resena { padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); }
+.resena h3 { margin: 0 0 var(--espacio-3); font-size: var(--texto-lg); line-height: 1.2; }
+.resena-original { margin: 0 0 var(--espacio-4); padding-left: var(--espacio-4); border-left: 3px solid var(--color-borde-fuerte); color: var(--color-texto-suave); font-style: italic; }
+.resena-respuesta { margin: 0; padding: var(--espacio-4); border-radius: var(--radio-burbuja); background: var(--color-fondo-icono); }
+.resena-respuesta p { margin: 0 0 var(--espacio-2); color: var(--color-texto); }
+.resena-respuesta p:last-child { margin: 0; }
+.resena-claves { margin: var(--espacio-3) 0 0; color: var(--color-texto-suave); font-size: var(--texto-sm); }
+
+/* ---------- Vídeo de demostración ---------- */
+.pagina-video { margin: 0; }
+.pagina-video figcaption { max-width: 330px; margin: var(--espacio-3) auto 0; color: var(--color-texto-suave); font-size: var(--texto-xs); text-align: center; }
+
+/* ---------- Tarjetas de enlace (listados y "También te puede interesar") ---------- */
+.tarjetas { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--espacio-5); margin: var(--espacio-6) 0 0; padding: 0; list-style: none; }
+.tarjeta { display: grid; height: 100%; gap: var(--espacio-2); padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); transition: border-color var(--transicion), box-shadow var(--transicion); }
+.tarjeta:hover { border-color: var(--color-primario); box-shadow: var(--sombra-md); }
+.tarjeta strong { font: var(--texto-lg)/1.2 var(--fuente-titulos); }
+.tarjeta strong::after { color: var(--color-primario); content: " →"; }
+.tarjeta span { color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.55; }
+
+/* ---------- Precios resumidos ---------- */
+.planes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-5); margin: var(--espacio-6) 0 0; padding: 0; list-style: none; }
+.plan { position: relative; padding: var(--espacio-6) var(--espacio-5) var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); }
+.plan h3 { margin: 0 0 var(--espacio-3); font-size: var(--texto-lg); line-height: 1.2; }
+.plan-precio { margin: 0; color: var(--color-texto-suave); }
+.plan-precio strong { color: var(--color-texto); font-size: 2.25rem; line-height: 1; }
+.plan-alta { margin: var(--espacio-1) 0 0; color: var(--color-texto-suave); font-size: var(--texto-sm); }
+.plan ul { display: grid; gap: var(--espacio-2); margin: var(--espacio-4) 0 0; padding: 0; list-style: none; font-size: var(--texto-sm); }
+.plan ul li::before { margin-right: var(--espacio-2); color: var(--color-primario); content: "✓"; font-weight: 700; }
+.plan--destacado { border: 2px solid var(--color-primario); }
+.plan-insignia { position: absolute; top: 0; left: var(--espacio-5); margin: 0; padding: 4px 12px; border-radius: 999px; background: var(--color-primario-oscuro); color: var(--color-texto-invertido); font-size: var(--texto-xs); font-weight: 700; transform: translateY(-50%); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .bloque-doble { grid-template-columns: 1fr; gap: var(--espacio-6); }
+  .planes { grid-template-columns: 1fr; }
+}
+
+/* Firma y fecha bajo la entradilla (autoría y frescura del contenido) */
+.pagina-firma { margin: var(--espacio-4) 0 0; color: var(--color-texto-suave); font-size: var(--texto-xs); }
+.pagina-firma a { text-decoration: underline; text-underline-offset: 3px; }

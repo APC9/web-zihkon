@@ -8,6 +8,16 @@
 const yearEl = document.getElementById('current-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// ---------- Medición de visitas (Metricool) ----------
+// Contador sin cookies (ver cookies.html). Se carga en todas las páginas porque todas usan este archivo.
+(() => {
+  const metricool = document.createElement('script');
+  metricool.src = 'https://tracker.metricool.com/resources/be.js';
+  metricool.async = true;
+  metricool.onload = () => { if (window.beTracker) beTracker.t({ hash: '350df9e5fe8ae50973d8fddcf9b16c76' }); };
+  document.head.appendChild(metricool);
+})();
+
 // ---------- Aviso de cookies ----------
 const cookieBanner = document.getElementById('cookie-banner');
 const cookieAcceptanceKey = 'zihkon-cookie-consent';
@@ -139,7 +149,8 @@ const FORM_MESSAGES = {
   error: 'No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a zihkon@gmail.com.'
 };
 
-document.getElementById('lead-form').addEventListener('submit', async (event) => {
+// Solo existe en la página principal (las páginas interiores no tienen formulario)
+document.getElementById('lead-form')?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const form = event.currentTarget;
   if (!form.reportValidity()) return;

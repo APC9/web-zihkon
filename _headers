@@ -1,0 +1,8 @@
+# Cabeceras de Netlify. Caché para imágenes y vídeos (no cambian a menudo).
+# Si sustituyes una imagen o vídeo manteniendo el mismo nombre, algunos visitantes
+# pueden ver la versión anterior hasta 7 días: mejor cambia el nombre del archivo.
+# CSS y JS se quedan sin caché larga para que los cambios por WhatsApp se vean al momento.
+/img/*
+  Cache-Control: public, max-age=604800
+/video/*
+  Cache-Control: public, max-age=604800

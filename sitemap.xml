@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Solo URLs indexables. Las páginas legales llevan "noindex" y por eso no aparecen aquí.
-     Si añades una página nueva indexable, añade su <url> y actualiza <lastmod> (AAAA-MM-DD). -->
+<!-- GENERADO por generador/generar.py: no lo edites a mano. Las páginas legales llevan "noindex" y no aparecen aquí. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zihkon.com/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/estepona-marbella/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/plantillas/respuestas-resenas/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/sectores/bares/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/sectores/cafeterias/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/sectores/restaurantes/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/sectores/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/servicios/publicar-redes-whatsapp/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/servicios/respuesta-resenas-google/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/servicios/web-por-whatsapp/</loc>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/servicios/</loc>
+    <lastmod>2026-10-14</lastmod>
   </url>
 </urlset>
