@@ -12,7 +12,7 @@ Lo que hay en el repositorio es exactamente lo que se publica.
 | `css/secciones.css` | Estilos propios de cada sección de `index.html` (marcados con `SECCIÓN: ...`) |
 | `css/tema.css` | **Tema activo**: tema de temporada, colores personalizados y franja de anuncio. Mandan sobre `styles.css` |
 | `css/temas/` | Temas predefinidos (lista en el comentario de `css/tema.css`): estaciones, fiestas y días comerciales |
-| `js/main.js` | Comportamiento: menú móvil, preguntas frecuentes, cookies, envío del formulario y sus mensajes |
+| `js/main.js` | Comportamiento: menú móvil, preguntas frecuentes, pestañas, cookies y contador de Metricool |
 | `privacidad.html`, `cookies.html`, `seguridad.html`, `aviso-legal.html` | Textos legales |
 | `css/legal.css` | Estilos de las páginas legales |
 | `img/` | Imágenes |
@@ -28,7 +28,7 @@ Cada sección empieza con `<!-- SECCIÓN: Nombre -->` y termina con `<!-- FIN SE
 | `#problema` | El problema | 6 situaciones |
 | `#productos` | Cómo funciona | 3 pestañas: Tu web (vídeo), Tus redes y Tus reseñas (conversaciones de ejemplo) |
 | `#precios` | Precios | Oferta de lanzamiento, 3 planes, condiciones y tabla de servicios sueltos |
-| `#contacto` / `#auditoria` | Auditoría y formulario | Qué se revisa, alternativa por WhatsApp y formulario |
+| `#contacto` / `#auditoria` | Auditoría y prueba de 7 días | Qué se revisa y botón de WhatsApp con el mensaje (nombre y dirección del negocio) |
 | `#quien` | Quién está detrás | Foto, nombre, texto y botón de WhatsApp |
 | `#preguntas` | Preguntas frecuentes | 6 preguntas (también repetidas en el `<head>`, ver abajo) |
 | `#llamada-final` | Llamada a la acción final | Título + botones |
@@ -62,16 +62,16 @@ Los cambios de tema y de colores generales se hacen **solo en `css/tema.css`** (
   - Bordes: `--color-borde`, `--color-borde-fuerte`, `--color-borde-campo` (campos del formulario).
   - Mensajes del formulario: `--color-exito`, `--color-error` (y sus `-fondo`).
   - Anillo de foco al navegar con teclado: `--color-foco`.
-- **Tipografías**: `--fuente-titulos` (Young Serif, solo tiene un grosor: no usar negrita) y `--fuente-principal` (Atkinson Hyperlegible Next) en `css/styles.css`. Se cargan desde Google Fonts en el `<link>` del `<head>` de `index.html` y de las páginas legales; si se cambia de fuente hay que cambiar ambos.
+- **Tipografías**: `--fuente-titulos` (Young Serif, solo tiene un grosor: no usar negrita) y `--fuente-principal` (Atkinson Hyperlegible Next) en `css/styles.css`. Se alojan en `fonts/` y se declaran con `@font-face` al principio de `css/styles.css` y de `css/legal.css`; el `<head>` las precarga. Si se cambia de fuente hay que cambiar los archivos de `fonts/`, ambos CSS y los `<link rel="preload">` (también en `generador/generar.py`).
 - **Tamaños de letra**: `--texto-xs` … `--texto-xl`, `--titulo-seccion` (títulos de sección) y `--titulo-hero` (título principal) en `css/styles.css`.
 - **Espaciado**: `--espacio-1` … `--espacio-9` (4px → 96px) y `--espacio-seccion` (separación vertical entre secciones).
 - **Esquinas y sombras**: `--radio-boton`, `--radio-campo`, `--radio-tarjeta`, `--radio-etiqueta`; `--sombra-sm`, `--sombra-md`, `--sombra-lg`.
 - **Textos, títulos, botones**: directamente en `index.html`, dentro de su sección.
 - **WhatsApp / teléfono**: enlaces `https://wa.me/34604183676?text=...` en el hero, en `#contacto`, en `#quien` y en el botón flotante del final de `index.html` (y su `aria-label`). El teléfono también aparece en `privacidad.html` y `aviso-legal.html`.
-- **Email**: `zihkon@gmail.com` en las páginas legales; `hola@zihkon.com` en el mensaje de error del formulario (`FORM_MESSAGES` en `js/main.js`).
-- **Mensajes del formulario** (enviando, éxito, error): `FORM_MESSAGES` en `js/main.js`.
+- **Email**: `zihkon@gmail.com` en las páginas legales y en el `<head>` de `index.html`.
+- **Mensaje predefinido de WhatsApp** (auditoría + prueba de 7 días, nombre y dirección del negocio): va tras `?text=` en todos los enlaces `wa.me` de `index.html` y en `WHATSAPP` de `generador/generar.py`.
 - **Zona / ciudades**: textos de `index.html` (hero, sección `#por-que`, pie) y datos SEO del `<head>`.
-- **Redes sociales**: pie de `index.html`. Ahora son botones desactivados (sin enlace).
+- **Redes sociales**: pie de `index.html`, `sameAs` del `<head>`, `REDES` en `generador/generar.py` y `llms.txt`.
 - **Precios**: sección `#precios` de `index.html` (planes, tabla de servicios sueltos y oferta de lanzamiento). Si cambian, revisa también la primera pregunta frecuente y su copia en el `<head>`.
 - **Año del copyright**: se actualiza solo (`js/main.js`).
 - **Datos SEO**: `<head>` de `index.html` → `<title>`, `meta description`, Open Graph/Twitter y tres bloques `application/ld+json` (negocio `ProfessionalService`, `WebSite` y `FAQPage`).

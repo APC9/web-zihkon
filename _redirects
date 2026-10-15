@@ -1,2 +1,4 @@
 # Redirecciones de Netlify
 /plantillas  /plantillas/respuestas-resenas/  302
+# Evita que /index.html sea una copia de la página principal
+/index.html  /  301!

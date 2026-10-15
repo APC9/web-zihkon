@@ -1,6 +1,6 @@
 /* =========================================================
    ZIHKON · COMPORTAMIENTO DE LA PÁGINA PRINCIPAL
-   Solo lógica (año, cookies, menú móvil, FAQ, formulario).
+   Solo lógica (año, cookies, menú móvil, FAQ, pestañas).
    Los textos visibles de la web están en index.html.
    ========================================================= */
 
@@ -138,59 +138,3 @@ if (tabList) {
   tabs.forEach((tab, i) => { panels[i].hidden = i !== 0; });
 }
 
-// ---------- Formulario de contacto → n8n ----------
-// Pruebas: usa /webhook-test/ (con "Listen for test event" activo). Producción: /webhook/ con el workflow activado.
-const N8N_WEBHOOK_URL = 'https://n8n.zihkon.cloud/webhook/zihkon-auditoria';
-
-// Mensajes que ve el usuario al enviar el formulario
-const FORM_MESSAGES = {
-  sending: 'Enviando tu solicitud…',
-  success: '¡Solicitud recibida! Revisaremos tu negocio y te contactaremos pronto.',
-  error: 'No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos a zihkon@gmail.com.'
-};
-
-// Solo existe en la página principal (las páginas interiores no tienen formulario)
-document.getElementById('lead-form')?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const form = event.currentTarget;
-  if (!form.reportValidity()) return;
-  const details = new FormData(form);
-  if (details.get('web_check')) return; // honeypot: era un bot
-
-  const val = (key) => String(details.get(key) || '').trim();
-  const payload = {
-    // Campos que espera el flujo de auditoría
-    nombre_cliente: val('name'),
-    nombre_negocio: val('business'),
-    email: val('email'),
-    telefono: val('phone'),
-    direccion: [val('address'), val('city')].filter(Boolean).join(', '),
-    objetivo: val('message'),
-    url_google_maps: val('maps'),
-    consentimiento: details.get('consent') === 'on',
-    origen: 'web-zihkon'
-  };
-
-  const status = document.getElementById('form-status');
-  const button = form.querySelector('button[type="submit"]');
-  button.disabled = true;
-  status.dataset.state = 'sending'; // solo cambia el estilo del mensaje (css/secciones.css)
-  status.textContent = FORM_MESSAGES.sending;
-  try {
-    const response = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-    form.reset();
-    status.dataset.state = 'success';
-    status.textContent = FORM_MESSAGES.success;
-  } catch (error) {
-    console.error('Error enviando a n8n:', error);
-    status.dataset.state = 'error';
-    status.textContent = FORM_MESSAGES.error;
-  } finally {
-    button.disabled = false;
-  }
-});

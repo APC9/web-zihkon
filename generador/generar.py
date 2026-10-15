@@ -16,7 +16,7 @@ import datetime, html, json, os, re, sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARPETA_PAGINAS = os.path.join(RAIZ, 'generador', 'paginas')
 DOMINIO = 'https://zihkon.com'
-WHATSAPP = 'https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%20Mi%20negocio%20es%3A%20'
+WHATSAPP = 'https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20'
 PERFIL_GOOGLE = 'https://share.google/FHlGM56gGLZ9m7Grn'
 
 # Los mismos planes que la sección #precios de index.html. Si cambian allí, cámbialos aquí.
@@ -56,6 +56,19 @@ TESTIMONIO = ('<section class="testimonio" aria-label="Opinión de un cliente"><
               f'<figcaption><strong>Mercy Soteldo</strong> · <a href="{PERFIL_GOOGLE}" target="_blank" rel="noopener">Reseña en Google{NUEVA_PESTANA}</a></figcaption>'
               '</figure></div></section>')
 NEGOCIO = {'@type': 'ProfessionalService', '@id': DOMINIO + '/#negocio', 'name': 'Zihkon'}
+
+# Las mismas redes que el pie de index.html (y su "sameAs" del <head>).
+REDES = [
+    ('Instagram', 'https://www.instagram.com/zihkon_oficial/', '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>'),
+    ('Facebook', 'https://www.facebook.com/zihkon', '<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8h3.4Z"/></svg>'),
+    ('YouTube', 'https://www.youtube.com/@Zihkon', '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg>'),
+    ('TikTok', 'https://www.tiktok.com/@zihkon', '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4v10.2a4.2 4.2 0 1 1-3-4V7.1a7.1 7.1 0 1 0 6 7V9.4a8 8 0 0 0 4 1.1V7.3A5 5 0 0 1 16 4h-2Z"/></svg>'),
+]
+
+
+def redes_html():
+    return ''.join(f'<a class="social-button" href="{u}" target="_blank" rel="noopener" aria-label="Zihkon en {n} (se abre en una pestaña nueva)">{svg}</a>'
+                   for n, u, svg in REDES)
 
 
 def e(texto):
@@ -210,9 +223,8 @@ def montar(p, por_url):
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <script type="application/ld+json">
@@ -248,7 +260,7 @@ def montar(p, por_url):
         <p class="pagina-lede">{p["lede"]}</p>
         <p class="pagina-firma">Por <a href="/#quien">Alberto Peña</a>, fundador de Zihkon · Actualizado el <time datetime="{p["fecha_mod"]}">{fecha_visible}</time></p>
         <div class="hero-actions">
-          <a class="button" href="/#contacto">Pide tu auditoría gratis</a>
+          <a class="button" href="/#contacto">Auditoría y 7 días gratis</a>
           <a class="button button--light button--wa" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pregunta por WhatsApp{NUEVA_PESTANA}</a>
         </div>
       </div>
@@ -260,10 +272,10 @@ def montar(p, por_url):
 {relacionadas}
     <section class="final-cta" aria-labelledby="final-title">
       <div class="wrap final-inner">
-        <h2 class="section-title" id="final-title">Empieza con una auditoría gratis.</h2>
+        <h2 class="section-title" id="final-title">Empieza con una auditoría gratis y 7 días de prueba.</h2>
         <p>Te decimos qué está frenando tu negocio en Google y cómo arreglarlo desde WhatsApp.</p>
         <div class="final-actions">
-          <a class="button button--lime" href="/#contacto">Pide tu auditoría gratis</a>
+          <a class="button button--lime" href="/#contacto">Auditoría y 7 días gratis</a>
           <a class="button button--ghost" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pídela por WhatsApp{NUEVA_PESTANA}</a>
         </div>
       </div>
@@ -280,6 +292,7 @@ def montar(p, por_url):
       </div>
       <div class="footer-bottom">
         <nav class="footer-legal" aria-label="Información legal"><a href="/privacidad.html">Política de privacidad</a><a href="/cookies.html">Política de cookies</a><a href="/seguridad.html">Política de seguridad</a><a href="/aviso-legal.html">Aviso legal</a></nav>
+        <div class="social-area"><span class="social-label">Síguenos</span><div class="social-buttons">{redes_html()}</div></div>
       </div>
       <p class="footer-copy">© <span id="current-year">{datetime.date.today().year}</span> ZIHKON®. Todos los derechos reservados.</p>
     </div>
@@ -288,8 +301,8 @@ def montar(p, por_url):
   <a class="whatsapp-float" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Zihkon por WhatsApp al +34 604 18 36 76">{ICONO_WA}<span>WhatsApp</span></a>
 
   <aside class="cookie-banner" id="cookie-banner" aria-label="Aviso de cookies" hidden>
-    <div><strong>Tu privacidad importa</strong><p>Este sitio utiliza almacenamiento local para recordar tu aceptación. Consulta la <a href="/cookies.html">política de cookies</a>.</p></div>
-    <button class="button" id="accept-cookies" type="button">Aceptar</button>
+    <div><strong>Tu privacidad importa</strong><p>Esta web no usa cookies de publicidad ni de seguimiento. Solo guardamos en tu navegador que has visto este aviso. Más información en la <a href="/cookies.html">política de cookies</a>.</p></div>
+    <button class="button" id="accept-cookies" type="button">Entendido</button>
   </aside>
 
   <script src="/js/main.js"></script>

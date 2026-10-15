@@ -102,6 +102,19 @@
 /* ---------- SECCIÓN: Precios (#precios) ---------- */
 .pricing { padding: var(--espacio-seccion) 0; }
 .launch-band { display: inline-block; margin: var(--espacio-2) 0 var(--espacio-8); padding: var(--espacio-3) var(--espacio-5); border-radius: var(--radio-boton); background: var(--color-aviso-fondo); color: var(--color-aviso); font-size: var(--texto-sm); font-weight: 700; }
+/* Franja de la prueba gratuita de 7 días (encima de los planes). Verde fijo = "gratis": no cambia con los temas */
+.trial-band { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: var(--espacio-6); margin: 0 0 var(--espacio-8); padding: var(--espacio-6) var(--espacio-7); border: 2px solid #1f9d5c; border-radius: var(--radio-tarjeta); background: #e3f7ea; box-shadow: var(--sombra-md); color: #0d3b24; }
+.trial-dias { display: grid; justify-items: center; gap: var(--espacio-3); margin: 0; color: #0f7a43; line-height: 1; }
+.trial-dias strong { font: 400 4.5rem/1 var(--fuente-titulos); }
+.trial-dias span { font-size: var(--texto-sm); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.trial-copy h3 { margin: 0 0 var(--espacio-2); color: #0d3b24; font-size: var(--texto-lg); }
+.trial-copy p { margin: 0; color: #24533a; }
+.trial-band .button svg { width: 20px; height: 20px; }
+/* Latido (zoom in con leve inclinación a la izquierda / zoom out a su posición).
+   transform no mueve el resto de elementos. Se mantiene también con "reducir movimiento"
+   activado en el sistema (la regla global de css/styles.css la anularía): por eso los !important. */
+.trial-band { animation: trial-latido 2.4s ease-in-out infinite !important; will-change: transform; }
+@keyframes trial-latido { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.05) rotate(-1.5deg); } }
 .price-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; align-items: stretch; gap: var(--espacio-5); }
 .price-card { position: relative; display: flex; flex-direction: column; padding: var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); }
 .price-card h3 { margin: 0 0 var(--espacio-4); font-size: var(--texto-lg); line-height: 1.2; }
@@ -136,7 +149,7 @@
 .price-table tbody tr:last-child > * { border-bottom: 0; }
 .price-table td { white-space: nowrap; }
 
-/* ---------- SECCIÓN: Auditoría gratuita y formulario (#contacto, #auditoria) ---------- */
+/* ---------- SECCIÓN: Auditoría gratuita y prueba de 7 días por WhatsApp (#contacto, #auditoria) ---------- */
 .contact { padding: var(--espacio-seccion) 0; border-top: 1px solid var(--color-borde); background: var(--color-superficie); }
 .contact-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: start; gap: var(--espacio-8); }
 .contact .section-title { max-width: 18ch; font-size: clamp(1.875rem, 1.4rem + 1.6vw, 2.625rem); }
@@ -144,36 +157,16 @@
 .audit-list { display: grid; gap: var(--espacio-2); margin: var(--espacio-5) 0 var(--espacio-6); padding: 0; list-style: none; }
 .audit-list li { position: relative; padding-left: 28px; }
 .audit-list li::before { position: absolute; top: 0; left: 0; color: var(--color-primario); content: "✓"; font-weight: 700; }
-.contact-whatsapp { display: flex; gap: var(--espacio-3); margin: 0; padding: var(--espacio-4); border: 1px solid var(--color-whatsapp); border-radius: var(--radio-burbuja); border-top-left-radius: 4px; background: #f1fbf3; line-height: 1.55; }
-.contact-whatsapp svg { width: 24px; height: 24px; flex: 0 0 auto; color: var(--color-whatsapp); }
-.contact-whatsapp a { color: var(--color-whatsapp-hover); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.contact-promise { margin: var(--espacio-5) 0 0; color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.55; }
-.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: var(--espacio-5) 18px; padding: var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
-.field { display: grid; align-content: start; gap: var(--espacio-2); }
-.field--full { grid-column: 1 / -1; }
-.field label { color: var(--color-texto); font-size: var(--texto-sm); font-weight: 700; }
-.field-hint { margin: 0; color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.5; }
-.field-help { color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.5; }
-.field-help summary { width: fit-content; color: var(--color-primario); font-weight: 700; cursor: pointer; }
-.field-help ol { display: grid; gap: 4px; margin: var(--espacio-2) 0 0; padding-left: 1.25em; }
-.field-help a { color: var(--color-primario); }
-.field input, .field select, .field textarea { width: 100%; min-height: 50px; padding: 11px 14px; border: 1px solid var(--color-borde-campo); border-radius: var(--radio-campo); outline: 0; background: #fff; color: var(--color-texto); font-size: var(--texto-base); transition: border-color var(--transicion), box-shadow var(--transicion); }
-.field input::placeholder, .field textarea::placeholder { color: #6b7389; }
-.field textarea { min-height: 112px; resize: vertical; }
-.field input:hover, .field textarea:hover { border-color: var(--color-texto-suave); }
-.field input:focus, .field textarea:focus { border-color: var(--color-primario); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primario) 22%, transparent); }
-.field input:user-invalid { border-color: var(--color-error); }
-.privacy { display: flex; align-items: start; gap: var(--espacio-3); color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.5; cursor: pointer; }
-.privacy a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 2px; }
-.privacy input { width: 20px; height: 20px; flex: 0 0 auto; margin: 0; accent-color: var(--color-primario); cursor: pointer; }
-.contact-form .button { justify-self: start; min-width: 220px; }
-/* Mensaje de estado del envío (data-state lo pone js/main.js) */
-.form-status { grid-column: 1 / -1; margin: 0; color: var(--color-texto-suave); font-size: var(--texto-sm); }
-.form-status[data-state="success"], .form-status[data-state="error"] { padding: var(--espacio-3) var(--espacio-4); border: 1px solid; border-radius: var(--radio-campo); font-weight: 700; }
-.form-status[data-state="success"] { border-color: #b4dcc2; background: var(--color-exito-fondo); color: var(--color-exito); }
-.form-status[data-state="error"] { border-color: #f0c0c8; background: var(--color-error-fondo); color: var(--color-error); }
-.form-note { grid-column: 1 / -1; margin: calc(var(--espacio-2) * -1) 0 0; color: var(--color-texto-suave); font-size: var(--texto-xs); }
-.form-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-card { display: grid; gap: var(--espacio-4); padding: var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-fondo); }
+.contact-card h3 { margin: 0; font-size: var(--texto-lg); }
+.contact-card p { margin: 0; }
+.contact-datos { display: grid; gap: var(--espacio-3); margin: 0; padding-left: 1.25em; font-weight: 700; }
+.contact-datos span { display: block; color: var(--color-texto-suave); font-size: var(--texto-sm); font-weight: 400; }
+/* Mensaje de ejemplo con forma de burbuja de WhatsApp enviada */
+.contact-ejemplo { padding: var(--espacio-4); border: 1px solid var(--color-whatsapp); border-radius: var(--radio-burbuja); border-top-right-radius: 4px; background: #f1fbf3; color: #141b33; font-size: var(--texto-sm); line-height: 1.6; white-space: pre-line; }
+.contact-card .button { justify-self: start; }
+.contact-note { color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.55; }
+.contact-note a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 2px; }
 
 /* ---------- SECCIÓN: Quién está detrás (#quien) ---------- */
 .about { padding: var(--espacio-seccion) 0; background: var(--color-fondo-alterno); }
@@ -217,6 +210,8 @@
   .demo { width: min(100%, 520px); }
   .products-head { grid-template-columns: 1fr; }
   .price-grid { grid-template-columns: 1fr; max-width: 520px; gap: var(--espacio-7); }
+  .trial-band { grid-template-columns: auto minmax(0, 1fr); }
+  .trial-band .button { grid-column: 1 / -1; justify-self: start; }
   .price-card--featured { order: -1; margin-block: 0; }
   .contact-grid, .faq-grid { grid-template-columns: 1fr; gap: var(--espacio-7); }
 }
@@ -237,21 +232,21 @@
   .product-tabs { display: flex; width: 100%; }
   .product-tabs button { flex: 1; padding: 0 var(--espacio-2); }
   .launch-band { margin-bottom: var(--espacio-7); }
+  .trial-band { grid-template-columns: 1fr; justify-items: start; gap: var(--espacio-4); margin-bottom: var(--espacio-8); padding: var(--espacio-6) var(--espacio-5); }
+  .trial-dias { grid-auto-flow: column; align-items: baseline; gap: var(--espacio-2); }
+  .trial-dias strong { font-size: 3.25rem; }
+  .trial-band .button { width: 100%; }
   .price-card, .price-card--featured { padding: var(--espacio-6) var(--espacio-5); }
   .price-badge { left: var(--espacio-5); }
   .price-terms { flex-direction: column; margin-top: var(--espacio-7); }
-  .contact-form { gap: var(--espacio-4); padding: var(--espacio-5) 20px; }
-  .contact-form .button { justify-self: stretch; }
+  .contact-card { padding: var(--espacio-5) 20px; }
+  .contact-card .button { justify-self: stretch; }
   .about-grid { grid-template-columns: 1fr; gap: var(--espacio-5); }
   .about-photo { width: 120px; height: 120px; font-size: 3rem; }
   .about-text { font-size: var(--texto-base); }
   .about .button, .final-actions .button { width: 100%; }
   .faq-question { font-size: 1.125rem; }
   .faq-answer p { padding-right: 0; }
-}
-@media (max-width: 420px) {
-  .contact-form { grid-template-columns: 1fr; }
-  .field--full, .form-status, .form-note { grid-column: auto; }
 }
 
 /* Enlace a la página propia de cada producto (bajo el botón) */

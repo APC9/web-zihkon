@@ -22,9 +22,9 @@
   <meta name="twitter:title" content="SEO local para negocios de toda España, por WhatsApp | Zihkon">
   <meta name="twitter:description" content="Tu web, tus redes y tus reseñas de Google, desde WhatsApp. Para negocios locales de toda España. Auditoría gratis.">
   <meta name="twitter:image" content="https://zihkon.com/img/zihkon-og.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <!-- Fuentes alojadas en /fonts (se declaran en css/styles.css). Se precargan para que el texto salga antes. -->
+  <link rel="preload" href="fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
   <!-- DATOS PARA GOOGLE (SEO): repiten datos del negocio y las preguntas frecuentes.
@@ -42,7 +42,11 @@
   "telephone": "+34604183676",
   "email": "zihkon@gmail.com",
   "sameAs": [
-    "https://www.google.com/search?kgmid=/g/11yg0b8kcs"
+    "https://www.google.com/search?kgmid=/g/11yg0b8kcs",
+    "https://www.instagram.com/zihkon_oficial/",
+    "https://www.facebook.com/zihkon",
+    "https://www.tiktok.com/@zihkon",
+    "https://www.youtube.com/@Zihkon"
   ],
   "founder": {
     "@type": "Person",
@@ -104,9 +108,20 @@
       },
       {
         "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
         "itemOffered": {
           "@type": "Service",
           "name": "Auditoría inicial gratuita"
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Prueba gratuita de 7 días"
         }
       },
       {
@@ -189,6 +204,7 @@
     "mainEntity": [
       { "@type": "Question", "name": "¿Qué es Zihkon?", "acceptedAnswer": { "@type": "Answer", "text": "Zihkon es un servicio de SEO local y automatización para negocios locales de toda España, con base en Estepona (Málaga). Gestiona la web, las reseñas de Google y las redes sociales de bares, restaurantes y otros negocios a través de WhatsApp: el dueño escribe lo que necesita, confirma con SÍ y el cambio se publica. Lo fundó Alberto Peña y cuesta desde 79 € al mes, sin permanencia." } },
       { "@type": "Question", "name": "¿Cuánto cuesta trabajar con Zihkon?", "acceptedAnswer": { "@type": "Answer", "text": "Desde 79 € al mes, sin permanencia. Tienes los tres planes en la sección de precios. La auditoría inicial es gratis y sin compromiso." } },
+      { "@type": "Question", "name": "¿Puedo probarlo gratis?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Después de la auditoría gratuita puedes probar Zihkon 7 días totalmente gratis: no se cobra el alta ni ninguna cuota, y puedes darte de baja cuando quieras durante la prueba. Pídelo por WhatsApp con el nombre y la dirección de tu negocio." } },
       { "@type": "Question", "name": "¿Tengo que saber de tecnología?", "acceptedAnswer": { "@type": "Answer", "text": "No. Si sabes enviar un WhatsApp, sabes usar Zihkon." } },
       { "@type": "Question", "name": "¿Y si quiero dejarlo?", "acceptedAnswer": { "@type": "Answer", "text": "Sin permanencia. Avisas y no se renueva el siguiente mes." } },
       { "@type": "Question", "name": "¿Trabajáis con negocios fuera de Estepona y Marbella?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, con negocios de toda España. Todo se gestiona por WhatsApp, así que no importa en qué ciudad esté tu negocio." } },
@@ -267,11 +283,11 @@
       <div class="wrap hero-grid">
         <div class="hero-copy">
           <p class="hero-place">SEO local y automatización para negocios de toda España</p>
-          <h1 id="hero-title">Tu web, tus redes y tus reseñas de Google, desde WhatsApp.</h1>
+          <h1 id="hero-title">SEO local por WhatsApp: tu web, tus redes y tus reseñas de Google.</h1>
           <p class="hero-lede">Para bares, restaurantes y negocios locales de cualquier ciudad de España. Tú escribes un mensaje; nosotros lo publicamos.</p>
           <div class="hero-actions">
-            <a class="button" href="#contacto">Pide tu auditoría gratis</a>
-            <a class="button button--light button--wa" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>O pídela por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+            <a class="button" href="#contacto">Auditoría y 7 días gratis</a>
+            <a class="button button--light button--wa" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>O pídela por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
           </div>
         </div>
         <!-- Demostración: se anima una vez al cargar. Los textos son un ejemplo, no un cliente real. -->
@@ -305,7 +321,7 @@
     <!-- SECCIÓN: El problema -->
     <section class="pain" id="problema" aria-labelledby="pain-title">
       <div class="wrap">
-        <h2 class="section-title" id="pain-title">Te puede estar pasando</h2>
+        <h2 class="section-title" id="pain-title">¿Tu negocio no aparece en Google? Te puede estar pasando esto</h2>
         <ul class="pain-list">
           <li><h3>No apareces cuando te buscan</h3><p>Tu negocio está ahí, pero en Google Maps la gente acaba llamando a otro.</p></li>
           <li><h3>La competencia tiene más reseñas</h3><p>Antes de elegir, tus clientes comparan opiniones, fotos y respuestas.</p></li>
@@ -409,6 +425,15 @@
         <h2 class="section-title" id="pricing-title">Precios claros, sin permanencia.</h2>
         <!-- CONFIRMAR: publicar la oferta de lanzamiento solo si es real. Para quitarla, borra el párrafo .launch-band -->
         <p class="launch-band">Plazas de lanzamiento: los 10 primeros negocios tienen el alta al 50 %</p>
+        <!-- Prueba gratuita de 7 días: sin alta ni cuota, baja en cualquier momento -->
+        <div class="trial-band">
+          <p class="trial-dias"><strong>7</strong><span>días gratis</span></p>
+          <div class="trial-copy">
+            <h3>Solicita tu prueba gratuita de 7 días</h3>
+            <p>Sin pagar alta ni cuota. Si no te convence, te das de baja cuando quieras y no pagas nada.</p>
+          </div>
+          <a class="button button--whatsapp" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>Solicitar prueba gratis<span class="sr-only"> (abre WhatsApp en una pestaña nueva)</span></a>
+        </div>
         <div class="price-grid">
           <article class="price-card" aria-labelledby="plan-presencia">
             <h3 id="plan-presencia">Presencia Local</h3>
@@ -419,7 +444,7 @@
               <li>Respuesta automática de reseñas</li>
               <li>Publicación semanal en Google</li>
             </ul>
-            <a class="button button--light" href="#contacto">Empezar con la auditoría gratis</a>
+            <a class="button button--light" href="#contacto">Pruébalo 7 días gratis</a>
           </article>
           <article class="price-card price-card--featured" aria-labelledby="plan-web">
             <p class="price-badge">Recomendado para restaurantes</p>
@@ -432,7 +457,7 @@
               <li>Web inteligente gestionada por WhatsApp</li>
               <li>Respuesta automática de reseñas</li>
             </ul>
-            <a class="button button--lime" href="#contacto">Empezar con la auditoría gratis</a>
+            <a class="button button--lime" href="#contacto">Pruébalo 7 días gratis</a>
           </article>
           <article class="price-card" aria-labelledby="plan-360">
             <h3 id="plan-360">360°</h3>
@@ -442,10 +467,11 @@
               <li>Todo lo anterior</li>
               <li>Publicación en Instagram, Facebook, TikTok y Google</li>
             </ul>
-            <a class="button button--light" href="#contacto">Empezar con la auditoría gratis</a>
+            <a class="button button--light" href="#contacto">Pruébalo 7 días gratis</a>
           </article>
         </div>
         <ul class="price-terms">
+          <li>Auditoría y 7 días de prueba gratis, sin pagar alta</li>
           <li>Sin permanencia</li>
           <li>15 % de descuento con pago anual</li>
           <li>La primera factura incluye el alta y el primer mes</li>
@@ -470,41 +496,35 @@
     </section>
     <!-- FIN SECCIÓN: Precios -->
 
-    <!-- SECCIÓN: Auditoría gratuita y formulario de contacto -->
+    <!-- SECCIÓN: Auditoría gratuita y prueba de 7 días (se piden por WhatsApp) -->
     <section class="contact" id="contacto" aria-labelledby="audit-title">
       <div class="wrap contact-grid">
         <div class="contact-intro" id="auditoria">
-          <h2 class="section-title" id="audit-title">Auditoría de SEO local gratis para tu negocio, esté donde esté en España.</h2>
-          <p class="section-lede">Revisamos cómo te ve un posible cliente en Google y te decimos qué mejorar primero. Sin coste ni compromiso.</p>
+          <h2 class="section-title" id="audit-title">Auditoría de SEO local gratis y 7 días de prueba, esté donde esté tu negocio.</h2>
+          <p class="section-lede">Revisamos cómo te ve un posible cliente en Google y te decimos qué mejorar primero. Después, pruebas Zihkon 7 días gratis. Sin coste ni compromiso.</p>
           <ul class="audit-list">
             <li>Tu Perfil de Empresa en Google</li>
             <li>Tus reseñas y cómo se responden</li>
             <li>Los competidores de tu zona</li>
             <li>Tu web y tus redes</li>
           </ul>
-          <p class="contact-whatsapp"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg><span>¿Te da pereza rellenar el formulario? <a href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener noreferrer">Escríbenos por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a> y te la pedimos nosotros.</span></p>
-          <p class="contact-promise">Tus datos se usarán únicamente para responder a esta solicitud. No prometemos resultados sin conocer antes tu caso.</p>
         </div>
-        <form class="contact-form" id="lead-form">
-          <div class="field"><label for="name">Nombre y apellidos</label><input id="name" name="name" autocomplete="name" placeholder="Tu nombre completo"></div>
-          <div class="field"><label for="business">Nombre del negocio *</label><input id="business" name="business" autocomplete="organization" required placeholder="Cómo se llama tu negocio"></div>
-          <div class="field"><label for="email">Correo electrónico *</label><input id="email" name="email" type="email" autocomplete="email" spellcheck="false" required placeholder="tu@negocio.com"></div>
-          <div class="field"><label for="phone">Teléfono</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Para contactarte si lo prefieres"></div>
-          <div class="field"><label for="address">Dirección del negocio *</label><input id="address" name="address" autocomplete="street-address" required placeholder="Calle, número y código postal"></div>
-          <div class="field"><label for="city">Ciudad *</label><input id="city" name="city" autocomplete="address-level2" required placeholder="Ciudad donde está el negocio"></div>
-          <div class="field field--full"><label for="maps">Enlace de tu ficha de Google Maps *</label><input id="maps" name="maps" type="url" spellcheck="false" required placeholder="https://maps.app.goo.gl/…" aria-describedby="maps-hint"><p class="field-hint" id="maps-hint">Lo necesitamos para identificar tu ficha con precisión.</p>
-            <details class="field-help"><summary>¿Cómo consigo el enlace?</summary><ol><li>Abre <a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a> y busca el nombre de tu negocio.</li><li>Pulsa sobre tu ficha para abrirla.</li><li>Toca el botón <strong>Compartir</strong> y elige <strong>Copiar enlace</strong>.</li><li>Pégalo aquí. Debería empezar por <code>https://maps.app.goo.gl/</code> o <code>https://www.google.com/maps/</code>.</li></ol></details></div>
-          <div class="field field--full"><label for="message">¿Qué te gustaría mejorar?</label><textarea id="message" name="message" placeholder="Por ejemplo: aparecer mejor en Google, recibir más llamadas…"></textarea></div>
-          <label class="privacy field--full"><input type="checkbox" name="consent" required><span>He leído la <a href="privacidad.html">política de privacidad</a> y acepto que Zihkon use mis datos para responder a esta solicitud. *</span></label>
-          <div class="form-honeypot" aria-hidden="true"><label>No rellenar<input name="web_check" tabindex="-1" autocomplete="off"></label></div>
-          <button class="button field--full" type="submit">Enviar solicitud <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg></button>
-          <!-- CONFIRMAR plazo de entrega del informe -->
-          <p class="form-note">Te enviaremos el informe por correo o WhatsApp. Sin compromiso.</p>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-        </form>
+        <div class="contact-card">
+          <h3>Pídelo por WhatsApp en un mensaje</h3>
+          <p>Solo necesitamos dos datos:</p>
+          <ol class="contact-datos">
+            <li>Nombre del negocio<span>Tal como aparece en Google</span></li>
+            <li>Dirección del negocio<span>Calle, número y ciudad</span></li>
+          </ol>
+          <p class="contact-ejemplo"><span class="sr-only">Mensaje de ejemplo: </span>Hola, quiero mi auditoría gratuita y la prueba gratis de 7 días.
+Nombre del negocio: Bar La Plaza
+Dirección del negocio: Calle Real 12, Estepona</p>
+          <a class="button button--whatsapp" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>Pedir auditoría y prueba gratis<span class="sr-only"> (abre WhatsApp en una pestaña nueva)</span></a>
+          <p class="contact-note">Te enviamos el informe por WhatsApp. Usamos tus datos solo para responder a tu solicitud (<a href="privacidad.html">política de privacidad</a>). No prometemos resultados sin conocer antes tu caso.</p>
+        </div>
       </div>
     </section>
-    <!-- FIN SECCIÓN: Auditoría gratuita y formulario de contacto -->
+    <!-- FIN SECCIÓN: Auditoría gratuita y prueba de 7 días -->
 
     <!-- SECCIÓN: Quién está detrás -->
     <section class="about" id="quien" aria-labelledby="about-title">
@@ -515,7 +535,7 @@
           <p class="about-role">Fundador de Zihkon</p>
           <p class="about-text">Soy de la Costa del Sol y trabajo con negocios de toda España. He creado Zihkon para que el dueño de un negocio no tenga que pelearse con paneles, contraseñas ni programadores. Todo lo que ves en los vídeos lo he construido yo, y te atiendo yo, por WhatsApp.</p>
           <p class="about-google"><a href="https://share.google/FHlGM56gGLZ9m7Grn" target="_blank" rel="noopener">Ver Zihkon en Google<span class="sr-only"> (se abre en una pestaña nueva)</span></a></p>
-          <a class="button button--whatsapp" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>Escríbeme por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+          <a class="button button--whatsapp" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>Escríbeme por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
         </div>
       </div>
     </section>
@@ -537,19 +557,18 @@
     <!-- SECCIÓN: Preguntas frecuentes (si cambias una pregunta, cámbiala también en el <head>) -->
     <section class="faq" id="preguntas" aria-labelledby="faq-title">
       <div class="wrap faq-grid">
-        <div><h2 class="section-title" id="faq-title">Preguntas frecuentes</h2><p class="section-lede">Si tu pregunta no está aquí, escríbenos por WhatsApp o en el formulario.</p></div>
+        <div><h2 class="section-title" id="faq-title">Preguntas frecuentes</h2><p class="section-lede">Si tu pregunta no está aquí, escríbenos por WhatsApp.</p></div>
         <div class="faq-list">
           <article class="faq-item is-open"><button class="faq-question" type="button" aria-expanded="true" aria-controls="faq-respuesta-1">¿Qué es Zihkon?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-1"><div><p>Zihkon es un servicio de SEO local y automatización para negocios locales de toda España, con base en Estepona (Málaga). Gestiona la web, las reseñas de Google y las redes sociales de bares, restaurantes y otros negocios a través de WhatsApp: el dueño escribe lo que necesita, confirma con SÍ y el cambio se publica. Lo fundó Alberto Peña y cuesta desde 79 € al mes, sin permanencia.</p></div></div></article>
           <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-2">¿Cuánto cuesta trabajar con Zihkon?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-2"><div><p>Desde 79 € al mes, sin permanencia. Tienes los tres planes en la <a href="#precios">sección de precios</a>. La auditoría inicial es gratis y sin compromiso.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-3">¿Tengo que saber de tecnología?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-3"><div><p>No. Si sabes enviar un WhatsApp, sabes usar Zihkon.</p></div></div></article>
-          <!-- CONFIRMAR condiciones de baja -->
-          <!-- CONFIRMAR condiciones de baja -->
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-4">¿Y si quiero dejarlo?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-4"><div><p>Sin permanencia. Avisas y no se renueva el siguiente mes.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-5">¿Trabajáis con negocios fuera de Estepona y Marbella?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-5"><div><p>Sí, con negocios de toda España. Todo se gestiona por WhatsApp, así que no importa en qué ciudad esté tu negocio.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-6">¿Necesito tener una página web?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-6"><div><p>No necesariamente. Revisamos primero tu Perfil de Empresa en Google y tu presencia actual para recomendar solo lo que aporte valor.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-7">¿Necesito dar acceso a mi cuenta de Google?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-7"><div><p>Para algunas mejoras sí se necesita acceso como gestor. Te explicamos el proceso y nunca necesitamos tu contraseña personal.</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-8">¿Por qué es importante responder a las reseñas de Google?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-8"><div><p>Según la <a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">encuesta de consumidores de BrightLocal de 2026</a> (1.002 adultos de EE. UU.), el 80 % de los consumidores es más propenso a elegir un negocio que responde a todas sus reseñas, y al 50 % le echan atrás las respuestas genéricas o de plantilla. <a href="https://support.google.com/business/answer/3474050?hl=es" target="_blank" rel="noopener">Google también lo recomienda</a>: «Responder a las reseñas de forma útil y positiva es una forma de demostrar que te preocupas por tus clientes».</p></div></div></article>
-          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-9">¿Cuánto se tarda en notar resultados?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-9"><div><p>Depende de la competencia local, el punto de partida y las acciones acordadas. Algunas mejoras de perfil son inmediatas; el posicionamiento orgánico necesita constancia. No prometemos posiciones ni plazos que no podemos controlar.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-3">¿Puedo probarlo gratis?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-3"><div><p>Sí. Después de la auditoría gratuita puedes probar Zihkon 7 días totalmente gratis: no se cobra el alta ni ninguna cuota, y puedes darte de baja cuando quieras durante la prueba. Pídelo por WhatsApp con el nombre y la dirección de tu negocio.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-4">¿Tengo que saber de tecnología?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-4"><div><p>No. Si sabes enviar un WhatsApp, sabes usar Zihkon.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-5">¿Y si quiero dejarlo?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-5"><div><p>Sin permanencia. Avisas y no se renueva el siguiente mes.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-6">¿Trabajáis con negocios fuera de Estepona y Marbella?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-6"><div><p>Sí, con negocios de toda España. Todo se gestiona por WhatsApp, así que no importa en qué ciudad esté tu negocio.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-7">¿Necesito tener una página web?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-7"><div><p>No necesariamente. Revisamos primero tu Perfil de Empresa en Google y tu presencia actual para recomendar solo lo que aporte valor.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-8">¿Necesito dar acceso a mi cuenta de Google?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-8"><div><p>Para algunas mejoras sí se necesita acceso como gestor. Te explicamos el proceso y nunca necesitamos tu contraseña personal.</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-9">¿Por qué es importante responder a las reseñas de Google?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-9"><div><p>Según la <a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">encuesta de consumidores de BrightLocal de 2026</a> (1.002 adultos de EE. UU.), el 80 % de los consumidores es más propenso a elegir un negocio que responde a todas sus reseñas, y al 50 % le echan atrás las respuestas genéricas o de plantilla. <a href="https://support.google.com/business/answer/3474050?hl=es" target="_blank" rel="noopener">Google también lo recomienda</a>: «Responder a las reseñas de forma útil y positiva es una forma de demostrar que te preocupas por tus clientes».</p></div></div></article>
+          <article class="faq-item"><button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-respuesta-10">¿Cuánto se tarda en notar resultados?<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq-answer" id="faq-respuesta-10"><div><p>Depende de la competencia local, el punto de partida y las acciones acordadas. Algunas mejoras de perfil son inmediatas; el posicionamiento orgánico necesita constancia. No prometemos posiciones ni plazos que no podemos controlar.</p></div></div></article>
         </div>
       </div>
     </section>
@@ -558,11 +577,11 @@
     <!-- SECCIÓN: Llamada a la acción final -->
     <section class="final-cta" id="llamada-final" aria-labelledby="final-title">
       <div class="wrap final-inner">
-        <h2 class="section-title" id="final-title">Empieza con una auditoría gratis.</h2>
+        <h2 class="section-title" id="final-title">Empieza con una auditoría gratis y 7 días de prueba.</h2>
         <p>Te decimos qué está frenando tu negocio en Google y cómo arreglarlo desde WhatsApp.</p>
         <div class="final-actions">
-          <a class="button button--lime" href="#contacto">Pide tu auditoría gratis</a>
-          <a class="button button--ghost" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>Pídela por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
+          <a class="button button--lime" href="#contacto">Auditoría y 7 días gratis</a>
+          <a class="button button--ghost" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>Pídela por WhatsApp<span class="sr-only"> (se abre en una pestaña nueva)</span></a>
         </div>
       </div>
     </section>
@@ -583,12 +602,11 @@
         <nav class="footer-legal" aria-label="Información legal"><a href="privacidad.html">Política de privacidad</a><a href="cookies.html">Política de cookies</a><a href="seguridad.html">Política de seguridad</a><a href="aviso-legal.html">Aviso legal</a></nav>
         <div class="social-area">
           <span class="social-label">Síguenos</span>
-          <!-- Redes sociales: enlaces pendientes (botones desactivados). Para activar una red hay que convertir su <button disabled> en un enlace <a href> y quitar opacity/cursor de .social-button en css/styles.css -->
-          <div class="social-buttons" role="group" aria-label="Redes sociales; enlaces pendientes de configuración">
-            <button class="social-button" type="button" disabled title="Instagram: enlace pendiente" aria-label="Instagram, enlace pendiente"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></button>
-            <button class="social-button" type="button" disabled title="Facebook: enlace pendiente" aria-label="Facebook, enlace pendiente"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8h3.4Z"/></svg></button>
-            <button class="social-button" type="button" disabled title="YouTube: enlace pendiente" aria-label="YouTube, enlace pendiente"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg></button>
-            <button class="social-button" type="button" disabled title="TikTok: enlace pendiente" aria-label="TikTok: enlace pendiente"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4v10.2a4.2 4.2 0 1 1-3-4V7.1a7.1 7.1 0 1 0 6 7V9.4a8 8 0 0 0 4 1.1V7.3A5 5 0 0 1 16 4h-2Z"/></svg></button>
+          <div class="social-buttons">
+            <a class="social-button" href="https://www.instagram.com/zihkon_oficial/" target="_blank" rel="noopener" aria-label="Zihkon en Instagram (se abre en una pestaña nueva)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+            <a class="social-button" href="https://www.facebook.com/zihkon" target="_blank" rel="noopener" aria-label="Zihkon en Facebook (se abre en una pestaña nueva)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8h3.4Z"/></svg></a>
+            <a class="social-button" href="https://www.youtube.com/@Zihkon" target="_blank" rel="noopener" aria-label="Zihkon en YouTube (se abre en una pestaña nueva)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg></a>
+            <a class="social-button" href="https://www.tiktok.com/@zihkon" target="_blank" rel="noopener" aria-label="Zihkon en TikTok (se abre en una pestaña nueva)"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4v10.2a4.2 4.2 0 1 1-3-4V7.1a7.1 7.1 0 1 0 6 7V9.4a8 8 0 0 0 4 1.1V7.3A5 5 0 0 1 16 4h-2Z"/></svg></a>
           </div>
         </div>
       </div>
@@ -598,15 +616,15 @@
   <!-- FIN PIE DE PÁGINA -->
 
   <!-- BOTÓN FLOTANTE DE WHATSAPP: el número está en href (wa.me/34...) y en aria-label. El mensaje predefinido va tras ?text= -->
-  <a class="whatsapp-float" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%20Mi%20negocio%20es%3A%20" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Zihkon por WhatsApp al +34 604 18 36 76"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg><span>WhatsApp</span></a>
+  <a class="whatsapp-float" href="https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Zihkon por WhatsApp al +34 604 18 36 76"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg><span>WhatsApp</span></a>
 
   <!-- AVISO DE COOKIES -->
   <aside class="cookie-banner" id="cookie-banner" aria-label="Aviso de cookies" hidden>
-    <div><strong>Tu privacidad importa</strong><p>Este sitio utiliza almacenamiento local para recordar tu aceptación. Consulta la <a href="cookies.html">política de cookies</a>.</p></div>
-    <button class="button" id="accept-cookies" type="button">Aceptar</button>
+    <div><strong>Tu privacidad importa</strong><p>Esta web no usa cookies de publicidad ni de seguimiento. Solo guardamos en tu navegador que has visto este aviso. Más información en la <a href="cookies.html">política de cookies</a>.</p></div>
+    <button class="button" id="accept-cookies" type="button">Entendido</button>
   </aside>
 
-  <!-- Comportamiento: menú móvil, FAQ, cookies y envío del formulario -->
+  <!-- Comportamiento: menú móvil, FAQ, pestañas y aviso de cookies -->
   <script src="js/main.js"></script>
 </body>
 </html>

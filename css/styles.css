@@ -11,6 +11,13 @@
    ========================================================= */
 
 /* =========================================================
+   FUENTES (alojadas en /fonts, subconjunto latino de Google Fonts).
+   Atkinson Hyperlegible Next es variable: un archivo para 400–700.
+   ========================================================= */
+@font-face { font-family: "Atkinson Hyperlegible Next"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("../fonts/atkinson-hyperlegible-next.woff2") format("woff2"); }
+@font-face { font-family: "Young Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/young-serif.woff2") format("woff2"); }
+
+/* =========================================================
    VARIABLES GLOBALES (colores, tipografía, espaciado, radios, sombras)
    Cambia aquí un valor y se aplica en toda la web.
    Los temas de css/temas/ sobrescriben los colores: no cambies
@@ -201,7 +208,8 @@ section { scroll-margin-top: calc(var(--alto-cabecera) + var(--espacio-3)); }
 .social-area { display: flex; align-items: center; gap: var(--espacio-3); }
 .social-label { font-size: var(--texto-xs); }
 .social-buttons { display: flex; gap: var(--espacio-2); }
-.social-button { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid #ffffff33; border-radius: 50%; background: transparent; color: var(--color-texto-invertido-suave); opacity: .6; cursor: not-allowed; }
+.social-button { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid #ffffff33; border-radius: 50%; background: transparent; color: var(--color-texto-invertido-suave); transition: border-color var(--transicion), color var(--transicion); }
+.social-button:hover { border-color: var(--color-acento); color: var(--color-texto-invertido); }
 .social-button svg { width: 17px; height: 17px; }
 
 /* ---------- Botón flotante de WhatsApp ---------- */
