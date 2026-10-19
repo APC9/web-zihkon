@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Contrata tu plan | Zihkon</title>
+  <link rel="canonical" href="https://zihkon.com/contratar.html">
+  <meta name="description" content="Contrata tu plan de Zihkon: elige plan y forma de pago y paga de forma segura con Stripe. Sin permanencia.">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#f6f7f9">
+  <link rel="preload" href="fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/contratar.css">
+  <link rel="stylesheet" href="css/tema.css">
+</head>
+<body class="pagina-pago">
+  <header class="pago-cabecera wrap">
+    <a class="brand" href="/" aria-label="ZIHKON® (inicio)"><picture><source srcset="img/zihkon-logo.webp" type="image/webp"><img src="img/zihkon-logo.png" alt="ZIHKON®" width="97" height="50"></picture></a>
+    <a class="pago-volver" href="/#precios">Volver a precios</a>
+  </header>
+
+  <main class="wrap pago-main" id="contratar">
+    <div class="pago-intro">
+      <h1>Contrata tu plan</h1>
+      <p id="pago-entradilla">Elige el plan y cómo quieres pagar. El pago se hace en Stripe, con tarjeta o domiciliación. Sin permanencia.</p>
+    </div>
+
+    <form class="pago-form" id="pago-form" novalidate>
+      <div class="pago-opciones">
+        <fieldset class="pago-bloque" id="bloque-plan">
+          <legend>Plan</legend>
+          <div class="plan-lista">
+            <label class="plan-opcion">
+              <input type="radio" name="plan" value="presencia_local">
+              <span class="plan-nombre">Presencia Local</span>
+              <span class="plan-detalle">Reseñas respondidas y publicación semanal en Google</span>
+              <span class="plan-precio">79 €/mes</span>
+            </label>
+            <label class="plan-opcion">
+              <input type="radio" name="plan" value="web_resenas" checked>
+              <span class="plan-nombre">Web + Reseñas en piloto automático</span>
+              <span class="plan-detalle">Web gestionada por WhatsApp y reseñas respondidas</span>
+              <span class="plan-precio">120 €/mes</span>
+            </label>
+            <label class="plan-opcion">
+              <input type="radio" name="plan" value="plan_360">
+              <span class="plan-nombre">360°</span>
+              <span class="plan-detalle">Todo lo anterior y publicación en Instagram, Facebook, TikTok y Google</span>
+              <span class="plan-precio">249 €/mes</span>
+            </label>
+          </div>
+          <details class="plan-sueltos" id="plan-sueltos">
+            <summary>Contratar un servicio suelto</summary>
+            <div class="plan-lista">
+              <label class="plan-opcion">
+                <input type="radio" name="plan" value="resenas">
+                <span class="plan-nombre">Respuesta de reseñas</span>
+                <span class="plan-precio">69 €/mes</span>
+              </label>
+              <label class="plan-opcion">
+                <input type="radio" name="plan" value="web">
+                <span class="plan-nombre">Web por WhatsApp</span>
+                <span class="plan-precio">69 €/mes</span>
+              </label>
+              <label class="plan-opcion">
+                <input type="radio" name="plan" value="multicanal">
+                <span class="plan-nombre">Publicación multicanal</span>
+                <span class="plan-precio">169 €/mes</span>
+              </label>
+            </div>
+          </details>
+        </fieldset>
+
+        <fieldset class="pago-bloque" id="bloque-periodo">
+          <legend>Forma de pago</legend>
+          <div class="periodo">
+            <label class="periodo-opcion">
+              <input type="radio" name="interval" value="month" checked>
+              <span>Mensual</span>
+            </label>
+            <label class="periodo-opcion">
+              <input type="radio" name="interval" value="year">
+              <span>Anual <small>15 % menos en cuota y alta</small></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="pago-bloque" id="bloque-referido">
+          <label class="campo-etiqueta" for="referido">Código de referido <span class="opcional">(opcional)</span></label>
+          <input class="campo" id="referido" name="referralCode" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="7" placeholder="ZK…" aria-describedby="referido-ayuda referido-error">
+          <p class="campo-ayuda" id="referido-ayuda">Si te ha recomendado un cliente de Zihkon. Se aplica el descuento más favorable: no se suman. <a href="referidos.html">Condiciones</a></p>
+          <p class="campo-error" id="referido-error" role="alert" hidden></p>
+        </div>
+      </div>
+
+      <aside class="resumen" aria-labelledby="resumen-titulo" aria-live="polite">
+        <h2 id="resumen-titulo">Resumen</h2>
+        <p class="resumen-plan" id="resumen-plan">—</p>
+        <dl class="resumen-lineas" id="resumen-lineas"></dl>
+        <p class="resumen-nota" id="resumen-nota"></p>
+        <p class="aviso" id="pago-error" role="alert" hidden></p>
+        <button class="button resumen-pagar" type="submit" id="pagar" disabled>Pagar de forma segura</button>
+        <p class="resumen-seguro">Pagas en Stripe; Zihkon no ve los datos de tu tarjeta. Al pagar aceptas el <a href="aviso-legal.html">aviso legal</a> y la <a href="privacidad.html">política de privacidad</a>.</p>
+      </aside>
+    </form>
+
+    <p class="pago-gestion">¿Ya eres cliente? <a href="/gestionar-suscripcion">Gestiona tu suscripción</a>: cambia de plan, la tarjeta o descarga tus facturas.</p>
+  </main>
+
+  <script src="js/contratar.js" defer></script>
+</body>
+</html>

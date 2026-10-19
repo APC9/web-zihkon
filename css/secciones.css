@@ -124,6 +124,8 @@
 .price del { color: var(--color-texto-suave); font-size: var(--texto-md); }
 .price-day { margin: var(--espacio-2) 0 0; font-weight: 700; }
 .price-setup { margin: var(--espacio-2) 0 0; color: var(--color-texto-suave); font-size: var(--texto-sm); }
+.price-buy { align-self: center; margin-top: var(--espacio-3); color: var(--color-primario); font-size: var(--texto-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.price-card--featured .price-buy { color: var(--color-acento); }
 .price-setup strong { color: var(--color-texto); font-size: var(--texto-base); }
 .price-setup-nota { display: block; color: var(--color-aviso); font-size: var(--texto-xs); font-weight: 700; }
 .price-card--featured .price-setup strong { color: var(--color-texto-invertido); }
