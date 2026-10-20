@@ -25,7 +25,7 @@
   <main class="wrap pago-main" id="contratar">
     <div class="pago-intro">
       <h1>Contrata tu plan</h1>
-      <p id="pago-entradilla">Elige el plan y cómo quieres pagar. El pago se hace en Stripe, con tarjeta o domiciliación. Sin permanencia.</p>
+      <p id="pago-entradilla">Elige el plan y cómo quieres pagar. El primer pago es el alta más la primera cuota; después, solo la cuota. Pagas en Stripe con tarjeta, PayPal o domiciliación. Sin permanencia.</p>
     </div>
 
     <form class="pago-form" id="pago-form" novalidate>
@@ -37,19 +37,19 @@
               <input type="radio" name="plan" value="presencia_local">
               <span class="plan-nombre">Presencia Local</span>
               <span class="plan-detalle">Reseñas respondidas y publicación semanal en Google</span>
-              <span class="plan-precio">79 €/mes</span>
+              <span class="plan-precio">79 €/mes<small>+ alta 190 €</small></span>
             </label>
             <label class="plan-opcion">
               <input type="radio" name="plan" value="web_resenas" checked>
               <span class="plan-nombre">Web + Reseñas en piloto automático</span>
               <span class="plan-detalle">Web gestionada por WhatsApp y reseñas respondidas</span>
-              <span class="plan-precio">120 €/mes</span>
+              <span class="plan-precio">120 €/mes<small>+ alta 590 €</small></span>
             </label>
             <label class="plan-opcion">
               <input type="radio" name="plan" value="plan_360">
               <span class="plan-nombre">360°</span>
               <span class="plan-detalle">Todo lo anterior y publicación en Instagram, Facebook, TikTok y Google</span>
-              <span class="plan-precio">249 €/mes</span>
+              <span class="plan-precio">249 €/mes<small>+ alta 790 €</small></span>
             </label>
           </div>
           <details class="plan-sueltos" id="plan-sueltos">
@@ -58,17 +58,17 @@
               <label class="plan-opcion">
                 <input type="radio" name="plan" value="resenas">
                 <span class="plan-nombre">Respuesta de reseñas</span>
-                <span class="plan-precio">69 €/mes</span>
+                <span class="plan-precio">69 €/mes<small>+ alta 190 €</small></span>
               </label>
               <label class="plan-opcion">
                 <input type="radio" name="plan" value="web">
                 <span class="plan-nombre">Web por WhatsApp</span>
-                <span class="plan-precio">69 €/mes</span>
+                <span class="plan-precio">69 €/mes<small>+ alta 490 €</small></span>
               </label>
               <label class="plan-opcion">
                 <input type="radio" name="plan" value="multicanal">
                 <span class="plan-nombre">Publicación multicanal</span>
-                <span class="plan-precio">169 €/mes</span>
+                <span class="plan-precio">169 €/mes<small>+ alta 250 €</small></span>
               </label>
             </div>
           </details>

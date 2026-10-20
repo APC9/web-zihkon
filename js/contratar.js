@@ -8,6 +8,24 @@
   const enlace = params.get("enlace");
   const euros = (c) => (c / 100).toLocaleString("es-ES", { style: "currency", currency: "EUR" });
   const conIva = (c) => Math.round(c * 1.21);
+  // Precios sin IVA (los mismos que la sección «Precios» y el catálogo de Stripe del panel). Sirven para enseñar
+  // el resumen al momento; el importe final (descuentos, cuotas) lo calcula el panel.
+  const PRECIOS = {
+    presencia_local: { nombre: "Presencia Local", alta: 19000, cuota: 7900 },
+    web_resenas: { nombre: "Web + Reseñas en piloto automático", alta: 59000, cuota: 12000 },
+    plan_360: { nombre: "360°", alta: 79000, cuota: 24900 },
+    resenas: { nombre: "Respuesta de reseñas", alta: 19000, cuota: 6900 },
+    web: { nombre: "Web por WhatsApp", alta: 49000, cuota: 6900 },
+    multicanal: { nombre: "Publicación multicanal", alta: 25000, cuota: 16900 },
+  };
+  /** Resumen sin descuentos con los precios de la web (mientras responde el panel o si no responde). */
+  function resumenBase(d) {
+    const p = PRECIOS[d.planKey];
+    if (!p) return null;
+    const anual = d.interval === "year";
+    const alta = anual ? Math.round(p.alta * 0.85) : p.alta;
+    return { plan: { key: d.planKey, name: p.nombre }, interval: anual ? "year" : "month", installments: 1, discount: null, setupAmountCents: alta, setupDiscountCents: 0, setupNetCents: alta, installmentCents: 0, recurringCents: anual ? Math.round(p.cuota * 12 * 0.85) : p.cuota, base: true };
+  }
   let ultimo = 0;
 
   // Plan inicial desde ?plan= (botones de la página de precios).
@@ -61,23 +79,24 @@
       lineas.push(["Alta", r.setupDiscountCents ? `<del>${euros(r.setupAmountCents)}</del> ${euros(r.setupNetCents)}` : euros(r.setupNetCents)]);
     }
     if (r.setupDiscountCents) lineas.push(["Descuento", r.discount === "lanzamiento" ? "50 % de lanzamiento" : "50 € por código de referido"]);
-    lineas.push([anual ? "Cuota anual" : "Cuota mensual", euros(r.recurringCents)]);
+    lineas.push([anual ? "Primera cuota anual" : "Primera mensualidad", euros(r.recurringCents)]);
     const hoy = r.recurringCents + (r.installments > 1 ? r.installmentCents : r.setupNetCents);
-    lineas.push(["Pagas hoy", `<strong>${euros(conIva(hoy))}</strong> <small>(${euros(hoy)} + IVA)</small>`]);
+    lineas.push(["Primer pago (hoy)", `<strong>${euros(conIva(hoy))}</strong> <small>(${euros(hoy)} + IVA: ${r.installments > 1 ? "1.ª cuota del alta" : "alta"} + ${anual ? "cuota anual" : "1.ª mensualidad"})</small>`]);
+    lineas.push([anual ? "Cada año después" : "Desde el 2.º mes", `${euros(conIva(r.recurringCents))} <small>(${euros(r.recurringCents)} + IVA)</small>`]);
     $("resumen-lineas").innerHTML = lineas.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("");
     $("resumen-nota").textContent =
       r.installments > 1
         ? `Las otras ${r.installments - 1} cuotas del alta se cobran con las ${r.installments - 1} mensualidades siguientes. Si te das de baja antes de terminarlas, se cobra lo que falte del alta.`
-        : anual
-          ? `Después, ${euros(conIva(r.recurringCents))} al año (IVA incluido). Cancela cuando quieras.`
-          : `Después, ${euros(conIva(r.recurringCents))} al mes (IVA incluido). Cancela cuando quieras.`;
+        : `${r.base ? "Si quedan plazas de lanzamiento o tienes código de referido, el descuento del alta se aplica al pagar. " : ""}Sin permanencia: cancelas cuando quieras.`;
   }
 
   async function actualizar() {
     const n = ++ultimo;
-    $("pagar").disabled = true;
     mostrarError($("pago-error"));
     mostrarError($("referido-error"));
+    // Mientras responde el panel se ve ya el resumen con los precios de la web.
+    const base = !enlace && resumenBase(datos());
+    if (base) pintar(base);
     form.classList.add("cargando");
     try {
       const r = await pedir("/api/pago/resumen", datos());
@@ -87,9 +106,11 @@
     } catch (e) {
       if (n !== ultimo) return;
       if (e.issues?.referralCode) mostrarError($("referido-error"), e.issues.referralCode[0]);
-      else mostrarError($("pago-error"), e.message);
-      $("resumen-lineas").innerHTML = "";
-      $("resumen-nota").textContent = "";
+      else mostrarError($("pago-error"), "No hemos podido confirmar el precio final ahora mismo. Inténtalo en unos segundos o escríbenos por WhatsApp.");
+      if (!base) {
+        $("resumen-lineas").innerHTML = "";
+        $("resumen-nota").textContent = "";
+      }
     } finally {
       if (n === ultimo) form.classList.remove("cargando");
     }

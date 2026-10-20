@@ -26,7 +26,8 @@
 .plan-opcion:has(input:checked) { border-color: var(--color-primario); box-shadow: inset 0 0 0 1px var(--color-primario); }
 .plan-opcion:has(input:focus-visible) { outline: 3px solid var(--color-foco); outline-offset: 2px; }
 .plan-nombre { font-weight: 700; }
-.plan-precio { grid-column: 2; grid-row: 1; font-weight: 700; white-space: nowrap; }
+.plan-precio { grid-column: 2; grid-row: 1; font-weight: 700; text-align: right; white-space: nowrap; }
+.plan-precio small { display: block; color: var(--color-texto-suave); font-size: var(--texto-xs); font-weight: 400; }
 .plan-detalle { grid-column: 1 / -1; color: var(--color-texto-suave); font-size: var(--texto-sm); }
 
 .plan-sueltos { margin-top: var(--espacio-4); }
