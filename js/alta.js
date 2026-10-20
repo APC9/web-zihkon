@@ -115,11 +115,25 @@
     },
     redes(d) {
       return `
-        <p class="campo-ayuda alta-nota">Indica tus redes. Después te enviaremos por WhatsApp un enlace seguro para conectarlas a nuestra herramienta de publicación (no nos das tus contraseñas).</p>
+        <p class="campo-ayuda alta-nota">Indica tus redes y conéctalas a nuestra herramienta de publicación (Metricool). No nos das ninguna contraseña: entras tú en cada red y das permiso.</p>
         ${campo("instagram", "Instagram", { valor: d.instagram, requerido: false, placeholder: "@tunegocio" })}
         ${campo("facebook", "Facebook", { valor: d.facebook, requerido: false, placeholder: "Nombre o enlace de tu página" })}
         ${campo("tiktok", "TikTok", { valor: d.tiktok, requerido: false, placeholder: "@tunegocio" })}
-        ${casilla("sinRedes", "No tengo redes sociales: creadlas vosotros", d.sinRedes)}`;
+        ${casilla("sinRedes", "No tengo redes sociales: creadlas vosotros", d.sinRedes)}
+        <div class="alta-instrucciones alta-conectar" id="mc-bloque">
+          <p><strong>Conecta tus redes</strong></p>
+          <ol>
+            <li>Pulsa «Conectar mis redes»: se abre una página segura de Metricool.</li>
+            <li>Pulsa en cada red que hayas indicado arriba y entra con tu cuenta.</li>
+            <li>Vuelve aquí y pulsa «Comprobar».</li>
+          </ol>
+          <div class="alta-acciones-linea">
+            <button type="button" class="button" id="mc-conectar">Conectar mis redes</button>
+            <button type="button" class="button button--light" id="mc-comprobar">Comprobar</button>
+          </div>
+          <p class="campo-ayuda" id="mc-estado" aria-live="polite"></p>
+          <p class="campo-error" data-error="conexion" hidden></p>
+        </div>`;
     },
     web(d) {
       return `
@@ -155,8 +169,43 @@
     sinRedes: "Sin redes", tieneDominio: "Tiene dominio", dominio: "Dominio", sobreNosotros: "Quiénes sois", servicios: "Qué ofrecéis", estilo: "Estilo", sinLogo: "Sin logo",
   };
 
+  // ------------------------------------------------------------------ Metricool (paso «Tus redes»)
+  const NOMBRES = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok", gmb: "Google", youtube: "YouTube" };
+  async function conectar() {
+    // La ventana se abre al momento (si no, el navegador la bloquea) y luego se le pone el enlace.
+    const ventana = window.open("about:blank", "_blank");
+    mostrar($("mc-estado"), "Preparando el enlace…");
+    try {
+      const { url } = await pedir("metricool-link", {});
+      if (ventana) ventana.location.href = url;
+      else location.assign(url);
+      mostrar($("mc-estado"), "Cuando termines de conectar tus redes, vuelve aquí y pulsa «Comprobar».");
+    } catch (e) {
+      ventana?.close();
+      mostrar($("mc-estado"), e.message);
+    }
+  }
+  async function comprobar() {
+    mostrar($("mc-estado"), "Comprobando…");
+    try {
+      const r = await pedir("metricool-status", { redes: leer() });
+      const conectadas = r.connected.map((n) => NOMBRES[n] ?? n);
+      const faltan = r.missing.map((n) => NOMBRES[n] ?? n);
+      mostrar(
+        $("mc-estado"),
+        faltan.length
+          ? `Conectadas: ${conectadas.join(", ") || "ninguna"}. Falta: ${faltan.join(", ")}.`
+          : `¡Perfecto! Conectadas: ${conectadas.join(", ") || "ninguna"}. Ya puedes seguir.`,
+      );
+    } catch (e) {
+      mostrar($("mc-estado"), e.message);
+    }
+  }
+
   // Muestra u oculta los bloques que dependen de un sí/no.
   function dependencias() {
+    const sinRedes = document.querySelector('input[name="sinRedes"]');
+    if ($("mc-bloque") && sinRedes) $("mc-bloque").hidden = sinRedes.checked;
     for (const el of document.querySelectorAll("[data-si],[data-no]")) {
       const name = el.dataset.si ?? el.dataset.no;
       const v = document.querySelector(`input[name="${name}"]:checked`)?.value;
@@ -284,6 +333,8 @@
       $("paso-titulo").focus();
       return;
     }
+    if (e.target.closest("#mc-conectar")) return void conectar();
+    if (e.target.closest("#mc-comprobar")) return void comprobar();
     const copiar = e.target.closest("[data-copiar]");
     if (copiar) {
       await navigator.clipboard?.writeText(copiar.dataset.copiar).catch(() => {});

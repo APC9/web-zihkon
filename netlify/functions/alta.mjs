@@ -2,7 +2,7 @@
 // y esta función reenvía al panel (servidor a servidor, con el secreto compartido) solo las acciones conocidas.
 // Variables de entorno en Netlify: ZIHKON_PANEL_URL y ZIHKON_WEB_CHECKOUT_SECRET.
 
-const ACCIONES = new Set(["state", "step", "file", "file-delete", "from-checkout"]);
+const ACCIONES = new Set(["state", "step", "file", "file-delete", "from-checkout", "metricool-link", "metricool-status"]);
 // Las fotos llegan ya reducidas en el navegador; el límite del panel es 5 MB por archivo (en base64 ≈ 6,7 MB).
 const MAX_CUERPO = 7_200_000;
 

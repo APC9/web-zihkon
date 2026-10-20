@@ -25,13 +25,13 @@ const post = (accion, cuerpo) => new Request(`https://zihkon.com/api/alta/${acci
 
 describe("función /api/alta/*", () => {
   it("reenvía cada acción conocida al panel con el secreto", async () => {
-    for (const accion of ["state", "step", "file", "file-delete", "from-checkout"]) {
+    for (const accion of ["state", "step", "file", "file-delete", "from-checkout", "metricool-link", "metricool-status"]) {
       const res = await alta(post(accion, { token: "t".repeat(32) }));
       assert.equal(res.status, 200);
     }
     assert.deepEqual(
       llamadas.map((l) => l.url),
-      ["state", "step", "file", "file-delete", "from-checkout"].map((a) => `https://panel.test/api/public/onboarding/${a}`),
+      ["state", "step", "file", "file-delete", "from-checkout", "metricool-link", "metricool-status"].map((a) => `https://panel.test/api/public/onboarding/${a}`),
     );
     assert.equal(llamadas[0].init.headers["x-zihkon-web-secret"], process.env.ZIHKON_WEB_CHECKOUT_SECRET);
     assert.equal(llamadas[0].init.body, JSON.stringify({ token: "t".repeat(32) }));

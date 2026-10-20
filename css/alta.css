@@ -47,6 +47,7 @@ textarea.campo--largo { min-height: 7rem; padding-block: var(--espacio-3); line-
 .alta-resumen dt { color: var(--color-texto-suave); }
 .alta-resumen dd { margin: 0; overflow-wrap: anywhere; white-space: pre-line; }
 
+.alta-acciones-linea { display: flex; flex-wrap: wrap; gap: var(--espacio-3); }
 .alta-acciones { display: flex; flex-wrap: wrap-reverse; justify-content: space-between; gap: var(--espacio-3); margin-top: var(--espacio-6); }
 
 @media (max-width: 560px) {
