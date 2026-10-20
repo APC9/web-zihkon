@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Pon en marcha tu plan | Zihkon</title>
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta name="theme-color" content="#f6f7f9">
+  <link rel="preload" href="fonts/atkinson-hyperlegible-next.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/contratar.css">
+  <link rel="stylesheet" href="css/alta.css">
+  <link rel="stylesheet" href="css/tema.css">
+</head>
+<body class="pagina-pago">
+  <header class="pago-cabecera wrap">
+    <a class="brand" href="/" aria-label="ZIHKON® (inicio)"><picture><source srcset="img/zihkon-logo.webp" type="image/webp"><img src="img/zihkon-logo.png" alt="ZIHKON®" width="97" height="50"></picture></a>
+    <a class="pago-volver" href="https://wa.me/34604183676" target="_blank" rel="noopener noreferrer">¿Dudas? WhatsApp</a>
+  </header>
+
+  <main class="wrap alta" id="alta">
+    <div class="pago-intro">
+      <h1 id="alta-titulo">Pon en marcha tu plan</h1>
+      <p id="alta-entradilla">Necesitamos unos datos de tu negocio. Se guarda cada paso: puedes dejarlo a medias y seguir luego con el mismo enlace.</p>
+    </div>
+
+    <p class="aviso" id="alta-error" role="alert" hidden></p>
+
+    <ol class="alta-pasos" id="alta-pasos" aria-label="Pasos del alta"></ol>
+
+    <form class="alta-form" id="alta-form" novalidate hidden>
+      <h2 class="alta-paso-titulo" id="paso-titulo" tabindex="-1"></h2>
+      <div id="paso-campos"></div>
+      <p class="aviso" id="paso-error" role="alert" hidden></p>
+      <div class="alta-acciones">
+        <button class="button" type="submit" id="guardar">Guardar y seguir</button>
+        <button class="button button--light" type="button" id="atras" hidden>Paso anterior</button>
+      </div>
+    </form>
+
+    <section class="pago-ok" id="alta-fin" hidden>
+      <h2 class="alta-paso-titulo">¡Listo! Ya tenemos todo.</h2>
+      <p>Revisamos tus datos y nos ponemos con tu plan. Te escribimos por WhatsApp en cuanto esté en marcha.</p>
+      <p>Si quieres cambiar algo, escríbenos por <a class="pago-gestion-enlace" href="https://wa.me/34604183676" target="_blank" rel="noopener noreferrer">WhatsApp</a>.</p>
+    </section>
+  </main>
+
+  <script src="js/alta.js" defer></script>
+</body>
+</html>

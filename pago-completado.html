@@ -12,6 +12,7 @@
   <link rel="preload" href="fonts/young-serif.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/contratar.css">
+  <link rel="stylesheet" href="css/alta.css">
   <link rel="stylesheet" href="css/tema.css">
 </head>
 <body class="pagina-pago">
@@ -22,9 +23,13 @@
     <section class="pago-ok">
       <h1>Pago recibido. Bienvenido a Zihkon.</h1>
       <p>Stripe te ha enviado el recibo a tu email. A partir de aquí:</p>
+      <div class="pago-alta" id="pago-alta" aria-live="polite">
+        <p id="pago-alta-texto">Preparando tu alta…</p>
+        <a class="button" id="pago-alta-boton" href="#" hidden>Empezar mi alta (unos 5 minutos)</a>
+      </div>
       <ol class="pago-pasos">
-        <li>Te escribimos por WhatsApp, al número que has puesto en el pago, para poner en marcha tu plan.</li>
-        <li>Te pediremos solo lo necesario de tu negocio (accesos de Google y redes, fotos y textos), paso a paso.</li>
+        <li>Completa tu alta: datos del negocio, accesos de Google y redes, fotos y textos, paso a paso. Te enviamos también el enlace por WhatsApp para que puedas seguir cuando quieras.</li>
+        <li>Revisamos todo y ponemos en marcha tu plan. Te avisamos por WhatsApp.</li>
         <li>Desde ese momento, gestionas tu web, tus redes y tus reseñas desde WhatsApp.</li>
       </ol>
       <p>Si pagaste por domiciliación bancaria, el cobro tarda unos días en confirmarse: te avisamos cuando esté listo.</p>
@@ -32,5 +37,6 @@
       <a class="button" href="/">Volver a zihkon.com</a>
     </section>
   </main>
+  <script src="js/pago-completado.js" defer></script>
 </body>
 </html>
