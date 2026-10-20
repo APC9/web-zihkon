@@ -105,6 +105,8 @@
       $("pagar").disabled = false;
     } catch (e) {
       if (n !== ultimo) return;
+      // Sin precio confirmado (o con un código erróneo) no se puede pagar.
+      $("pagar").disabled = true;
       if (e.issues?.referralCode) mostrarError($("referido-error"), e.issues.referralCode[0]);
       else mostrarError($("pago-error"), "No hemos podido confirmar el precio final ahora mismo. Inténtalo en unos segundos o escríbenos por WhatsApp.");
       if (!base) {
@@ -116,16 +118,31 @@
     }
   }
 
+  /** Código de referido a medio escribir o con otro formato: se avisa y no se deja pagar (si no, se pagaría sin el descuento). */
+  const codigoIncompleto = () => {
+    const v = $("referido").value.trim().toUpperCase();
+    return v !== "" && !/^ZK[A-Z0-9]{5}$/.test(v);
+  };
+  const avisarCodigo = () => {
+    mostrarError($("referido-error"), "El código de referido tiene 7 caracteres: ZK y 5 más (por ejemplo, ZK4UPR7). Bórralo si no tienes.");
+    $("pagar").disabled = true;
+  };
+
   let espera;
-  form.addEventListener("change", actualizar);
+  form.addEventListener("change", (e) => {
+    if (e.target === $("referido") && codigoIncompleto()) return avisarCodigo();
+    actualizar();
+  });
   $("referido").addEventListener("input", () => {
     clearTimeout(espera);
     const v = $("referido").value.trim();
-    if (v === "" || v.length === 7) espera = setTimeout(actualizar, 300);
+    if (v === "" || v.length === 7) espera = setTimeout(() => (codigoIncompleto() ? avisarCodigo() : actualizar()), 300);
+    else $("pagar").disabled = true;
   });
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (codigoIncompleto()) return avisarCodigo();
     $("pagar").disabled = true;
     $("pagar").textContent = "Preparando el pago…";
     try {
