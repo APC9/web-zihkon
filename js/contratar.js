@@ -90,23 +90,35 @@
         : `${r.base ? "Si quedan plazas de lanzamiento o tienes código de referido, el descuento del alta se aplica al pagar. " : ""}Sin permanencia: cancelas cuando quieras.`;
   }
 
+  // Último resumen pedido al panel: si los datos no cambian, no se vuelve a pedir ni se repinta
+  // (al pulsar «Pagar» justo después de escribir el código, repintar movía el botón y el clic se perdía).
+  let ultimaClave = null;
+  let confirmado = false;
+
   async function actualizar() {
+    const clave = JSON.stringify(datos());
+    if (clave === ultimaClave) return;
+    ultimaClave = clave;
     const n = ++ultimo;
     mostrarError($("pago-error"));
     mostrarError($("referido-error"));
-    // Mientras responde el panel se ve ya el resumen con los precios de la web.
+    // Mientras responde el panel se ve ya el resumen con los precios de la web (solo si aún no hay uno confirmado).
     const base = !enlace && resumenBase(datos());
-    if (base) pintar(base);
+    if (base && !confirmado) pintar(base);
     form.classList.add("cargando");
     try {
       const r = await pedir("/api/pago/resumen", datos());
       if (n !== ultimo) return;
       pintar(r);
+      confirmado = true;
       $("pagar").disabled = false;
     } catch (e) {
       if (n !== ultimo) return;
-      // Sin precio confirmado (o con un código erróneo) no se puede pagar.
+      // Sin precio confirmado (o con un código erróneo) no se puede pagar; se podrá reintentar con los mismos datos.
       $("pagar").disabled = true;
+      ultimaClave = null;
+      confirmado = false;
+      if (base) pintar(base);
       if (e.issues?.referralCode) mostrarError($("referido-error"), e.issues.referralCode[0]);
       else mostrarError($("pago-error"), "No hemos podido confirmar el precio final ahora mismo. Inténtalo en unos segundos o escríbenos por WhatsApp.");
       if (!base) {
