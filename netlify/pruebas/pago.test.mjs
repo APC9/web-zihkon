@@ -48,6 +48,18 @@ describe("función /api/pago", () => {
     assert.deepEqual(JSON.parse(llamadas[0].init.body), { planKey: "web", linkToken: "abc" });
   });
 
+  it("reenvía el WhatsApp y el código de reserva del enlace", async () => {
+    await pago(post("/api/pago", { linkToken: "t".repeat(32), whatsapp: " 612 345 678 ", reservation: "reserva-123456789012" }), ctx);
+    assert.deepEqual(JSON.parse(llamadas[0].init.body), { linkToken: "t".repeat(32), whatsapp: "612 345 678", reservation: "reserva-123456789012" });
+  });
+
+  it("un 409 del panel pasa su código (ya es cliente → portal) sin más detalles", async () => {
+    respuesta = { status: 409, body: { error: "Ya tienes un plan de Zihkon con este WhatsApp.", code: "ALREADY_SUBSCRIBED", detalle: "interno" } };
+    const res = await pago(post("/api/pago", { planKey: "web", whatsapp: "611222333" }), ctx);
+    assert.equal(res.status, 409);
+    assert.deepEqual(await res.json(), { error: "Ya tienes un plan de Zihkon con este WhatsApp.", code: "ALREADY_SUBSCRIBED" });
+  });
+
   it("rechaza métodos que no son POST, JSON roto y cuerpos enormes sin llamar al panel", async () => {
     assert.equal((await pago(new Request("https://zihkon.com/api/pago"), ctx)).status, 405);
     assert.equal((await pago(post("/api/pago", "{roto"), ctx)).status, 400);

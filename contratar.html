@@ -88,6 +88,13 @@
           </div>
         </fieldset>
 
+        <div class="pago-bloque" id="bloque-whatsapp">
+          <label class="campo-etiqueta" for="whatsapp">Tu WhatsApp</label>
+          <input class="campo" id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="612 345 678" required aria-describedby="whatsapp-ayuda whatsapp-error">
+          <p class="campo-ayuda" id="whatsapp-ayuda">Por aquí te escribiremos para poner en marcha tu plan y es donde usarás los servicios.</p>
+          <p class="campo-error" id="whatsapp-error" role="alert" hidden></p>
+        </div>
+
         <div class="pago-bloque" id="bloque-referido">
           <label class="campo-etiqueta" for="referido">Código de referido <span class="opcional">(opcional)</span></label>
           <input class="campo" id="referido" name="referralCode" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="7" placeholder="ZK…" aria-describedby="referido-ayuda referido-error">
@@ -102,6 +109,7 @@
         <dl class="resumen-lineas" id="resumen-lineas"></dl>
         <p class="resumen-nota" id="resumen-nota"></p>
         <p class="aviso" id="pago-error" role="alert" hidden></p>
+        <p class="aviso" id="pago-portal" role="alert" hidden><span id="pago-portal-texto"></span> <a href="/gestionar-suscripcion">Gestionar mi suscripción</a></p>
         <button class="button resumen-pagar" type="submit" id="pagar" disabled>Pagar de forma segura</button>
         <p class="resumen-seguro">Pagas en Stripe; Zihkon no ve los datos de tu tarjeta. Al pagar aceptas el <a href="aviso-legal.html">aviso legal</a> y la <a href="privacidad.html">política de privacidad</a>.</p>
       </aside>

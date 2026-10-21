@@ -3,7 +3,7 @@
 // con un secreto compartido) el resumen del pago o el enlace de Stripe Checkout, y lo devuelve.
 // Variables de entorno en Netlify: ZIHKON_PANEL_URL y ZIHKON_WEB_CHECKOUT_SECRET (nunca en el código).
 
-const CAMPOS = ["planKey", "interval", "referralCode", "linkToken"];
+const CAMPOS = ["planKey", "interval", "referralCode", "linkToken", "whatsapp", "reservation"];
 const MAX_CUERPO = 2_000;
 
 const json = (body, status = 200) =>
@@ -39,7 +39,9 @@ export default async function pago(req, context) {
     if (!res.ok) {
       // Al visitante solo le llega el mensaje (y los errores de campo), nunca detalles internos.
       const error = res.status >= 500 || res.status === 401 ? "No hemos podido preparar el pago. Inténtalo de nuevo o escríbenos por WhatsApp." : (cuerpo.error ?? "Revisa los datos");
-      return json({ error, issues: res.status === 400 ? cuerpo.issues : undefined }, res.status === 401 ? 502 : res.status);
+      // El código (p. ej. ALREADY_SUBSCRIBED) permite a la web enseñar el acceso a «Gestionar mi suscripción».
+      const code = res.status === 409 ? cuerpo.code : undefined;
+      return json({ error, code, issues: res.status === 400 ? cuerpo.issues : undefined }, res.status === 401 ? 502 : res.status);
     }
     if (!resumen && !String(cuerpo.url ?? "").startsWith("https://checkout.stripe.com/")) return json({ error: "Respuesta inesperada del servidor de pagos" }, 502);
     return json(cuerpo);

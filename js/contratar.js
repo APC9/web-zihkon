@@ -57,6 +57,29 @@
     return d;
   };
 
+  /** WhatsApp escrito por el cliente: 9 cifras (España) o con prefijo internacional. */
+  const whatsapp = () => $("whatsapp").value.trim();
+  const whatsappValido = () => {
+    const d = whatsapp().replace(/\D/g, "");
+    return d.length === 9 || (d.length >= 10 && d.length <= 15 && /^\+|^00/.test(whatsapp()));
+  };
+  // Enlace personal: la pestaña que abrió el pago guarda el código de su reserva para poder reintentar al volver de Stripe.
+  const claveReserva = enlace ? `zk-reserva-${enlace.slice(0, 12)}` : null;
+  const leerReserva = () => {
+    try {
+      return claveReserva ? sessionStorage.getItem(claveReserva) : null;
+    } catch {
+      return null;
+    }
+  };
+  const guardarReserva = (r) => {
+    try {
+      if (claveReserva && r) sessionStorage.setItem(claveReserva, r);
+    } catch {
+      /* sin almacenamiento: al volver de Stripe habrá que esperar a que caduque el pago */
+    }
+  };
+
   const mostrarError = (el, texto) => {
     el.textContent = texto ?? "";
     el.hidden = !texto;
@@ -65,7 +88,7 @@
   async function pedir(ruta, cuerpo) {
     const res = await fetch(ruta, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(cuerpo) });
     const json = await res.json().catch(() => ({}));
-    if (!res.ok) throw Object.assign(new Error(json.error || "No se ha podido completar"), { issues: json.issues });
+    if (!res.ok) throw Object.assign(new Error(json.error || "No se ha podido completar"), { issues: json.issues, code: json.code });
     return json;
   }
 
@@ -152,16 +175,34 @@
     else $("pagar").disabled = true;
   });
 
+  $("whatsapp").addEventListener("input", () => mostrarError($("whatsapp-error")));
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (codigoIncompleto()) return avisarCodigo();
+    mostrarError($("pago-error"));
+    $("pago-portal").hidden = true;
+    if (!whatsappValido()) {
+      mostrarError($("whatsapp-error"), "Escribe tu número de WhatsApp (por ejemplo, 612 345 678).");
+      $("whatsapp").focus();
+      return;
+    }
     $("pagar").disabled = true;
     $("pagar").textContent = "Preparando el pago…";
     try {
-      const { url } = await pedir("/api/pago", datos());
+      const cuerpo = { ...datos(), whatsapp: whatsapp() };
+      const reserva = leerReserva();
+      if (reserva) cuerpo.reservation = reserva;
+      const { url, reservation } = await pedir("/api/pago", cuerpo);
+      guardarReserva(reservation);
       location.assign(url);
     } catch (err) {
-      mostrarError($("pago-error"), err.message);
+      if (err.code === "ALREADY_SUBSCRIBED") {
+        // Ya es cliente: cambia de plan en el portal de Stripe, no contratando otra vez.
+        $("pago-portal-texto").textContent = err.message.replace(/\s*Para cambiar.*$/, "") + " Para cambiar de plan o de forma de pago:";
+        $("pago-portal").hidden = false;
+      } else if (err.issues?.whatsapp) mostrarError($("whatsapp-error"), err.issues.whatsapp[0]);
+      else mostrarError($("pago-error"), err.message);
       $("pagar").disabled = false;
       $("pagar").textContent = "Pagar de forma segura";
     }
