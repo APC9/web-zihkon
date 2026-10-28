@@ -224,6 +224,7 @@ section { scroll-margin-top: calc(var(--alto-cabecera) + var(--espacio-3)); }
 .cookie-banner p { margin: var(--espacio-1) 0 0; color: var(--color-texto-suave); font-size: var(--texto-xs); line-height: 1.5; }
 .cookie-banner p a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 2px; }
 .cookie-banner .button { min-height: 44px; flex: 0 0 auto; padding-inline: 18px; }
+.cookie-botones { display: flex; flex: 0 0 auto; gap: var(--espacio-2); }
 
 /* ---------- Movimiento reducido: todo aparece ya en su estado final ---------- */
 @media (prefers-reduced-motion: reduce) {

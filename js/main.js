@@ -8,20 +8,27 @@
 const yearEl = document.getElementById('current-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ---------- Aviso de cookies ----------
+// ---------- Aviso de cookies (consentimiento para Google Tag Manager) ----------
+// El <head> de cada página arranca Google con todo denegado salvo que aquí se haya guardado 'accepted'.
 const cookieBanner = document.getElementById('cookie-banner');
-const cookieAcceptanceKey = 'zihkon-cookie-consent';
+const cookieConsentKey = 'zihkon-cookies';
 try {
-  cookieBanner.hidden = localStorage.getItem(cookieAcceptanceKey) === 'accepted';
+  cookieBanner.hidden = ['accepted', 'rejected'].includes(localStorage.getItem(cookieConsentKey));
 } catch {
   cookieBanner.hidden = false;
 }
-document.getElementById('accept-cookies').addEventListener('click', () => {
+const saveCookieChoice = (choice) => {
   try {
-    localStorage.setItem(cookieAcceptanceKey, 'accepted');
+    localStorage.setItem(cookieConsentKey, choice);
   } catch {}
+  const value = choice === 'accepted' ? 'granted' : 'denied';
+  if (typeof gtag === 'function') {
+    gtag('consent', 'update', { ad_storage: value, ad_user_data: value, ad_personalization: value, analytics_storage: value });
+  }
   cookieBanner.hidden = true;
-});
+};
+document.getElementById('accept-cookies').addEventListener('click', () => saveCookieChoice('accepted'));
+document.getElementById('reject-cookies').addEventListener('click', () => saveCookieChoice('rejected'));
 
 // ---------- Menú móvil ----------
 const menuToggle = document.querySelector('.menu-toggle');

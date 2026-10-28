@@ -205,6 +205,14 @@ def montar(p, por_url):
     return f'''<!doctype html>
 <html lang="es">
 <head>
+  <!-- Google Tag Manager. Antes, el modo de consentimiento de Google: todo denegado hasta que la persona acepte en el aviso de cookies (js/main.js) -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}(function(){{var ok=false;try{{ok=localStorage.getItem('zihkon-cookies')==='accepted';}}catch(e){{}}var v=ok?'granted':'denied';gtag('consent','default',{{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v,wait_for_update:500}});}})();</script>
+  <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
+  new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  }})(window,document,'script','dataLayer','GTM-P68VJQNK');</script>
+  <!-- End Google Tag Manager -->
   <!-- PÁGINA GENERADA por generador/generar.py a partir de generador/paginas/{p["archivo"]}. No la edites a mano. -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -238,6 +246,9 @@ def montar(p, por_url):
   <script>function loadScript(a){{var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}}loadScript(function(){{beTracker.t({{hash:"350df9e5fe8ae50973d8fddcf9b16c76"}})}});</script>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P68VJQNK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="topbar" id="cabecera">
     <nav class="nav wrap" aria-label="Navegación principal">
@@ -303,8 +314,8 @@ def montar(p, por_url):
   <a class="whatsapp-float" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Zihkon por WhatsApp al +34 604 18 36 76">{ICONO_WA}<span>WhatsApp</span></a>
 
   <aside class="cookie-banner" id="cookie-banner" aria-label="Aviso de cookies" hidden>
-    <div><strong>Tu privacidad importa</strong><p>Esta web no usa cookies de publicidad ni de seguimiento. Solo guardamos en tu navegador que has visto este aviso. Más información en la <a href="/cookies.html">política de cookies</a>.</p></div>
-    <button class="button" id="accept-cookies" type="button">Entendido</button>
+    <div><strong>Tu privacidad importa</strong><p>Con tu permiso usamos cookies de Google para medir las visitas y mejorar nuestros anuncios. Puedes aceptarlas o rechazarlas. Más información en la <a href="/cookies.html">política de cookies</a>.</p></div>
+    <div class="cookie-botones"><button class="button button--light" id="reject-cookies" type="button">Rechazar</button><button class="button" id="accept-cookies" type="button">Aceptar</button></div>
   </aside>
 
   <script src="/js/main.js"></script>
