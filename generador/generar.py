@@ -234,6 +234,8 @@ def montar(p, por_url):
   <link rel="stylesheet" href="/css/secciones.css">
   <link rel="stylesheet" href="/css/paginas.css">
   <link rel="stylesheet" href="/css/tema.css">
+  <!-- Metricool: código de seguimiento oficial, escrito en el HTML para que Metricool lo detecte -->
+  <script>function loadScript(a){{var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}}loadScript(function(){{beTracker.t({{hash:"350df9e5fe8ae50973d8fddcf9b16c76"}})}});</script>
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>

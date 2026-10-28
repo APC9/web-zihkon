@@ -12,7 +12,7 @@ Lo que hay en el repositorio es exactamente lo que se publica.
 | `css/secciones.css` | Estilos propios de cada sección de `index.html` (marcados con `SECCIÓN: ...`) |
 | `css/tema.css` | **Tema activo**: tema de temporada, colores personalizados y franja de anuncio. Mandan sobre `styles.css` |
 | `css/temas/` | Temas predefinidos (lista en el comentario de `css/tema.css`): estaciones, fiestas y días comerciales |
-| `js/main.js` | Comportamiento: menú móvil, preguntas frecuentes, pestañas, cookies y contador de Metricool |
+| `js/main.js` | Comportamiento: menú móvil, preguntas frecuentes, pestañas y cookies. El contador de Metricool va escrito en el `<head>` de cada página (y en `generador/generar.py`) |
 | `privacidad.html`, `cookies.html`, `seguridad.html`, `aviso-legal.html` | Textos legales |
 | `css/legal.css` | Estilos de las páginas legales |
 | `img/` | Imágenes |
