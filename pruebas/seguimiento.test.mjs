@@ -10,7 +10,9 @@ const HASH = "350df9e5fe8ae50973d8fddcf9b16c76";
 const TRACKER = "https://tracker.metricool.com/resources/be.js";
 const paginas = execFileSync("git", ["ls-files", "*.html"], { encoding: "utf8" })
   .split("\n")
-  .filter((f) => f && !f.startsWith("generador/") && !f.startsWith("_docx"));
+  .filter((f) => f && !f.startsWith("generador/") && !f.startsWith("_docx"))
+  // Sin seguimiento: sus enlaces llevan datos privados del pago o del alta.
+  .filter((f) => !["alta.html", "pago-completado.html"].includes(f));
 
 const scriptMetricool = (html) => {
   const cabeza = html.slice(0, html.indexOf("</head>"));
@@ -63,8 +65,8 @@ describe("Google Tag Manager", () => {
       const gtm = cabeza.indexOf(`'dataLayer','${GTM}'`);
       assert.ok(consentimiento > 0 && gtm > consentimiento, "consentimiento antes de GTM");
       assert.ok(gtm < cabeza.indexOf("<meta charset"), "GTM lo más arriba posible");
-      const cuerpo = html.slice(html.indexOf("<body>"));
-      assert.match(cuerpo, new RegExp(String.raw`^<body>\s*<!-- Google Tag Manager \(noscript\) -->\s*<noscript><iframe src="https://www\.googletagmanager\.com/ns\.html\?id=${GTM}"`));
+      const cuerpo = html.slice(html.search(/<body[ >]/));
+      assert.match(cuerpo, new RegExp(String.raw`^<body[^>]*>\s*<!-- Google Tag Manager \(noscript\) -->\s*<noscript><iframe src="https://www\.googletagmanager\.com/ns\.html\?id=${GTM}"`));
       assert.equal(html.split(GTM).length - 1, 2);
     });
   }
