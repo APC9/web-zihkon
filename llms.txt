@@ -22,7 +22,17 @@
 - [Perfil de Empresa en Google optimizado](https://zihkon.com/servicios/google-business-profile/): categorías, servicios, horarios, fotos y publicaciones periódicas en la ficha.
 - [Respuesta automática de reseñas de Google](https://zihkon.com/servicios/respuesta-resenas-google/): una IA responde cada reseña con el tono del negocio y avisa por WhatsApp cuando una reseña necesita la opinión del dueño.
 
+## Cómo trabajamos
+
+- Cada mes Zihkon prepara el calendario de contenido del negocio (qué se publica, cuándo y en qué red) y lo envía por WhatsApp.
+- El dueño lo aprueba o pide cambios con un mensaje. Nada se publica sin su SÍ.
+- Zihkon crea cada pieza (publicaciones, carruseles, reels e historias) y la publica en Instagram, Facebook, TikTok y el Perfil de Empresa en Google.
+- Ejemplo real: la serie «Datos Zihkon». El Nº 7, «¿Por qué un 4,7★ vende más que un 5★ perfecto?», es un reel de 52 s y un carrusel de 7 diapositivas basados en el [informe del Spiegel Research Center de la Universidad Northwestern (2017)](https://spiegel.medill.northwestern.edu/wp-content/uploads/sites/2/2021/04/Online-Reviews-Whitepaper.pdf): la probabilidad de compra sube con la nota media hasta 4,0-4,7 estrellas y baja al acercarse a 5,0. Mensaje: no tener miedo a la reseña mala, sino a no contestarla.
+
 ## Planes (sin IVA, sin permanencia)
+
+Los planes se ven en cada página de servicio, por ejemplo en [Gestión de redes sociales](https://zihkon.com/servicios/gestion-redes-sociales/#precios-titulo).
+
 
 - Google Local: 99 €/mes. Optimización completa del Perfil de Empresa en Google, 4 publicaciones al mes en la ficha, respuesta automática de reseñas e informe mensual por WhatsApp.
 - Redes + Google: 249 €/mes. Todo lo de Google Local, gestión de Instagram y Facebook, 12 publicaciones al mes (8 publicaciones y 4 reels) y plan de contenido mensual.

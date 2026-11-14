@@ -20,7 +20,7 @@ DOMINIO = 'https://zihkon.com'
 WHATSAPP = 'https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%3A%20'
 PERFIL_GOOGLE = 'https://share.google/FHlGM56gGLZ9m7Grn'
 
-# Los mismos planes que la sección #precios de index.html (sin IVA). Si cambian allí, cámbialos aquí.
+# Planes (sin IVA). Se muestran en las páginas interiores (bloque #precios-titulo); la portada ya no tiene sección de precios.
 PLANES = {
     'google': {'nombre': 'Google Local', 'precio': 99,
                'incluye': ['Optimización completa de tu Perfil de Empresa en Google', '4 publicaciones al mes en tu ficha de Google',
@@ -127,7 +127,7 @@ def bloque_precios(plan_recomendado):
     return ('<section class="bloque bloque--alterno" aria-labelledby="precios-titulo"><div class="wrap">'
             '<h2 class="section-title" id="precios-titulo">Precios</h2>'
             '<p class="section-lede">Sin permanencia y sin IVA. 15 % de descuento con pago anual. '
-            '<a href="/#precios">Ver todos los detalles de los planes</a>.</p>'
+            'Las cuentas siguen siendo tuyas.</p>'
             f'<ul class="planes">{"".join(tarjetas_plan)}</ul></div></section>')
 
 
@@ -144,7 +144,7 @@ def bloque_complemento(clave):
             '<h2 class="section-title" id="precios-titulo">Precio</h2>'
             '<p class="section-lede">Se contrata sola o se suma a cualquier plan. Sin permanencia y sin IVA. '
             '<a href="/automatizaciones/">Ver todas las automatizaciones</a> o, si prefieres que lo hagamos nosotros, '
-            '<a href="/#precios">mira los planes</a>.</p>'
+            '<a href="/servicios/gestion-redes-sociales/#precios-titulo">mira los planes</a>.</p>'
             f'<ul class="planes planes--uno"><li class="plan"><h3>{e(c["nombre"])}</h3>'
             f'<p class="plan-precio"><strong>{c["cuota"]} €</strong>/mes</p><p class="plan-alta">{alta}</p></li></ul>'
             f'{nota}</div></section>')
@@ -243,6 +243,10 @@ def montar(p, por_url):
     f = datetime.date.fromisoformat(p['fecha_mod'])
     fecha_visible = f'{f.day} de {MESES[f.month - 1]} de {f.year}'
     faq = bloque_faq(p['faq']) if p.get('faq') else ''
+    # 2.º botón del inicio: a los precios de la propia página si los tiene; si no, a los servicios
+    boton2_url, boton2_texto = ('#precios-titulo', 'Ver precios') if precios else ('/servicios/', 'Ver servicios')
+    if p.get('url') == '/servicios/':
+        boton2_url, boton2_texto = '/automatizaciones/', 'Ver automatizaciones'
 
     return f'''<!doctype html>
 <html lang="es">
@@ -299,7 +303,7 @@ def montar(p, por_url):
         <a href="/servicios/">Servicios</a>
         <a href="/automatizaciones/">Automatizaciones</a>
         <a href="/sectores/">Sectores</a>
-        <a href="/#precios">Precios</a>
+        <a href="/#calendario">Contenido</a>
         <a href="/#quien">Quién soy</a>
       </div>
       <a class="button" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">Auditoría gratis{NUEVA_WA}</a>
@@ -317,7 +321,7 @@ def montar(p, por_url):
         <p class="pagina-firma">Por <a href="/#quien">Alberto Peña</a>, fundador de Zihkon · Actualizado el <time datetime="{p["fecha_mod"]}">{fecha_visible}</time></p>
         <div class="hero-actions">
           <a class="button" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pide tu auditoría gratis{NUEVA_WA}</a>
-          <a class="button button--light" href="/#precios">Ver precios</a>
+          <a class="button button--light" href="{boton2_url}">{boton2_texto}</a>
         </div>
       </div>
     </section>
@@ -341,7 +345,7 @@ def montar(p, por_url):
     <div class="wrap">
       <div class="footer-inner">
         <a class="brand" href="/"><picture><source srcset="/img/zihkon-logo.webp" type="image/webp"><img src="/img/zihkon-logo.png" alt="" width="54" height="28" loading="lazy"></picture><span>ZIHKON®</span></a>
-        <nav class="footer-links" aria-label="Enlaces del pie"><a href="/servicios/">Servicios</a><a href="/automatizaciones/">Automatizaciones</a><a href="/#precios">Precios</a><a href="/sectores/">Sectores</a><a href="/plantillas/respuestas-resenas/">Respuestas a reseñas</a><a href="/estepona-marbella/">Estepona y Marbella</a><a href="/#contacto">Contacto</a></nav>
+        <nav class="footer-links" aria-label="Enlaces del pie"><a href="/servicios/">Servicios</a><a href="/automatizaciones/">Automatizaciones</a><a href="/sectores/">Sectores</a><a href="/plantillas/respuestas-resenas/">Respuestas a reseñas</a><a href="/estepona-marbella/">Estepona y Marbella</a><a href="/#contacto">Contacto</a></nav>
         <p>Gestión de redes sociales, Perfil de Empresa en Google y reseñas para negocios locales. Desde Estepona, en la Costa del Sol, para toda España.</p>
         <p class="footer-nap">Zihkon · Estepona (Málaga) · <a href="tel:+34604183676">+34 604 18 36 76</a> · <a href="{PERFIL_GOOGLE}" target="_blank" rel="noopener">Perfil de Google{NUEVA_PESTANA}</a></p>
       </div>

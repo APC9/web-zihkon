@@ -120,21 +120,25 @@
 .pain-head .section-title { font-size: clamp(2.6rem, 1.4rem + 4vw, 5rem); }
 .avisos { display: grid; gap: var(--espacio-3); margin: 0; padding: 0; list-style: none; }
 .aviso { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 4px var(--espacio-4); padding: var(--espacio-5); border: 1px solid var(--color-borde); border-radius: 22px; background: var(--color-superficie); box-shadow: var(--sombra-sm); transition: transform var(--transicion), box-shadow var(--transicion); }
-/* Hover con luz, como las publicaciones del inicio: sube, borde y halo del color de su tema, destello que cruza y el resto se atenúa */
-.aviso { --luz: var(--color-primario); overflow: hidden; transition: transform .45s cubic-bezier(.22, 1, .36, 1), box-shadow .45s, border-color .45s, opacity .45s, filter .45s; }
+/* Luz con el scroll: js/portada.js da a cada notificación un --foco de 0 a 1 según lo cerca que está del centro
+   de la pantalla (suavizado en cada fotograma). Así una se apaga poco a poco mientras la siguiente se enciende.
+   Se usan translate/scale y filter (no transform/opacity) para no pisar la animación de entrada. */
+.aviso { --luz: var(--color-primario); --foco: 0; overflow: hidden; z-index: calc(var(--foco) * 2); translate: 0 calc(var(--foco) * -4px); scale: calc(1 + var(--foco) * .05);
+  border-color: color-mix(in srgb, var(--luz) calc(var(--foco) * 50%), var(--color-borde));
+  box-shadow: var(--sombra-sm), 0 26px 50px -30px color-mix(in srgb, var(--luz) calc(var(--foco) * 45%), transparent), 0 0 0 1px color-mix(in srgb, var(--luz) calc(var(--foco) * 22%), transparent), 0 0 30px -16px color-mix(in srgb, var(--luz) calc(var(--foco) * 100%), transparent);
+  filter: saturate(calc(.75 + var(--foco) * .25)) opacity(calc(.8 + var(--foco) * .2)); }
 .aviso:nth-child(1) { --luz: #1a73e8; }
 .aviso:nth-child(2) { --luz: #f5a623; }
 .aviso:nth-child(3) { --luz: #e1306c; }
 .aviso:nth-child(4) { --luz: #13a35c; }
 .aviso:nth-child(5) { --luz: #7c4dff; }
 .aviso:nth-child(6) { --luz: var(--buganvilla); }
-.avisos .aviso:hover, .con-movimiento .avisos .aviso[data-aparece].is-visto:hover { z-index: 1; transform: translateY(-6px) scale(1.015); border-color: color-mix(in srgb, var(--luz) 65%, transparent); box-shadow: 0 30px 60px -28px color-mix(in srgb, var(--luz) 55%, #0f1c45), 0 0 0 1px color-mix(in srgb, var(--luz) 35%, transparent), 0 0 36px -12px var(--luz); }
-.avisos:has(.aviso:hover) .aviso:not(:hover) { opacity: .6; filter: saturate(.6); }
-.aviso::before { position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, color-mix(in srgb, var(--luz) 22%, transparent) 46%, #ffffffb3 50%, color-mix(in srgb, var(--luz) 22%, transparent) 54%, transparent 65%); transform: translateX(-120%); pointer-events: none; content: ""; }
-.aviso:hover::before { transform: translateX(120%); transition: transform .9s cubic-bezier(.22, 1, .36, 1); }
-.aviso-app svg { transition: background-color .45s, box-shadow .45s, transform .45s cubic-bezier(.34, 1.56, .64, 1); }
-.aviso:hover .aviso-app svg { background: var(--luz); transform: scale(1.12); box-shadow: 0 0 0 2px var(--color-superficie), 0 0 0 4px var(--luz), 0 0 18px var(--luz); }
-.aviso:hover::after { background: var(--luz); animation: latido 1.2s infinite; }
+/* Sin el script (o antes de medir) todas se ven normales */
+.avisos:not(.con-foco) .aviso { filter: none; }
+/* El destello cruza la tarjeta a medida que se acerca al centro */
+.aviso::before { position: absolute; inset: 0; background: linear-gradient(105deg, transparent 35%, color-mix(in srgb, var(--luz) 16%, transparent) 46%, #ffffff8c 50%, color-mix(in srgb, var(--luz) 16%, transparent) 54%, transparent 65%); transform: translateX(calc(-120% + var(--foco) * 240%)); opacity: calc(1 - var(--foco) * var(--foco)); pointer-events: none; content: ""; }
+.aviso .aviso-app svg { background: color-mix(in srgb, var(--luz) calc(var(--foco) * 100%), var(--color-primario)); transform: scale(calc(1 + var(--foco) * .08)); box-shadow: 0 0 0 calc(var(--foco) * 2px) var(--color-superficie), 0 0 0 calc(var(--foco) * 4px) color-mix(in srgb, var(--luz) 70%, transparent), 0 0 calc(var(--foco) * 14px) color-mix(in srgb, var(--luz) calc(var(--foco) * 70%), transparent); }
+.aviso.is-foco::after { background: var(--luz); animation: latido 1.8s infinite; }
 .aviso::after { position: absolute; top: 18px; right: 18px; width: 10px; height: 10px; border-radius: 50%; background: var(--buganvilla); box-shadow: 0 0 0 4px color-mix(in srgb, var(--buganvilla) 18%, transparent); content: ""; }
 .aviso-app { display: inline-flex; grid-column: 1 / -1; align-items: center; gap: 8px; color: var(--color-texto-suave); font-size: var(--texto-xs); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 .aviso-app svg { width: 26px; height: 26px; padding: 5px; border-radius: 8px; background: var(--color-primario); color: #fff; }
@@ -143,6 +147,14 @@
 
 /* ---------- Recorrido de servicios (escena 3D con scroll) ---------- */
 .viaje { z-index: 2; padding: calc(var(--espacio-seccion) + var(--radio-telon)) 0; background: var(--noche); }
+/* Luz de fondo que sigue al cursor (js/portada.js, luzViaje). Va detrás del texto; con 3D se suma a la escena */
+.viaje-fijo { position: relative; isolation: isolate; }
+.viaje-fijo::before { position: absolute; z-index: -1; inset: 0; background:
+  radial-gradient(240px circle at var(--luz-x, 50%) var(--luz-y, 50%), color-mix(in srgb, var(--sol) 50%, transparent), transparent 70%),
+  radial-gradient(540px circle at var(--luz-x, 50%) var(--luz-y, 50%), color-mix(in srgb, var(--color-primario) 85%, transparent), transparent 65%);
+  -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 85%, transparent); mask-image: linear-gradient(transparent, #000 18%, #000 85%, transparent);
+  opacity: 0; pointer-events: none; transition: opacity 1.2s cubic-bezier(.25, 1, .5, 1); content: ""; }
+.viaje-fijo.luz-activa::before { opacity: 1; }
 .viaje-cabecera { display: flex; align-items: center; justify-content: flex-start; gap: var(--espacio-5); margin-bottom: var(--espacio-6); }
 .viaje-cabecera .section-title { margin: 0; }
 .viaje-progreso { display: none; align-items: center; gap: 12px; margin: 0; color: var(--color-texto-invertido-suave); font: var(--texto-lg) var(--fuente-titulos); }
@@ -178,6 +190,14 @@
 .pricing { padding: var(--espacio-seccion) 0; }
 
 /* ---------- Calendario de contenido ---------- */
+/* Estrella dorada 3D (js/estrella3d.js): cada sección clara lleva un lienzo fijo detrás de su contenido */
+.cielo-estrella { position: absolute; z-index: 0; inset: 0; overflow: clip; border-radius: inherit; pointer-events: none; }
+.cielo-estrella canvas { position: sticky; top: 0; display: block; width: 100%; height: 100vh; }
+.cielo-estrella ~ * { position: relative; z-index: 1; }
+.cal-estrellas { display: flex; justify-content: center; gap: clamp(10px, 2vw, 24px); margin-top: var(--espacio-8); }
+.cal-estrella { display: grid; width: clamp(44px, 5.5vw, 72px); aspect-ratio: 1; place-items: center; }
+.cal-estrella svg { width: 100%; fill: #f2b42a; filter: drop-shadow(0 6px 14px #f2b42a66); transition: opacity .6s; }
+.con-estrella .cal-estrella svg { opacity: 0; }
 .cal-cabecera { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: end; gap: var(--espacio-5) var(--espacio-8); margin-bottom: var(--espacio-7); }
 .cal-cabecera .section-title { margin: 0; font-size: clamp(2.4rem, 1.3rem + 3.6vw, 4.5rem); }
 .cal-cabecera .section-lede { margin: 0; }
@@ -380,7 +400,7 @@ button.cal-pieza:focus-visible { outline: 3px solid var(--sol); outline-offset: 
 /* Bloques que aparecen al llegar */
 .con-movimiento [data-aparece] { opacity: 0; transform: translateY(36px); transition: opacity .8s, transform 1s cubic-bezier(.22, 1, .36, 1); transition-delay: calc(var(--i, 0) * 90ms); }
 .con-movimiento [data-aparece].is-visto { opacity: 1; transform: none; }
-.con-movimiento .aviso[data-aparece] { transform: translateY(48px) scale(.94); transform-origin: 50% 0; }
+.con-movimiento .aviso[data-aparece] { transform: translateY(48px) scale(.94); transform-origin: 50% 0; transition: opacity .8s, transform 1s cubic-bezier(.22, 1, .36, 1); }
 .con-movimiento .aviso[data-aparece].is-visto { transform: none; }
 /* Foto de Alberto: se descubre con una cortina */
 .con-movimiento .about-foto picture { display: block; clip-path: inset(100% 0 0 0); transition: clip-path 1.3s cubic-bezier(.77, 0, .18, 1); }
@@ -467,5 +487,5 @@ html.lenis, html.lenis body { height: auto; }
 
 /* "Reducir movimiento": nada se mueve solo (las animaciones de bucle se paran) */
 @media (prefers-reduced-motion: reduce) {
-  .final-cinta, .launch-punto, .price-card--featured, .hero-scroll span::after { animation: none !important; }
+  .final-cinta, .launch-punto, .aviso.is-foco::after, .price-card--featured, .hero-scroll span::after { animation: none !important; }
 }

@@ -83,6 +83,10 @@ if (conMovimiento) {
   escribirChat();
   iniciar3D();
 }
+// Estos efectos funcionan siempre, también con "reducir movimiento" activado en el sistema
+focoAvisos();
+luzViaje();
+estrellaCalendario();
 
 // ---------- Calendario de contenido: reel y carrusel reales ----------
 function calendario() {
@@ -126,6 +130,35 @@ function calendario() {
   }
 }
 calendario();
+
+// ---------- ¿Te suena?: se enciende la notificación que pasa por el centro de la pantalla ----------
+function focoAvisos() {
+  const lista = document.querySelector('.avisos');
+  const avisos = [...document.querySelectorAll('.aviso')];
+  if (!lista || !avisos.length) return;
+  lista.classList.add('con-foco');
+  const valores = avisos.map(() => 0);
+  let visible = false, bucle = 0, antes = 0;
+  // Curva suave: 1 en el centro de la pantalla, 0 a ~22 % de distancia (más o menos una tarjeta)
+  const campana = (d) => { const x = Math.min(1, d / Math.max(180, innerHeight * .22)); return Math.cos(x * Math.PI / 2) ** 2; };
+  const paso = (t) => {
+    bucle = visible ? requestAnimationFrame(paso) : 0;
+    const dt = Math.min(.05, (t - (antes || t)) / 1000); antes = t;
+    const k = 1 - Math.exp(-dt * 7); // seguimiento suave (independiente de los fps)
+    const centro = innerHeight * .55;
+    avisos.forEach((a, i) => {
+      const r = a.getBoundingClientRect();
+      const meta = campana(Math.abs(r.top + r.height / 2 - centro));
+      const v = valores[i] += (meta - valores[i]) * k;
+      a.style.setProperty('--foco', v.toFixed(3));
+      a.classList.toggle('is-foco', v > .6);
+    });
+  };
+  new IntersectionObserver(([e]) => {
+    visible = e.isIntersecting;
+    if (visible && !bucle) { antes = 0; bucle = requestAnimationFrame(paso); }
+  }, { rootMargin: '100px 0px' }).observe(lista);
+}
 
 // ---------- Títulos y bloques que aparecen ----------
 function prepararAnimaciones() {
@@ -199,6 +232,55 @@ function magneticos() {
     cierre.style.setProperty('--x', `${((e.clientX - r.left) / r.width) * 100}%`);
     cierre.style.setProperty('--y', `${((e.clientY - r.top) / r.height) * 100}%`);
   });
+}
+
+// ---------- Qué hacemos por ti: una luz de fondo que sigue al cursor (con retardo suave) ----------
+function luzViaje() {
+  const viaje = document.querySelector('.viaje');
+  const fijo = viaje?.querySelector('.viaje-fijo');
+  if (!fijo || !matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  let x = 0, y = 0, ox = 0, oy = 0, girando = false;
+  const paso = () => {
+    x += (ox - x) * .08; y += (oy - y) * .08;
+    fijo.style.setProperty('--luz-x', `${x.toFixed(1)}px`);
+    fijo.style.setProperty('--luz-y', `${y.toFixed(1)}px`);
+    girando = Math.abs(ox - x) + Math.abs(oy - y) > .5;
+    if (girando) requestAnimationFrame(paso);
+  };
+  viaje.addEventListener('pointermove', (e) => {
+    const r = fijo.getBoundingClientRect();
+    ox = e.clientX - r.left; oy = e.clientY - r.top;
+    if (!fijo.classList.contains('luz-activa')) { x = ox; y = oy; fijo.classList.add('luz-activa'); }
+    if (!girando) { girando = true; requestAnimationFrame(paso); }
+  }, { passive: true });
+  viaje.addEventListener('pointerleave', () => fijo.classList.remove('luz-activa'));
+}
+
+// ---------- Estrella dorada 3D que recorre las secciones claras (js/estrella3d.js) ----------
+async function estrellaCalendario() {
+  const calendario = document.getElementById('calendario');
+  const problema = document.getElementById('problema');
+  const cierre = document.getElementById('llamada-final');
+  const huecos = [...document.querySelectorAll('.cal-estrella')];
+  const destino = document.querySelector('.cal-estrella--hueco');
+  if (!calendario || !problema || !cierre || !destino || !hayWebGL() || navigator.connection?.saveData) return;
+  // Secciones claras visibles: cada una lleva detrás de su contenido un lienzo donde se ve la estrella
+  const claras = [...document.querySelectorAll('main > section:not(.oscuro):not([hidden])')];
+  const cielos = claras.map((sec) => {
+    const cielo = document.createElement('div');
+    cielo.className = 'cielo-estrella'; cielo.setAttribute('aria-hidden', 'true');
+    cielo.append(document.createElement('canvas'));
+    sec.prepend(cielo);
+    return cielo;
+  });
+  try {
+    const m = await import('./estrella3d.js');
+    m.iniciar({ calendario, problema, cierre, claras, huecos, destino });
+    raiz.classList.add('con-estrella');
+  } catch (error) {
+    console.warn('Zihkon: la estrella 3D no ha podido arrancar', error);
+    cielos.forEach((c) => c.remove());
+  }
 }
 
 // ---------- El mensaje de la auditoría se escribe solo ----------
