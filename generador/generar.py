@@ -16,17 +16,29 @@ import datetime, html, json, os, re, sys
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARPETA_PAGINAS = os.path.join(RAIZ, 'generador', 'paginas')
 DOMINIO = 'https://zihkon.com'
-WHATSAPP = 'https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita%20y%20la%20prueba%20gratis%20de%207%20d%C3%ADas.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%20del%20negocio%3A%20'
+# Mensaje de la auditoría gratuita: el mismo que en todos los botones de index.html.
+WHATSAPP = 'https://wa.me/34604183676?text=Hola%2C%20quiero%20mi%20auditor%C3%ADa%20gratuita.%0ANombre%20del%20negocio%3A%20%0ADirecci%C3%B3n%3A%20'
 PERFIL_GOOGLE = 'https://share.google/FHlGM56gGLZ9m7Grn'
 
-# Los mismos planes que la sección #precios de index.html. Si cambian allí, cámbialos aquí.
+# Los mismos planes que la sección #precios de index.html (sin IVA). Si cambian allí, cámbialos aquí.
 PLANES = {
-    'presencia': {'nombre': 'Presencia Local', 'precio': 79, 'alta': 190,
-                  'incluye': ['Auditoría gratis', 'Respuesta automática de reseñas', 'Publicación semanal en Google']},
-    'web': {'nombre': 'Web + Reseñas en piloto automático', 'precio': 120, 'alta': 590,
-            'incluye': ['Auditoría gratis', 'Web inteligente gestionada por WhatsApp', 'Respuesta automática de reseñas']},
-    '360': {'nombre': '360°', 'precio': 249, 'alta': 790,
-            'incluye': ['Todo lo del plan Web + Reseñas', 'Publicación en Instagram, Facebook, TikTok y Google']},
+    'google': {'nombre': 'Google Local', 'precio': 99,
+               'incluye': ['Optimización completa de tu Perfil de Empresa en Google', '4 publicaciones al mes en tu ficha de Google',
+                           'Respuesta automática de reseñas', 'Informe mensual sencillo por WhatsApp']},
+    'redes': {'nombre': 'Redes + Google', 'precio': 249,
+              'incluye': ['Todo lo de Google Local', 'Gestión de Instagram y Facebook',
+                          '12 publicaciones al mes creadas por nosotros (8 publicaciones y 4 reels)', 'Plan de contenido mensual']},
+    'total': {'nombre': 'Presencia Total', 'precio': 399,
+              'incluye': ['Todo lo de Redes + Google', 'También TikTok', '20 publicaciones al mes (12 publicaciones y 8 reels)',
+                          'Una sesión de fotos y vídeo al mes en tu negocio']},
+}
+
+# Los mismos complementos (automatizaciones) que la tabla de la sección #automatizaciones de index.html.
+COMPLEMENTOS = {
+    'resenas': {'nombre': 'Respuesta automática de reseñas', 'alta': None, 'cuota': 39},
+    'publicar': {'nombre': 'Publica tú en tus redes desde WhatsApp', 'alta': 49, 'cuota': 49},
+    'web': {'nombre': 'Web gestionada por WhatsApp', 'alta': 290, 'cuota': 39,
+            'nota': 'La cuota incluye alojamiento, mantenimiento y el editor por WhatsApp.'},
 }
 
 # Los mismos vídeos que la sección #productos de index.html.
@@ -45,6 +57,7 @@ VIDEOS = {
 ICONO_WA = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/><path d="M8.5 8.2c.2-.5.5-.5.8-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3 0 .5-.1.7l-.5.6c-.2.2-.2.4 0 .7.6 1 1.4 1.8 2.5 2.3.3.1.5.1.7-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1.2-.8 1.6-.5.4-1.2.6-2 .4-1-.2-2.3-.8-3.6-2-1.2-1.1-2-2.5-2.2-3.4-.3-.9 0-1.8.4-2.3Z"/></svg>'
 ICONO_MAS = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>'
 NUEVA_PESTANA = '<span class="sr-only"> (se abre en una pestaña nueva)</span>'
+NUEVA_WA = '<span class="sr-only"> (abre WhatsApp en una pestaña nueva)</span>'
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 
 # Reseña real del Perfil de Empresa en Google (la misma que en index.html). Sin datos estructurados:
@@ -109,13 +122,32 @@ def bloque_precios(plan_recomendado):
         incluye = ''.join(f'<li>{e(x)}</li>' for x in plan['incluye'])
         tarjetas_plan.append(
             f'<li class="plan{" plan--destacado" if destacado else ""}">{insignia}<h3>{e(plan["nombre"])}</h3>'
-            f'<p class="plan-precio"><strong>{plan["precio"]} €</strong>/mes</p><p class="plan-alta">Alta: {plan["alta"]} €</p>'
+            f'<p class="plan-precio"><strong>{plan["precio"]} €</strong>/mes</p>'
             f'<ul>{incluye}</ul></li>')
     return ('<section class="bloque bloque--alterno" aria-labelledby="precios-titulo"><div class="wrap">'
             '<h2 class="section-title" id="precios-titulo">Precios</h2>'
-            '<p class="section-lede">Sin permanencia y sin IVA. La primera factura incluye el alta y el primer mes. '
-            '<a href="/#precios">Ver todos los detalles y los servicios sueltos</a>.</p>'
+            '<p class="section-lede">Sin permanencia y sin IVA. 15 % de descuento con pago anual. '
+            '<a href="/#precios">Ver todos los detalles de los planes</a>.</p>'
             f'<ul class="planes">{"".join(tarjetas_plan)}</ul></div></section>')
+
+
+def precio_complemento(c):
+    alta = f'{c["alta"]} € de alta' if c['alta'] else 'sin alta'
+    return f'{c["cuota"]} €/mes, {alta}'
+
+
+def bloque_complemento(clave):
+    c = COMPLEMENTOS[clave]
+    alta = f'Alta: {c["alta"]} €' if c['alta'] else 'Sin alta'
+    nota = f'<p class="nota">{e(c["nota"])}</p>' if c.get('nota') else ''
+    return ('<section class="bloque bloque--alterno" aria-labelledby="precios-titulo"><div class="wrap">'
+            '<h2 class="section-title" id="precios-titulo">Precio</h2>'
+            '<p class="section-lede">Se contrata sola o se suma a cualquier plan. Sin permanencia y sin IVA. '
+            '<a href="/automatizaciones/">Ver todas las automatizaciones</a> o, si prefieres que lo hagamos nosotros, '
+            '<a href="/#precios">mira los planes</a>.</p>'
+            f'<ul class="planes planes--uno"><li class="plan"><h3>{e(c["nombre"])}</h3>'
+            f'<p class="plan-precio"><strong>{c["cuota"]} €</strong>/mes</p><p class="plan-alta">{alta}</p></li></ul>'
+            f'{nota}</div></section>')
 
 
 def bloque_video(clave):
@@ -160,6 +192,11 @@ def datos_google(p, por_url):
         if p.get('plan'):
             plan = PLANES[p['plan']]
             servicio['offers'] = {'@type': 'Offer', 'name': plan['nombre'], 'price': str(plan['precio']), 'priceCurrency': 'EUR'}
+        if p.get('complemento'):
+            c = COMPLEMENTOS[p['complemento']]
+            servicio['offers'] = {'@type': 'Offer', 'name': c['nombre'], 'price': str(c['cuota']), 'priceCurrency': 'EUR',
+                                  'priceSpecification': {'@type': 'UnitPriceSpecification', 'price': str(c['cuota']),
+                                                         'priceCurrency': 'EUR', 'unitText': 'MONTH', 'valueAddedTaxIncluded': False}}
         grafo.append(servicio)
     elif tipo == 'hub':
         grafo.append({'@type': 'CollectionPage', 'name': p['h1'], 'url': url, 'description': p['description'],
@@ -185,8 +222,13 @@ def datos_google(p, por_url):
 def montar(p, por_url):
     cuerpo = re.sub(r'\{\{lista:([^}]+)\}\}', lambda m: tarjetas(
         [u for u in por_url if u.startswith(m.group(1)) and u != m.group(1) and u.count('/') == m.group(1).count('/') + 1], por_url), p['cuerpo'])
+    # {{tarjetas:/url-1/,/url-2/}}: tarjetas de enlace elegidas a mano, en ese orden
+    cuerpo = re.sub(r'\{\{tarjetas:([^}]+)\}\}', lambda m: tarjetas([u.strip() for u in m.group(1).split(',')], por_url), cuerpo)
     for clave in VIDEOS:
         cuerpo = cuerpo.replace('{{video:%s}}' % clave, bloque_video(clave))
+    # {{precio:clave}}: precio de un complemento ("49 €/mes, 49 € de alta")
+    for clave, c in COMPLEMENTOS.items():
+        cuerpo = cuerpo.replace('{{precio:%s}}' % clave, precio_complemento(c))
 
     migas_html = '<li><a href="/">Inicio</a></li>' + ''.join(
         f'<li><a href="{u}">{e(por_url[u]["nombre"])}</a></li>' if u != p['url'] else f'<li><span aria-current="page">{e(p["nombre"])}</span></li>'
@@ -196,7 +238,7 @@ def montar(p, por_url):
         relacionadas = ('<section class="bloque" aria-labelledby="relacionadas-titulo"><div class="wrap">'
                         '<h2 class="section-title" id="relacionadas-titulo">También te puede interesar</h2>'
                         f'{tarjetas(p["relacionadas"], por_url)}</div></section>')
-    precios = bloque_precios(p['plan']) if p.get('plan') else ''
+    precios = bloque_precios(p['plan']) if p.get('plan') else (bloque_complemento(p['complemento']) if p.get('complemento') else '')
     testimonio = TESTIMONIO if p['tipo'] in ('servicio', 'sector', 'local') else ''
     f = datetime.date.fromisoformat(p['fecha_mod'])
     fecha_visible = f'{f.day} de {MESES[f.month - 1]} de {f.year}'
@@ -255,11 +297,12 @@ def montar(p, por_url):
       <a class="brand" href="/" aria-label="ZIHKON® (inicio)"><picture><source srcset="/img/zihkon-logo.webp" type="image/webp"><img src="/img/zihkon-logo.png" alt="ZIHKON®" width="97" height="50"></picture></a>
       <div class="nav-links" id="nav-links">
         <a href="/servicios/">Servicios</a>
+        <a href="/automatizaciones/">Automatizaciones</a>
         <a href="/sectores/">Sectores</a>
         <a href="/#precios">Precios</a>
         <a href="/#quien">Quién soy</a>
       </div>
-      <a class="button" href="/#contacto">Pide tu auditoría</a>
+      <a class="button" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">Auditoría gratis{NUEVA_WA}</a>
       <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </nav>
   </header>
@@ -273,8 +316,8 @@ def montar(p, por_url):
         <p class="pagina-lede">{p["lede"]}</p>
         <p class="pagina-firma">Por <a href="/#quien">Alberto Peña</a>, fundador de Zihkon · Actualizado el <time datetime="{p["fecha_mod"]}">{fecha_visible}</time></p>
         <div class="hero-actions">
-          <a class="button" href="/#contacto">Auditoría y 7 días gratis</a>
-          <a class="button button--light button--wa" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pregunta por WhatsApp{NUEVA_PESTANA}</a>
+          <a class="button" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pide tu auditoría gratis{NUEVA_WA}</a>
+          <a class="button button--light" href="/#precios">Ver precios</a>
         </div>
       </div>
     </section>
@@ -285,11 +328,10 @@ def montar(p, por_url):
 {relacionadas}
     <section class="final-cta" aria-labelledby="final-title">
       <div class="wrap final-inner">
-        <h2 class="section-title" id="final-title">Empieza con una auditoría gratis y 7 días de prueba.</h2>
-        <p>Te decimos qué está frenando tu negocio en Google y cómo arreglarlo desde WhatsApp.</p>
+        <h2 class="section-title" id="final-title">Empieza con una auditoría gratis.</h2>
+        <p>Te decimos qué está frenando tu negocio en Google y en redes, y cómo lo arreglamos.</p>
         <div class="final-actions">
-          <a class="button button--lime" href="/#contacto">Auditoría y 7 días gratis</a>
-          <a class="button button--ghost" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pídela por WhatsApp{NUEVA_PESTANA}</a>
+          <a class="button button--lime" href="{WHATSAPP}" target="_blank" rel="noopener noreferrer">{ICONO_WA}Pide tu auditoría gratis{NUEVA_WA}</a>
         </div>
       </div>
     </section>
@@ -299,8 +341,8 @@ def montar(p, por_url):
     <div class="wrap">
       <div class="footer-inner">
         <a class="brand" href="/"><picture><source srcset="/img/zihkon-logo.webp" type="image/webp"><img src="/img/zihkon-logo.png" alt="" width="54" height="28" loading="lazy"></picture><span>ZIHKON®</span></a>
-        <nav class="footer-links" aria-label="Enlaces del pie"><a href="/servicios/">Servicios</a><a href="/sectores/">Sectores</a><a href="/plantillas/respuestas-resenas/">Respuestas a reseñas</a><a href="/estepona-marbella/">Estepona y Marbella</a><a href="/#contacto">Contacto</a></nav>
-        <p>Tu web, tus redes y tus reseñas de Google, desde WhatsApp. Para negocios de toda España.</p>
+        <nav class="footer-links" aria-label="Enlaces del pie"><a href="/servicios/">Servicios</a><a href="/automatizaciones/">Automatizaciones</a><a href="/#precios">Precios</a><a href="/sectores/">Sectores</a><a href="/plantillas/respuestas-resenas/">Respuestas a reseñas</a><a href="/estepona-marbella/">Estepona y Marbella</a><a href="/#contacto">Contacto</a></nav>
+        <p>Gestión de redes sociales, Perfil de Empresa en Google y reseñas para negocios locales. Desde Estepona, en la Costa del Sol, para toda España.</p>
         <p class="footer-nap">Zihkon · Estepona (Málaga) · <a href="tel:+34604183676">+34 604 18 36 76</a> · <a href="{PERFIL_GOOGLE}" target="_blank" rel="noopener">Perfil de Google{NUEVA_PESTANA}</a></p>
       </div>
       <div class="footer-bottom">

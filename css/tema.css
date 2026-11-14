@@ -32,7 +32,7 @@
       Cambiar el texto:  --tema-anuncio: "🎉 Nuevo horario de verano";
       Quitar la franja:  --tema-anuncio: none;
    ========================================================= */
-@import url("temas/halloween.css");
+@import url("temas/original.css");
 
 :root {
   /* Colores personalizados (opcional). Ejemplos:

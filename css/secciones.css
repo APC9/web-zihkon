@@ -5,7 +5,7 @@
    variables de css/styles.css (y del tema activo en css/tema.css).
    ========================================================= */
 
-/* ---------- Conversaciones de WhatsApp (hero y productos) ---------- */
+/* ---------- Conversaciones de WhatsApp (páginas interiores) ---------- */
 .msg { max-width: 84%; margin: 0; padding: 8px 12px; border-radius: var(--radio-burbuja); box-shadow: 0 1px 1px #0f1c4514; color: var(--color-texto); font-size: 14px; line-height: 1.4; }
 .msg--in { align-self: flex-start; border-top-left-radius: 4px; background: var(--color-chat-recibido); }
 .msg--out { align-self: flex-end; border-top-right-radius: 4px; background: var(--color-chat-enviado); }
@@ -19,43 +19,21 @@
 .hero-lede { max-width: 34em; margin: 0; color: var(--color-texto-suave); font-size: var(--texto-md); line-height: 1.55; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--espacio-3); margin-top: var(--espacio-6); }
 
-/* Demostración: un WhatsApp cambia el horario de una web de ejemplo.
-   Es la única animación automática de la página: se reproduce una vez. */
-.demo { position: relative; z-index: 2; margin: 0; }
-.demo-stage { display: grid; }
-.demo-chat { width: min(100%, 380px); overflow: hidden; border-radius: 24px; background: var(--color-chat-fondo); box-shadow: var(--sombra-lg); }
-.demo-head { display: flex; align-items: center; gap: var(--espacio-3); margin: 0; padding: 14px 18px; background: var(--color-primario-oscuro); color: var(--color-texto-invertido); font-weight: 700; }
-.demo-head small { display: block; color: var(--color-texto-invertido-suave); font-size: 12px; font-weight: 400; }
-.demo-avatar { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: var(--color-acento); color: var(--color-primario-oscuro); font: 18px var(--fuente-titulos); }
-.demo-msgs { display: flex; flex-direction: column; gap: var(--espacio-2); padding: var(--espacio-5) var(--espacio-4) 88px; }
-/* La tarjeta de la web solo tapa el hueco vacío del final del chat */
-.demo-site { position: relative; justify-self: end; width: min(290px, 78%); margin-top: -64px; padding: var(--espacio-4) var(--espacio-5) var(--espacio-5); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); box-shadow: var(--sombra-lg); }
-.demo-url { display: flex; align-items: center; gap: var(--espacio-2); margin: 0 0 var(--espacio-4); padding: 6px 12px; border-radius: 999px; background: var(--color-fondo); color: var(--color-texto-suave); font-size: 12px; }
-.demo-url span { width: 8px; height: 8px; border-radius: 50%; background: var(--color-whatsapp); }
-.demo-name { margin: 0; font: var(--texto-lg)/1.1 var(--fuente-titulos); }
-.demo-label { margin: var(--espacio-3) 0 var(--espacio-1); color: var(--color-texto-suave); font-size: 12px; }
-.demo-hours { margin: 0; font-size: 14px; }
-.demo-hours div { display: flex; justify-content: space-between; gap: var(--espacio-3); margin: 0 -8px; padding: 7px 8px; border-top: 1px solid var(--color-borde); border-radius: 6px; }
-.demo-hours dt { color: var(--color-texto-suave); }
-.demo-hours dd { display: grid; margin: 0; font-weight: 700; text-align: right; }
-.demo-old, .demo-new { grid-area: 1 / 1; }
-.demo figcaption { margin-top: var(--espacio-3); color: var(--color-texto-suave); font-size: var(--texto-xs); }
-.demo-replay { margin-left: var(--espacio-2); padding: 4px 2px; border: 0; background: none; color: var(--color-primario); font-size: var(--texto-xs); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
-
-/* Secuencia: mensaje → propuesta → SÍ → la web cambia → confirmación */
-.demo-step { animation: demo-msg .45s cubic-bezier(.22, 1, .36, 1) both; }
-.demo-step--1 { animation-delay: .5s; }
-.demo-step--2 { animation-delay: 1.6s; }
-.demo-step--3 { animation-delay: 2.8s; }
-.demo-step--5 { animation-delay: 4.2s; }
-.demo-old { animation: demo-out .35s ease 3.4s both; }
-.demo-new { animation: demo-in .45s cubic-bezier(.22, 1, .36, 1) 3.5s both; }
-.demo-change { animation: demo-flash 1.8s ease 3.4s both; }
-.demo--reset * { animation: none !important; }
-@keyframes demo-msg { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
-@keyframes demo-out { to { opacity: 0; transform: translateY(-8px); } }
-@keyframes demo-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes demo-flash { 0%, 100% { background: transparent; } 15%, 55% { background: var(--color-aviso-fondo); } }
+/* Mosaico de 3 publicaciones. Sin imágenes reales son huecos de diseño (.post-hueco), no trabajos */
+.hero-mosaico { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; gap: var(--espacio-4); }
+.post { margin: 0; padding: 10px; border: 1px solid var(--color-borde); border-radius: 20px; background: var(--color-superficie); box-shadow: var(--sombra-lg); }
+.post--1 { transform: rotate(-4deg) translateY(18px); }
+.post--2 { position: relative; z-index: 1; transform: scale(1.12); }
+.post--3 { transform: rotate(4deg) translateY(18px); }
+.post-cabecera { display: flex; align-items: center; gap: var(--espacio-2); margin: 2px 2px 10px; color: var(--color-texto-suave); font-size: var(--texto-xs); font-weight: 700; }
+.post-avatar { width: 22px; height: 22px; flex: 0 0 auto; border-radius: 50%; background: var(--color-acento); }
+.post-hueco, .post-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 12px; object-fit: cover; }
+.post-hueco { background: linear-gradient(150deg, var(--color-primario) 0%, var(--color-primario-oscuro) 100%); }
+.post--1 .post-hueco { background: linear-gradient(150deg, var(--color-acento) 0%, var(--color-detalle) 100%); }
+.post--3 .post-hueco { background: linear-gradient(150deg, var(--color-detalle) 0%, var(--color-primario-oscuro) 100%); }
+.post-lineas { display: grid; gap: 6px; margin: 10px 2px 4px; }
+.post-lineas span { height: 7px; border-radius: 4px; background: var(--color-borde); }
+.post-lineas span + span { width: 60%; }
 
 /* ---------- SECCIÓN: El problema (#problema) ---------- */
 .pain { padding: var(--espacio-seccion) 0; border-block: 1px solid var(--color-borde); background: var(--color-superficie); }
@@ -64,26 +42,38 @@
 .pain-list h3 { margin: 0 0 var(--espacio-2); font-size: 1.375rem; line-height: 1.2; }
 .pain-list p { max-width: 34ch; margin: 0; color: var(--color-texto-suave); font-size: var(--texto-base); line-height: 1.55; }
 
-/* ---------- SECCIÓN: Productos (#productos) ---------- */
-.products { padding: var(--espacio-seccion) 0; background: var(--color-fondo-alterno); }
-.products-head { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: end; gap: var(--espacio-5) var(--espacio-8); margin-bottom: var(--espacio-7); }
-.products-head .section-title { margin: 0; }
-/* Pestañas (las activa js/main.js) */
-.product-tabs { display: inline-flex; gap: 4px; margin-bottom: var(--espacio-7); padding: 4px; border: 1px solid var(--color-borde); border-radius: 999px; background: var(--color-superficie); }
-.product-tabs[hidden] { display: none; }
-.product-tabs button { min-height: 44px; padding: 0 var(--espacio-5); border: 0; border-radius: 999px; background: transparent; color: var(--color-texto-suave); font-size: var(--texto-sm); font-weight: 700; cursor: pointer; transition: background-color var(--transicion), color var(--transicion); }
-.product-tabs button:hover { color: var(--color-texto); }
-.product-tabs button[aria-selected="true"] { background: var(--color-primario-oscuro); color: var(--color-texto-invertido); }
-.product-list { display: grid; gap: var(--espacio-9); }
+/* ---------- SECCIÓN: Qué hacemos por ti (#servicios) ---------- */
+.services { padding: var(--espacio-seccion) 0; background: var(--color-fondo-alterno); }
+.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-5); margin: var(--espacio-7) 0 0; padding: 0; list-style: none; }
+.service-card { display: flex; flex-direction: column; padding: var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); }
+.service-icon { width: 48px; height: 48px; margin-bottom: var(--espacio-5); padding: 11px; border-radius: 14px; background: var(--color-fondo-icono); color: var(--color-primario); }
+.service-card h3 { margin: 0 0 var(--espacio-3); font-size: var(--texto-lg); line-height: 1.2; }
+.service-card p { flex: 1; margin: 0 0 var(--espacio-5); color: var(--color-texto-suave); line-height: 1.55; }
+.service-link { color: var(--color-primario); font-size: var(--texto-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.service-link::after { content: " →"; }
+
+/* ---------- SECCIÓN: Cómo trabajamos (#como-trabajamos) ---------- */
+.steps { padding: var(--espacio-seccion) 0; }
+.steps-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-6); margin: var(--espacio-7) 0 0; padding: 0; list-style: none; counter-reset: paso; }
+.steps-list li { position: relative; padding-top: 64px; counter-increment: paso; }
+.steps-list li::before { position: absolute; top: 0; left: 0; display: grid; width: 44px; height: 44px; place-items: center; border-radius: 50%; background: var(--color-primario); color: #fff; content: counter(paso); font: 1.25rem/1 var(--fuente-titulos); }
+.steps-list h3 { margin: 0 0 var(--espacio-2); font-size: 1.375rem; line-height: 1.2; }
+.steps-list p { max-width: 34ch; margin: 0; color: var(--color-texto-suave); line-height: 1.55; }
+.steps-note { display: inline-block; margin: var(--espacio-7) 0 0; padding: var(--espacio-3) var(--espacio-5); border-radius: var(--radio-boton); background: var(--color-fondo-icono); color: var(--color-primario-oscuro); font-weight: 700; }
+
+/* ---------- SECCIÓN: Trabajos (#trabajos). Oculta hasta tener publicaciones reales ---------- */
+.trabajos { padding: var(--espacio-seccion) 0; border-top: 1px solid var(--color-borde); background: var(--color-superficie); }
+.trabajos[hidden] { display: none; }
+.trabajos-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--espacio-5); margin: var(--espacio-7) 0 0; padding: 0; list-style: none; }
+.trabajo { margin: 0; }
+.trabajo figcaption { margin-top: var(--espacio-2); color: var(--color-texto-suave); font-size: var(--texto-sm); font-weight: 700; }
+.trabajos-mas { margin: var(--espacio-6) 0 0; font-weight: 700; }
+.trabajos-mas a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Producto con vídeo y pasos (páginas interiores) ---------- */
 .product { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); align-items: center; gap: var(--espacio-8); }
-.product[hidden] { display: none; }
-.product.is-entering { animation: demo-in .35s cubic-bezier(.22, 1, .36, 1) both; }
 .product-media { justify-self: center; width: 100%; max-width: 330px; padding: 10px; border-radius: 34px; background: var(--color-primario-oscuro); box-shadow: var(--sombra-lg); }
 .product-media video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 25px; background: var(--color-primario-oscuro); object-fit: cover; }
-.chat-mock { display: flex; aspect-ratio: 9 / 16; flex-direction: column; justify-content: center; gap: var(--espacio-2); padding: var(--espacio-5) var(--espacio-3); border-radius: 25px; background: var(--color-chat-fondo); }
-.chat-photos { display: flex; gap: 4px; padding: 5px; }
-.chat-photos i { width: 46px; height: 46px; border-radius: 8px; background: linear-gradient(135deg, var(--color-acento), var(--color-primario)); }
-.chat-photos i:nth-child(2) { background: linear-gradient(135deg, #f6b3cf, var(--color-detalle)); }
 .product-copy { max-width: 580px; }
 .product-copy h3 { margin: 0 0 var(--espacio-4); font-size: var(--texto-xl); line-height: 1.12; }
 .product-intro { margin: 0 0 var(--espacio-6); color: var(--color-texto-suave); font-size: var(--texto-md); line-height: 1.55; }
@@ -124,8 +114,6 @@
 .price del { color: var(--color-texto-suave); font-size: var(--texto-md); }
 .price-day { margin: var(--espacio-2) 0 0; font-weight: 700; }
 .price-setup { margin: var(--espacio-2) 0 0; color: var(--color-texto-suave); font-size: var(--texto-sm); }
-.price-buy { align-self: center; margin-top: var(--espacio-3); color: var(--color-primario); font-size: var(--texto-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.price-card--featured .price-buy { color: var(--color-acento); }
 .price-setup strong { color: var(--color-texto); font-size: var(--texto-base); }
 .price-setup-nota { display: block; color: var(--color-aviso); font-size: var(--texto-xs); font-weight: 700; }
 .price-card--featured .price-setup strong { color: var(--color-texto-invertido); }
@@ -133,6 +121,14 @@
 .price-features { display: grid; flex: 1; align-content: start; gap: var(--espacio-3); margin: var(--espacio-5) 0 var(--espacio-6); padding: var(--espacio-5) 0 0; border-top: 1px solid var(--color-borde); list-style: none; }
 .price-features li { position: relative; padding-left: 28px; font-size: var(--texto-sm); line-height: 1.5; }
 .price-features li::before { position: absolute; top: .1em; left: 0; color: var(--color-primario); content: "✓"; font-weight: 700; }
+.price-ideal { margin: 0 0 var(--espacio-5); color: var(--color-texto-suave); font-size: var(--texto-sm); line-height: 1.5; }
+.price-ideal strong { color: var(--color-texto); }
+.price-card--featured .price-ideal { color: var(--color-texto-invertido-suave); }
+.price-card--featured .price-ideal strong { color: var(--color-texto-invertido); }
+/* Franja de 4 ventajas bajo los planes */
+.price-perks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--espacio-4); margin: var(--espacio-8) 0; padding: var(--espacio-5) var(--espacio-6); border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); list-style: none; }
+.price-perks li { display: flex; align-items: center; gap: var(--espacio-3); font-size: var(--texto-sm); font-weight: 700; line-height: 1.35; }
+.price-perks svg { width: 40px; height: 40px; flex: 0 0 auto; padding: 9px; border-radius: 50%; background: var(--color-fondo-icono); color: var(--color-primario); }
 .price-card .button { width: 100%; }
 /* Plan destacado: más grande y en tinta marino */
 .price-card--featured { margin-block: calc(var(--espacio-5) * -1); padding: var(--espacio-7) var(--espacio-6) var(--espacio-6); border-color: var(--color-primario-oscuro); background: var(--color-primario-oscuro); box-shadow: var(--sombra-lg); color: var(--color-texto-invertido); }
@@ -143,10 +139,6 @@
 .price-card--featured .price-features { border-color: #ffffff2c; }
 .price-card--featured .price-features li::before { color: var(--color-acento); }
 .price-badge { position: absolute; top: 0; left: var(--espacio-6); margin: 0; padding: 6px 14px; border-radius: 999px; background: var(--color-acento); color: var(--color-primario-oscuro); font-size: var(--texto-xs); font-weight: 700; white-space: nowrap; transform: translateY(-50%); }
-.price-terms { display: flex; flex-wrap: wrap; gap: var(--espacio-3) var(--espacio-6); margin: var(--espacio-8) 0 var(--espacio-4); padding: 0; list-style: none; color: var(--color-texto-suave); font-size: var(--texto-sm); }
-.price-terms li { position: relative; padding-left: 22px; }
-.price-terms li::before { position: absolute; left: 0; color: var(--color-primario); content: "✓"; font-weight: 700; }
-.price-single summary { display: inline-flex; min-height: 44px; align-items: center; color: var(--color-primario); font-size: var(--texto-sm); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .price-table-wrap { max-width: 620px; margin-top: var(--espacio-3); overflow-x: auto; border: 1px solid var(--color-borde); border-radius: var(--radio-tarjeta); background: var(--color-superficie); }
 .price-table { width: 100%; border-collapse: collapse; font-size: var(--texto-sm); }
 .price-table th, .price-table td { padding: var(--espacio-3) var(--espacio-4); border-bottom: 1px solid var(--color-borde); text-align: left; }
@@ -154,6 +146,19 @@
 .price-table tbody th { font: 500 var(--texto-sm) var(--fuente-principal); letter-spacing: 0; }
 .price-table tbody tr:last-child > * { border-bottom: 0; }
 .price-table td { white-space: nowrap; }
+
+/* ---------- SECCIÓN: Complementos / automatizaciones (#automatizaciones). Más discreta que los planes ---------- */
+.addons { padding: var(--espacio-seccion) 0; border-top: 1px solid var(--color-borde); background: var(--color-fondo-alterno); }
+.addons-grid { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: var(--espacio-8); }
+.addons .section-title { font-size: clamp(1.75rem, 1.35rem + 1.4vw, 2.375rem); }
+.addons .section-lede { font-size: var(--texto-base); }
+.addons-more { margin: var(--espacio-5) 0 0; font-weight: 700; }
+.addons-more a, .price-table a { color: var(--color-primario); text-decoration: underline; text-underline-offset: 3px; }
+.addons-more a::after { content: " →"; }
+.addons .price-table-wrap { max-width: none; margin-top: 0; }
+.addons-notes { display: grid; gap: var(--espacio-2); margin: var(--espacio-4) 0 0; padding: 0; list-style: none; color: var(--color-texto-suave); font-size: var(--texto-sm); }
+.addons-notes li { position: relative; padding-left: 22px; }
+.addons-notes li::before { position: absolute; left: 0; color: var(--color-primario); content: "✓"; font-weight: 700; }
 
 /* ---------- SECCIÓN: Auditoría gratuita y prueba de 7 días por WhatsApp (#contacto, #auditoria) ---------- */
 .contact { padding: var(--espacio-seccion) 0; border-top: 1px solid var(--color-borde); background: var(--color-superficie); }
@@ -213,8 +218,10 @@
 /* ---------- Responsive de las secciones ---------- */
 @media (max-width: 960px) {
   .hero-grid { grid-template-columns: 1fr; gap: var(--espacio-7); }
-  .demo { width: min(100%, 520px); }
-  .products-head { grid-template-columns: 1fr; }
+  .hero-mosaico { width: min(100%, 560px); }
+  .service-grid, .steps-list { grid-template-columns: 1fr; max-width: 620px; }
+  .price-perks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .addons-grid { grid-template-columns: 1fr; gap: var(--espacio-6); }
   .price-grid { grid-template-columns: 1fr; max-width: 520px; gap: var(--espacio-7); }
   .trial-band { grid-template-columns: auto minmax(0, 1fr); }
   .trial-band .button { grid-column: 1 / -1; justify-self: start; }
@@ -223,6 +230,7 @@
 }
 @media (max-width: 900px) {
   .pain-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trabajos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
   .product { grid-template-columns: 1fr; gap: var(--espacio-6); }
@@ -233,10 +241,16 @@
   .hero h1 { letter-spacing: -0.015em; }
   .hero-lede { font-size: var(--texto-base); }
   .hero-actions .button { width: 100%; }
-  .demo-site { width: 76%; padding: var(--espacio-3) var(--espacio-4) var(--espacio-4); }
+  .hero-mosaico { gap: var(--espacio-2); padding-inline: var(--espacio-2); }
+  .post { padding: 6px; border-radius: 14px; }
+  .post-cabecera { gap: 4px; margin-bottom: 6px; font-size: 10px; }
+  .post-avatar { width: 14px; height: 14px; }
+  .post-hueco, .post-img { border-radius: 9px; }
+  .post-lineas { gap: 4px; margin-top: 6px; }
+  .post-lineas span { height: 5px; }
+  .steps-list { gap: var(--espacio-7); }
+  .price-perks { grid-template-columns: 1fr; padding: var(--espacio-5); }
   .pain-list { grid-template-columns: 1fr; gap: var(--espacio-6); margin-top: var(--espacio-6); }
-  .product-tabs { display: flex; width: 100%; }
-  .product-tabs button { flex: 1; padding: 0 var(--espacio-2); }
   .launch-band { margin-bottom: var(--espacio-7); }
   .trial-band { grid-template-columns: 1fr; justify-items: start; gap: var(--espacio-4); margin-bottom: var(--espacio-8); padding: var(--espacio-6) var(--espacio-5); }
   .trial-dias { grid-auto-flow: column; align-items: baseline; gap: var(--espacio-2); }
@@ -244,7 +258,6 @@
   .trial-band .button { width: 100%; }
   .price-card, .price-card--featured { padding: var(--espacio-6) var(--espacio-5); }
   .price-badge { left: var(--espacio-5); }
-  .price-terms { flex-direction: column; margin-top: var(--espacio-7); }
   .contact-card { padding: var(--espacio-5) 20px; }
   .contact-card .button { justify-self: stretch; }
   .about-grid { grid-template-columns: 1fr; gap: var(--espacio-5); }

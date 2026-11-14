@@ -3,11 +3,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zihkon.com/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/automatizaciones/</loc>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/estepona-marbella/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/plantillas/respuestas-resenas/</loc>
@@ -15,34 +19,42 @@
   </url>
   <url>
     <loc>https://zihkon.com/sectores/bares/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/sectores/cafeterias/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/sectores/restaurantes/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/sectores/</loc>
     <lastmod>2026-10-14</lastmod>
   </url>
   <url>
+    <loc>https://zihkon.com/servicios/gestion-redes-sociales/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
+    <loc>https://zihkon.com/servicios/google-business-profile/</loc>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+  <url>
     <loc>https://zihkon.com/servicios/publicar-redes-whatsapp/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/servicios/respuesta-resenas-google/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/servicios/web-por-whatsapp/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
   <url>
     <loc>https://zihkon.com/servicios/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-11-14</lastmod>
   </url>
 </urlset>

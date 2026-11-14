@@ -1,11 +1,11 @@
 # Zihkon
 
-> Zihkon es un servicio de SEO local y automatización para negocios locales de toda España, con base en Estepona (Málaga). Gestiona la web, las reseñas de Google y las redes sociales de bares, restaurantes, cafeterías y otros negocios a través de WhatsApp: el dueño escribe lo que necesita, confirma con SÍ y el cambio se publica. Fundado por Alberto Peña. Desde 79 € al mes, sin permanencia. Auditoría inicial gratuita y prueba gratuita de 7 días, que se piden por WhatsApp con el nombre y la dirección del negocio.
+> Zihkon es un servicio de marketing local para negocios de toda España, con base en Estepona (Costa del Sol, Málaga). Crea y publica el contenido de las redes sociales del negocio, optimiza su Perfil de Empresa en Google y responde sus reseñas. El dueño habla con Zihkon y aprueba cada publicación por WhatsApp: nada se publica sin su SÍ. Para quien prefiere hacerlo él mismo hay automatizaciones por WhatsApp como complemento. Fundado por Alberto Peña. Desde 99 € al mes, sin permanencia. Auditoría inicial gratuita, que se pide por WhatsApp con el nombre y la dirección del negocio.
 
 ## Datos del negocio
 
 - Nombre: Zihkon (ZIHKON®)
-- Base: Estepona (Málaga), España. Trabaja con negocios de toda España por WhatsApp.
+- Base: Estepona (Málaga), Costa del Sol, España. Trabaja con negocios de toda España por WhatsApp.
 - Fundador: Alberto Peña
 - Teléfono y WhatsApp: +34 604 18 36 76
 - Correo: zihkon@gmail.com
@@ -16,20 +16,27 @@
 - TikTok: https://www.tiktok.com/@zihkon
 - YouTube: https://www.youtube.com/@Zihkon
 
-## Servicios
+## Servicios (los hace Zihkon)
 
-- [Web por WhatsApp](https://zihkon.com/servicios/web-por-whatsapp/): el dueño cambia horarios, precios, textos, colores, temas de temporada, la carta (comando CARTA) o la sugerencia del día escribiendo WEB por WhatsApp. Cada cambio se confirma con SÍ y se revisa automáticamente antes de publicarse.
+- [Gestión de redes sociales](https://zihkon.com/servicios/gestion-redes-sociales/): plan mensual de contenido, diseño de publicaciones y reels, textos con llamada a la acción y hashtags locales, y publicación en Instagram, Facebook y TikTok.
+- [Perfil de Empresa en Google optimizado](https://zihkon.com/servicios/google-business-profile/): categorías, servicios, horarios, fotos y publicaciones periódicas en la ficha.
 - [Respuesta automática de reseñas de Google](https://zihkon.com/servicios/respuesta-resenas-google/): una IA responde cada reseña con el tono del negocio y avisa por WhatsApp cuando una reseña necesita la opinión del dueño.
-- [Publicación en redes desde WhatsApp](https://zihkon.com/servicios/publicar-redes-whatsapp/): con el comando PUBLICAR se envían de 1 a 8 fotos o un vídeo y al confirmar con SÍ se publica en Instagram, Facebook, TikTok y el Perfil de Empresa de Google.
 
-## Precios (sin IVA, sin permanencia)
+## Planes (sin IVA, sin permanencia)
 
-- Presencia Local: 79 €/mes + 190 € de alta. Auditoría, respuesta automática de reseñas y publicación semanal en Google.
-- Web + Reseñas en piloto automático: 120 €/mes + 590 € de alta. Auditoría, web gestionada por WhatsApp y respuesta automática de reseñas.
-- 360°: 249 €/mes + 790 € de alta. Todo lo anterior más publicación en Instagram, Facebook, TikTok y Google.
-- Servicios sueltos: respuesta de reseñas 69 €/mes (190 € de alta); web por WhatsApp 69 €/mes (490 € de alta); publicación multicanal 169 €/mes (250 € de alta).
-- 15 % de descuento con pago anual.
-- Auditoría y 7 días de prueba totalmente gratis: sin alta ni cuota durante la prueba y con baja en cualquier momento.
+- Google Local: 99 €/mes. Optimización completa del Perfil de Empresa en Google, 4 publicaciones al mes en la ficha, respuesta automática de reseñas e informe mensual por WhatsApp.
+- Redes + Google: 249 €/mes. Todo lo de Google Local, gestión de Instagram y Facebook, 12 publicaciones al mes (8 publicaciones y 4 reels) y plan de contenido mensual.
+- Presencia Total: 399 €/mes. Todo lo de Redes + Google, también TikTok, 20 publicaciones al mes (12 publicaciones y 8 reels) y una sesión de fotos y vídeo al mes en el negocio.
+- 15 % de descuento con pago anual. Las cuentas siguen siendo del cliente.
+- Prueba gratuita: 3 publicaciones creadas y publicadas en el Facebook del negocio en 7 días, sin pagar nada y sin compromiso.
+
+## Automatizaciones (para hacerlo uno mismo desde WhatsApp)
+
+- [Todas las automatizaciones](https://zihkon.com/automatizaciones/)
+- [Respuesta automática de reseñas](https://zihkon.com/servicios/respuesta-resenas-google/): 39 €/mes, sin alta (incluida en todos los planes).
+- [Publica tú en tus redes desde WhatsApp](https://zihkon.com/servicios/publicar-redes-whatsapp/): 49 €/mes y 49 € de alta. Con el comando PUBLICAR se envían de 1 a 8 fotos o un vídeo y al confirmar con SÍ se publica en Instagram, Facebook, TikTok y Google.
+- [Web gestionada por WhatsApp](https://zihkon.com/servicios/web-por-whatsapp/): 39 €/mes y 290 € de alta (alojamiento, mantenimiento y editor por WhatsApp). El dueño cambia horarios, precios, textos, la carta o la sugerencia del día escribiendo WEB por WhatsApp.
+- Automatizaciones a medida: presupuesto.
 
 ## Por sector
 

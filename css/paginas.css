@@ -87,3 +87,6 @@
 /* Firma y fecha bajo la entradilla (autoría y frescura del contenido) */
 .pagina-firma { margin: var(--espacio-4) 0 0; color: var(--color-texto-suave); font-size: var(--texto-xs); }
 .pagina-firma a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Precio de un solo complemento (páginas de automatizaciones) */
+.planes--uno { grid-template-columns: minmax(0, 340px); }

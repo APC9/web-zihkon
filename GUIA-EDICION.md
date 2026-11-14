@@ -9,10 +9,13 @@ Lo que hay en el repositorio es exactamente lo que se publica.
 |---|---|
 | `index.html` | Todos los textos de la página principal, enlaces, teléfono/WhatsApp, imágenes, datos SEO |
 | `css/styles.css` | **Variables** (colores, tipografías, botones) y componentes comunes: botones, cabecera, pie, WhatsApp flotante, aviso de cookies |
-| `css/secciones.css` | Estilos propios de cada sección de `index.html` (marcados con `SECCIÓN: ...`) |
+| `css/portada.css` | Diseño de la página principal (`index.html`): fondos de noche, telones entre secciones, tarjetas de precios, chat de la auditoría y las animaciones. Usa solo las variables de `styles.css`, así los temas siguen funcionando |
+| `css/secciones.css` | Estilos de las páginas interiores (servicios, sectores, etc.) |
 | `css/tema.css` | **Tema activo**: tema de temporada, colores personalizados y franja de anuncio. Mandan sobre `styles.css` |
 | `css/temas/` | Temas predefinidos (lista en el comentario de `css/tema.css`): estaciones, fiestas y días comerciales |
-| `js/main.js` | Comportamiento: menú móvil, preguntas frecuentes, pestañas y aviso de cookies (Aceptar/Rechazar → consentimiento de Google). Google Tag Manager (GTM-P68VJQNK) y el contador de Metricool van escritos en el `<head>` de cada página (y en `generador/generar.py`) |
+| `js/portada.js` | Movimiento de la página principal: scroll suave, títulos y bloques que aparecen, chat que se escribe solo y el recorrido de `#servicios`. Respeta "reducir movimiento" del sistema; el botón "Activar/Desactivar animaciones" del pie lo cambia en ese navegador |
+| `js/experiencia3d.js` | Escena 3D de la página principal (móvil con feed, ciudad con tu pin y tu ficha, reseñas respondidas y chat de WhatsApp). Todo es ilustrativo: sin cifras, clientes ni reseñas inventadas. No hace falta tocarla para cambiar textos |
+| `js/main.js` | Comportamiento: menú móvil, enlace activo del menú, preguntas frecuentes y aviso de cookies (Aceptar/Rechazar → consentimiento de Google). Google Tag Manager (GTM-P68VJQNK) y el contador de Metricool van escritos en el `<head>` de cada página (y en `generador/generar.py`) |
 | `privacidad.html`, `cookies.html`, `seguridad.html`, `aviso-legal.html` | Textos legales |
 | `css/legal.css` | Estilos de las páginas legales |
 | `img/` | Imágenes |
@@ -23,15 +26,20 @@ Cada sección empieza con `<!-- SECCIÓN: Nombre -->` y termina con `<!-- FIN SE
 
 | id | Sección | Contenido principal |
 |---|---|---|
-| `#cabecera` | Cabecera | Logo, menú, botón "Pide tu auditoría" |
-| `#inicio` | Hero | Título (`<h1>`), subtítulo, botones y demostración animada (un WhatsApp cambia el horario de una web de ejemplo) |
-| `#problema` | El problema | 6 situaciones |
-| `#productos` | Cómo funciona | 3 pestañas: Tu web (vídeo), Tus redes y Tus reseñas (conversaciones de ejemplo) |
-| `#precios` | Precios | Oferta de lanzamiento, 3 planes, condiciones y tabla de servicios sueltos |
-| `#contacto` / `#auditoria` | Auditoría y prueba de 7 días | Qué se revisa y botón de WhatsApp con el mensaje (nombre y dirección del negocio) |
+| `#cabecera` | Cabecera | Logo, menú (Servicios, Contenido, Precios, Quién soy, Preguntas; "Trabajos" está comentado hasta que se muestre `#trabajos`) y botón "Auditoría gratis" (WhatsApp) |
+| `#inicio` | Hero | Título (`<h1>`), subtítulo, botones (auditoría por WhatsApp y "Ver precios"), 3 datos cortos (`.hero-datos`) y mosaico de 3 publicaciones (`.hero-mosaico`: se ve cuando no hay 3D; huecos de diseño hasta tener imágenes reales) |
+| `#problema` | ¿Te suena? | 6 situaciones con forma de notificación (`.aviso`) |
+| `#servicios` | Qué hacemos por ti | Recorrido con scroll en 4 capítulos (`.capitulo`): los 3 servicios principales, cada uno con enlace a su página, y Cómo trabajamos |
+| `#como-trabajamos` | Cómo trabajamos | 4.º capítulo de `#servicios`: 3 pasos y "Nada se publica sin tu permiso" |
+| `#trabajos` | Trabajos | 6 publicaciones reales con el nombre del negocio. **Oculta** (`hidden`) hasta tenerlas |
+| `#calendario` | Calendario de contenido | Semana de ejemplo de un restaurante (`.cal-semana`). El reel y el carrusel "Datos Zihkon Nº 7" se abren en la vista de al lado: vídeo en `video/zihkon-datos-7-estrellas-web.mp4` (+ `-poster.jpg`) y diapositivas en `img/datos-7-estrellas/01-07.webp`. Tres pasos y botón "Quiero mi plan de contenido" (WhatsApp) |
+| `#precios` | Precios | Oferta de lanzamiento, 3 planes, franja de 4 ventajas y prueba gratis |
+| `#automatizaciones` | Complementos | Tabla de automatizaciones (alta y cuota) y enlace a `/automatizaciones/` |
+| `#contacto` / `#auditoria` | Auditoría gratis | Qué se revisa y botón de WhatsApp con el mensaje (nombre y dirección del negocio) |
 | `#quien` | Quién está detrás | Foto, nombre, texto y botón de WhatsApp |
-| `#preguntas` | Preguntas frecuentes | 6 preguntas (también repetidas en el `<head>`, ver abajo) |
-| `#llamada-final` | Llamada a la acción final | Título + botones |
+| `#opiniones` | Opinión de cliente | La reseña real de Google (no inventar otras) |
+| `#preguntas` | Preguntas frecuentes | 14 preguntas (también repetidas en el `<head>`, ver abajo) |
+| `#llamada-final` | Llamada a la acción final | Título + botón de WhatsApp |
 | `#pie` | Pie de página | Enlaces, legales, redes sociales, copyright |
 
 Para **ocultar una sección**, añade el atributo `hidden` a su etiqueta de apertura, por ejemplo
@@ -67,12 +75,16 @@ Los cambios de tema y de colores generales se hacen **solo en `css/tema.css`** (
 - **Espaciado**: `--espacio-1` … `--espacio-9` (4px → 96px) y `--espacio-seccion` (separación vertical entre secciones).
 - **Esquinas y sombras**: `--radio-boton`, `--radio-campo`, `--radio-tarjeta`, `--radio-etiqueta`; `--sombra-sm`, `--sombra-md`, `--sombra-lg`.
 - **Textos, títulos, botones**: directamente en `index.html`, dentro de su sección.
-- **WhatsApp / teléfono**: enlaces `https://wa.me/34604183676?text=...` en el hero, en `#contacto`, en `#quien` y en el botón flotante del final de `index.html` (y su `aria-label`). El teléfono también aparece en `privacidad.html` y `aviso-legal.html`.
+- **WhatsApp / teléfono**: enlaces `https://wa.me/34604183676?text=...` en la cabecera, el hero, `#calendario`, cada plan de `#precios`, la prueba gratis, `#contacto`, `#quien`, `#llamada-final` y el botón flotante del final de `index.html` (y su `aria-label`). Todos los botones de acción abren WhatsApp; ninguno lleva a `#contacto`. El teléfono también aparece en `privacidad.html` y `aviso-legal.html`.
 - **Email**: `zihkon@gmail.com` en las páginas legales y en el `<head>` de `index.html`.
-- **Mensaje predefinido de WhatsApp** (auditoría + prueba de 7 días, nombre y dirección del negocio): va tras `?text=` en todos los enlaces `wa.me` de `index.html` y en `WHATSAPP` de `generador/generar.py`.
+- **Mensajes predefinidos de WhatsApp** (van tras `?text=`, codificados):
+  - Auditoría: «Hola, quiero mi auditoría gratuita. Nombre del negocio: Dirección:». En casi todos los botones de `index.html` y en `WHATSAPP` de `generador/generar.py`.
+  - Planes: «Hola, me interesa el plan [nombre del plan]. Mi negocio es:», en el botón de cada tarjeta de `#precios`.
+  - Prueba gratis: «Hola, quiero la prueba gratis de 7 días. Mi negocio es:», en la franja de la prueba de `#precios`.
+  - Calendario: «Hola, quiero un plan de contenido para mis redes. Mi negocio es:», en el botón de `#calendario`.
 - **Zona / ciudades**: textos de `index.html` (hero, sección `#por-que`, pie) y datos SEO del `<head>`.
 - **Redes sociales**: pie de `index.html`, `sameAs` del `<head>`, `REDES` en `generador/generar.py` y `llms.txt`.
-- **Precios**: sección `#precios` de `index.html` (planes, tabla de servicios sueltos y oferta de lanzamiento). Si cambian, revisa también la primera pregunta frecuente y su copia en el `<head>`.
+- **Precios**: sección `#precios` de `index.html` (planes, oferta de lanzamiento y prueba) y tabla de `#automatizaciones`. Si cambian, revisa también las preguntas frecuentes y su copia en el `<head>`, el bloque `ProfessionalService` del `<head>`, `PLANES` y `COMPLEMENTOS` de `generador/generar.py`, la página `generador/paginas/automatizaciones.html` y `llms.txt`.
 - **Año del copyright**: se actualiza solo (`js/main.js`).
 - **Datos SEO**: `<head>` de `index.html` → `<title>`, `meta description`, Open Graph/Twitter y tres bloques `application/ld+json` (negocio `ProfessionalService`, `WebSite` y `FAQPage`).
   - Si cambias una pregunta frecuente, cámbiala en la sección `#preguntas` **y** en el bloque `FAQPage`, con el mismo texto exacto.
@@ -105,7 +117,8 @@ Para cambiar una imagen, sustituye la ruta en el `src` correspondiente de `index
 | "Cambia el color principal de la marca" | `css/styles.css` → `--color-primario`; opcional `css/legal.css` |
 | "Cambia el título principal" | `index.html` → `<h1>` de `#inicio` (opcional: `<title>` y `og:title`) |
 | "Cambia el WhatsApp" | `index.html` → botón flotante (`href` y `aria-label`) |
-| "Cambia el texto de servicios" | `index.html` → `#solucion` / `#servicios` |
+| "Cambia el texto de servicios" | `index.html` → `#servicios` |
+| "Pon las publicaciones reales" | `index.html` → `.hero-mosaico` y `#trabajos` (instrucciones en sus comentarios `CONFIRMAR`) |
 | "Oculta la sección X" | `index.html` → atributo `hidden` en la sección |
 | "Cambia una pregunta frecuente" | `index.html` → `#preguntas` y bloque `FAQPage` del `<head>` |
 
@@ -127,4 +140,12 @@ Se generan con un script a partir de `generador/paginas/*.html`. **No edites a m
 
 Regla de calidad: cada página nueva necesita contenido propio (ejemplos, problemas y reseñas de ese sector).
 No crees páginas que solo cambien el nombre de una ciudad o un sector.
-Si cambian los precios o los vídeos de `index.html`, cámbialos también en `PLANES` y `VIDEOS` de `generador/generar.py`.
+Si cambian los precios o los vídeos de `index.html`, cámbialos también en `PLANES`, `COMPLEMENTOS` y `VIDEOS` de `generador/generar.py`.
+
+Marcadores que entiende el generador dentro del contenido de una página:
+- `{{lista:/carpeta/}}`: tarjetas con todas las páginas que cuelgan de esa carpeta.
+- `{{tarjetas:/url-1/,/url-2/}}`: tarjetas de las páginas indicadas, en ese orden.
+- `{{video:web}}`, `{{video:redes}}`, `{{video:resenas}}`: vídeo de demostración.
+- `{{precio:resenas}}`, `{{precio:publicar}}`, `{{precio:web}}`: precio de un complemento.
+
+En la cabecera de datos, `"plan"` muestra los tres planes con uno destacado (`google`, `redes` o `total`) y `"complemento"` muestra el precio de una automatización (`resenas`, `publicar` o `web`).
